@@ -37,6 +37,20 @@ document.querySelectorAll('.acc-head').forEach((head) => {
   });
 });
 
+// tabs — each .tabs group switches independently
+document.querySelectorAll('.tabs').forEach((group) => {
+  const btns = group.querySelectorAll('.tab-btn');
+  const panels = group.querySelectorAll('.tab-panel');
+  btns.forEach((btn, i) => {
+    btn.addEventListener('click', () => {
+      btns.forEach((b) => b.classList.remove('active'));
+      panels.forEach((p) => p.classList.remove('active'));
+      btn.classList.add('active');
+      if (panels[i]) panels[i].classList.add('active');
+    });
+  });
+});
+
 // scroll reveal
 const io = new IntersectionObserver((entries) => {
   entries.forEach((e) => {

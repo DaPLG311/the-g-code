@@ -285,6 +285,103 @@ a.brand { text-decoration:none; color:var(--text); }
 
 @media (max-width:900px) { .foot-links { gap:30px 40px; } }
 
+/* ===================== SERVICE-WITH-STYLE LAYER ===================== */
+
+/* page hero (compact, for sub-pages) */
+.page-hero { padding:150px 0 70px; border-bottom:1px solid var(--line);
+  background: radial-gradient(800px 360px at 78% -10%, rgba(122,34,48,.12), transparent 62%), linear-gradient(180deg,#0d0e12,#0b0b0d); }
+.page-hero h1 { font-size:clamp(38px,6.5vw,76px); margin:18px 0 22px; max-width:18ch; }
+.page-hero .lead { max-width:64ch; }
+.breadcrumb { font-family:"Oswald",sans-serif; text-transform:uppercase; letter-spacing:.16em; font-size:11px; color:var(--muted); margin-bottom:6px; }
+.breadcrumb a { color:var(--muted); text-decoration:none; }
+.breadcrumb a:hover { color:var(--platinum); }
+
+/* generic section intro spacing */
+.sec-head + .grid-block, .sec-head + .examples, .sec-head + .steps, .sec-head + .split, .sec-head + .guides, .sec-head + .svc-list, .sec-head + .tabs, .sec-head + .accordion { margin-top:48px; }
+
+/* split (qualify / disqualify, public/private) */
+.split { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+.split-col { border:1px solid var(--line); border-radius:4px; padding:32px; background:linear-gradient(165deg,rgba(35,37,43,.5),rgba(13,14,17,.5)); }
+.split-col h3 { display:flex; align-items:center; gap:12px; margin-bottom:18px; }
+.split-col .mk { width:26px; height:26px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; font-family:"Archivo",sans-serif; font-weight:800; font-size:15px; flex:0 0 auto; }
+.split-yes .mk { color:#9ed8a6; border:1px solid rgba(158,216,166,.5); }
+.split-no .mk { color:#d89a9a; border:1px solid rgba(216,154,154,.45); }
+.checklist { list-style:none; }
+.checklist li { position:relative; padding-left:26px; margin-bottom:13px; color:var(--muted); font-size:15.5px; }
+.checklist li::before { content:""; position:absolute; left:0; top:9px; width:7px; height:7px; border-radius:1px; background:var(--gold); opacity:.8; }
+.checklist.no li::before { background:#7a4a4a; }
+
+/* process steps / timeline */
+.steps { counter-reset:step; display:grid; gap:1px; background:var(--line); border:1px solid var(--line); border-radius:4px; overflow:hidden; }
+.step { background:var(--coal); padding:26px 28px; display:grid; grid-template-columns:54px 1fr; gap:20px; align-items:start; transition:background .25s; }
+.step:hover { background:var(--graphite); }
+.step .num { counter-increment:step; font-family:"Archivo",sans-serif; font-weight:800; font-size:22px; color:transparent; -webkit-text-stroke:1px var(--gold); }
+.step .num::before { content:"0" counter(step); }
+.step h3 { font-size:17px; margin-bottom:6px; }
+.step p { color:var(--muted); font-size:15px; }
+
+/* example cards grid */
+.examples { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+.ex-card { border:1px solid var(--line); border-radius:4px; padding:28px; background:linear-gradient(165deg,rgba(35,37,43,.45),rgba(13,14,17,.45)); transition:transform .3s,border-color .3s; position:relative; }
+.ex-card:hover { transform:translateY(-4px); border-color:rgba(199,203,209,.28); }
+.ex-card .ico { width:40px; height:40px; margin-bottom:16px; color:var(--gold); }
+.ex-card h3 { font-size:17px; margin-bottom:9px; letter-spacing:0; }
+.ex-card p { color:var(--muted); font-size:14.5px; }
+.ex-card .pill { font-family:"Oswald",sans-serif; text-transform:uppercase; letter-spacing:.12em; font-size:10px; color:var(--platinum); border:1px solid var(--line); padding:5px 11px; border-radius:2px; display:inline-block; margin-top:16px; }
+
+/* service category list */
+.svc-list { display:grid; gap:18px; }
+.svc { border:1px solid var(--line); border-radius:4px; padding:34px; background:linear-gradient(165deg,rgba(35,37,43,.5),rgba(13,14,17,.5)); display:grid; grid-template-columns:48px 1fr; gap:24px; transition:border-color .3s; }
+.svc:hover { border-color:rgba(199,203,209,.28); }
+.svc .ico { width:44px; height:44px; color:var(--gold); }
+.svc h3 { margin-bottom:10px; }
+.svc p { color:var(--muted); font-size:15px; margin-bottom:14px; }
+.svc .meta { display:flex; flex-wrap:wrap; gap:8px; }
+
+/* micro-guide cards */
+.guides { display:grid; grid-template-columns:repeat(2,1fr); gap:18px; }
+.guide { border:1px solid var(--line); border-left:2px solid var(--gold); border-radius:3px; padding:30px; background:rgba(255,255,255,.02); }
+.guide .tagk { font-family:"Oswald",sans-serif; text-transform:uppercase; letter-spacing:.18em; font-size:10px; color:var(--gold); }
+.guide h3 { font-size:19px; margin:10px 0 12px; letter-spacing:0; text-transform:none; }
+.guide p { color:var(--muted); font-size:15px; }
+.guide ul { margin-top:10px; }
+
+/* tabs */
+.tabs { border:1px solid var(--line); border-radius:4px; overflow:hidden; }
+.tab-btns { display:flex; flex-wrap:wrap; background:var(--coal); border-bottom:1px solid var(--line); }
+.tab-btn { background:transparent; border:0; cursor:pointer; color:var(--muted); padding:18px 22px;
+  font-family:"Oswald",sans-serif; text-transform:uppercase; letter-spacing:.08em; font-size:13px; position:relative; transition:color .2s; }
+.tab-btn:hover { color:var(--text); }
+.tab-btn.active { color:var(--text); }
+.tab-btn.active::after { content:""; position:absolute; left:18px; right:18px; bottom:-1px; height:2px; background:linear-gradient(90deg,var(--gold),transparent); }
+.tab-panel { display:none; padding:38px; }
+.tab-panel.active { display:block; }
+.tab-panel h3 { letter-spacing:0; margin-bottom:12px; }
+.tab-panel p { color:var(--muted); }
+
+/* generic grid block */
+.grid-block { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+
+/* leave-with / deliverable list */
+.deliver { display:grid; grid-template-columns:repeat(2,1fr); gap:14px 30px; }
+.deliver li { list-style:none; position:relative; padding-left:28px; color:var(--text); font-size:15.5px; }
+.deliver li::before { content:"→"; position:absolute; left:0; color:var(--gold); font-family:"Archivo",sans-serif; }
+.deliver li span { display:block; color:var(--muted); font-size:13.5px; margin-top:3px; }
+
+/* CTA mini band inside pages */
+.mini-cta { text-align:center; border:1px solid var(--line); border-radius:6px; padding:54px 34px; margin-top:10px;
+  background: radial-gradient(500px 240px at 50% 120%, rgba(122,34,48,.18), transparent 70%), linear-gradient(180deg,rgba(20,21,25,.6),rgba(12,13,16,.6)); }
+.mini-cta h2 { margin-bottom:16px; }
+.mini-cta p { color:var(--muted); max-width:52ch; margin:0 auto 28px; }
+
+/* responsive for new components */
+@media (max-width:900px) {
+  .split, .examples, .guides, .grid-block, .deliver { grid-template-columns:1fr; }
+  .tab-btn { padding:14px 16px; font-size:12px; }
+  .tab-panel { padding:26px; }
+  .svc { grid-template-columns:1fr; gap:14px; }
+}
+
 /* --- accessibility: respect reduced motion --- */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation:none !important; transition:none !important; scroll-behavior:auto !important; }
