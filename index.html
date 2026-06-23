@@ -8,7 +8,9 @@
 <meta property="og:title" content="The G Code™ — Digital Media With Flavor" />
 <meta property="og:description" content="Operator media + Same-Day MVP Launch™. Your idea, live today. Operate with style." />
 <meta property="og:type" content="website" />
+<meta property="og:url" content="https://the-g-code.vercel.app/" />
 <meta name="theme-color" content="#0B0B0D" />
+<link rel="canonical" href="https://the-g-code.vercel.app/" />
 <link rel="icon" type="image/svg+xml" href="favicon.svg" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -18,18 +20,19 @@
 <body>
 
 <nav id="nav">
-  <div class="brand">THE&nbsp;G&nbsp;CODE<span class="tm">™</span></div>
-  <div class="nav-links">
+  <a href="#top" class="brand">THE&nbsp;G&nbsp;CODE<span class="tm">™</span></a>
+  <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  <div class="nav-links" id="navLinks">
     <a href="#launch">Same-Day MVP</a>
     <a href="#world">The World</a>
     <a href="#live">Live</a>
     <a href="#founder">Da PLG</a>
-    <a href="#start" class="btn btn-primary btn-sm">Launch It Today</a>
+    <a href="#start" class="btn btn-primary btn-sm">Start a Project</a>
   </div>
 </nav>
 
 <!-- 1. HERO — The Entrance -->
-<header class="hero">
+<header class="hero" id="top">
   <div class="wrap">
     <span class="kicker">Digital Media With Flavor</span>
     <h1>Operator media.<br /><span class="stroke">And the operator</span><br />who launches today.</h1>
@@ -107,9 +110,37 @@
           <p>You sit in the build. Decisions in real time.</p>
         </div>
       </div>
-      <p style="margin-top:30px; color:var(--muted); font-size:15px;">Pricing is by custom quote — scoped to urgency, complexity, and collaboration mode. Select projects may qualify for flexible deal structures, including approved equipment trade-ins or founder package arrangements.</p>
-      <div class="hero-cta" style="margin-top:30px;">
-        <a href="#start" class="btn btn-primary">Start Your Launch →</a>
+      <div class="hero-cta" style="margin-top:34px;">
+        <a href="#start" class="btn btn-primary">Get a Quote →</a>
+        <a href="#launch-details" class="btn btn-ghost">See the Details</a>
+      </div>
+    </div>
+
+    <!-- Phase 7: details accordion -->
+    <div id="launch-details" class="accordion reveal">
+      <div class="acc-item">
+        <button class="acc-head" aria-expanded="false">Who it's for<span class="acc-ic">+</span></button>
+        <div class="acc-body"><p>Founders, app concepts, startup landing pages, prelaunch offers, and operator brands who need something real, fast, and premium — not a months-long agency cycle.</p></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-head" aria-expanded="false">What qualifies<span class="acc-ic">+</span></button>
+        <div class="acc-body"><p>A clear idea with a scope we can ship in a day: a launch page, a prelaunch funnel, a focused MVP, or a sharp founder/landing surface. If we can define it cleanly, we can build it cleanly.</p></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-head" aria-expanded="false">What doesn't qualify<span class="acc-ic">+</span></button>
+        <div class="acc-body"><p>Heavy multi-month platforms, complex backends, or regulated systems aren't same-day work. Those still get built — on a custom timeline and quote, not the same-day track.</p></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-head" aria-expanded="false">Timeline &amp; process<span class="acc-ic">+</span></button>
+        <div class="acc-body"><p>Qualify → scope → build → launch. For qualifying projects, that runs in a single focused day. You pick the mode: Silent, Live, or Operator Seat.</p></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-head" aria-expanded="false">Deliverables<span class="acc-ic">+</span></button>
+        <div class="acc-body"><p>A live, working site or MVP, the build handed off to you, and a clear path for what comes next. Premium by default, no placeholder filler.</p></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-head" aria-expanded="false">Pricing &amp; deal structures<span class="acc-ic">+</span></button>
+        <div class="acc-body"><p>Pricing is by custom quote — scoped to urgency, complexity, and collaboration mode. Select projects may qualify for flexible deal structures, including approved equipment trade-ins or founder package arrangements.</p></div>
       </div>
     </div>
   </div>
@@ -126,14 +157,14 @@
     <div class="cards">
       <div class="card reveal" id="live">
         <div class="corner"></div>
-        <span class="badge">G Code Live™ · Building</span>
+        <span class="badge">G Code Live™ · Now Enrolling</span>
         <h3>The Build Room</h3>
         <p>A premium live-build subscription. Watch real builds happen, see the operator screen, keep the archive. The room you get let into.</p>
-        <a href="#start">Join the waitlist →</a>
+        <a href="#start">Join the list →</a>
       </div>
       <div class="card reveal" id="vault">
         <div class="corner"></div>
-        <span class="badge">G Vault™ · Staging</span>
+        <span class="badge">G Vault™ · First Drop</span>
         <h3>The Operator Assets</h3>
         <p>The finished, concrete assets from the builds — launch kits, templates, operator systems. Named, packaged, licensed. Not "resources."</p>
         <a href="#start">Get the first drop →</a>
@@ -179,9 +210,10 @@
     <h2>Got an idea? It can be live today.</h2>
     <p class="lead" style="margin:0 auto 34px;">Tell us what you're launching. We'll scope it, quote it, and — for the right project — build it the same day.</p>
     <div class="hero-cta" style="justify-content:center;">
-      <a href="mailto:hello@the-g-code.com?subject=Same-Day%20MVP%20Launch%20Inquiry" class="btn btn-primary">Start Your Launch →</a>
-      <a href="mailto:hello@the-g-code.com?subject=Direct%20Access%20Inquiry" class="btn btn-ghost">Request Direct Access</a>
+      <a href="mailto:jackthetrainer88@gmail.com?subject=Same-Day%20MVP%20Launch%20Inquiry" class="btn btn-primary">Start Your Launch →</a>
+      <a href="mailto:jackthetrainer88@gmail.com?subject=Direct%20Access%20Inquiry" class="btn btn-ghost">Request Direct Access</a>
     </div>
+    <p class="contact-line">Or call / text <a href="tel:+15189126142">518&nbsp;912&nbsp;6142</a></p>
   </div>
 </section>
 
@@ -205,6 +237,16 @@
           <a href="#live">G Code Live™</a>
           <a href="#vault">G Vault™</a>
           <a href="#founder">Da PLG</a>
+        </div>
+        <div class="foot-col">
+          <h4>Contact</h4>
+          <a href="mailto:jackthetrainer88@gmail.com">Email us</a>
+          <a href="tel:+15189126142">518 912 6142</a>
+        </div>
+        <div class="foot-col">
+          <h4>Legal</h4>
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Service</a>
         </div>
       </div>
     </div>
