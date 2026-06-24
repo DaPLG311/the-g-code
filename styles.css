@@ -1419,3 +1419,38 @@ body.world::before {
   background-position: center !important;
   background-attachment: scroll !important;
 }
+
+/* =====================================================================
+   WORLD PAGES: content sits on dark glass cards. The dark-theme grey
+   tokens (--muted/--platinum) vanish there — force body text light.
+   ===================================================================== */
+body.world .lead,
+body.world .smoke .lead,
+body.world .breadcrumb,
+body.world .breadcrumb a,
+body.world .smoke .checklist li,
+body.world .smoke .step p,
+body.world .smoke .deliver li span,
+body.world .smoke .mode p,
+body.world .smoke .ex-card p,
+body.world .smoke .svc p,
+body.world .smoke .svc-cat li,
+body.world .smoke .guide p,
+body.world .smoke .tag,
+body.world .smoke .pill,
+body.world .smoke .support { color: #DDE0E4 !important; }
+
+body.world .smoke .checklist li strong,
+body.world .smoke .deliver li,
+body.world .smoke .mode h3,
+body.world .smoke .svc-cat h3 { color: #fff !important; }
+
+/* clipped/engraved bits that were dark in the silver theme */
+body.world .smoke .metal { background: none !important; -webkit-text-fill-color: #DDE0E4 !important; color: #DDE0E4 !important; -webkit-text-stroke: 0 !important; }
+body.world .smoke .step .num { -webkit-text-stroke: 1px var(--champagne-2) !important; }
+body.world .smoke .checklist li::before { background: var(--champagne-2) !important; }
+body.world .breadcrumb a:hover { color: #fff !important; }
+
+/* impact partner chips are now links into the form */
+.path-grid a { display:block; text-decoration:none; border:1px solid rgba(255,255,255,0.16); border-radius:5px; padding:16px 14px; text-align:center; color:#DDE0E4; font-family:"Oswald",sans-serif; text-transform:uppercase; letter-spacing:.06em; font-size:12px; transition:border-color .25s,color .25s,transform .25s; }
+.path-grid a:hover { border-color:var(--champagne-2); color:#fff; transform:translateY(-2px); }

@@ -82,3 +82,34 @@ const io = new IntersectionObserver((entries) => {
 }, { threshold: 0.16, rootMargin: '0px 0px -8% 0px' });
 
 document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+
+// Comprehensive intake form (start.html): prefill "describes you" from ?path=,
+// build a detailed email to Jack, then send to the success page.
+(function () {
+  var f = document.getElementById('startForm');
+  if (!f) return;
+  var path = new URLSearchParams(location.search).get('path');
+  if (path) {
+    var sel = document.getElementById('f-describes');
+    if (sel) {
+      var pl = path.toLowerCase();
+      for (var i = 0; i < sel.options.length; i++) {
+        if (sel.options[i].value.toLowerCase().indexOf(pl) > -1) { sel.selectedIndex = i; break; }
+      }
+    }
+  }
+  f.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var parts = [];
+    f.querySelectorAll('.field').forEach(function (fl) {
+      var lab = fl.querySelector('label');
+      var ctl = fl.querySelector('input, select, textarea');
+      if (lab && ctl && (ctl.value || '').trim()) parts.push(lab.textContent.trim() + ': ' + ctl.value.trim());
+    });
+    var nm = (f.querySelector('[name=name]') || { value: '' }).value.trim();
+    var subj = encodeURIComponent('New Day One MVP inquiry — ' + (nm || 'someone'));
+    var body = encodeURIComponent('NEW INQUIRY VIA DAYONEMVP.COM\n\n' + parts.join('\n\n'));
+    window.location.href = 'mailto:jack@dayonemvp.com?subject=' + subj + '&body=' + body;
+    setTimeout(function () { window.location.href = 'success.html'; }, 800);
+  });
+})();

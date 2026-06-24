@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Start My MVP — Tell Us About You & Your Idea | Day One MVP™</title>
+<meta name="description" content="Tell us a little about you, then about your idea or business. We'll read it personally and come back with the smallest responsible first build." />
+<meta name="robots" content="index, follow" />
+<meta name="theme-color" content="#0B0B0D" />
+<link rel="canonical" href="https://the-g-code.vercel.app/start.html" />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=Oswald:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body class="world">
+
+<nav id="nav" class="scrolled">
+  <a href="index.html" class="brand">DAY&nbsp;ONE&nbsp;MVP<span class="tm">™</span></a>
+  <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  <div class="nav-links" id="navLinks">
+    <a href="the-g-code.html">The G Code™</a>
+    <a href="what-we-build.html">What We Build</a>
+    <a href="how-it-works.html">How It Works</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="tech-answers.html">Tech Answers</a>
+    <a href="impact.html">Impact</a>
+    <a href="start.html" class="btn btn-primary btn-sm">Start My MVP</a>
+  </div>
+</nav>
+
+<header class="page-hero">
+  <div class="wrap">
+    <div class="smoke wide">
+      <div class="breadcrumb"><a href="index.html">Day One MVP™</a> / Start</div>
+      <span class="eyebrow">Start My MVP</span>
+      <h1 class="mega" style="font-size:clamp(36px,6vw,72px);">Tell us about you. Then your idea.</h1>
+      <p class="support" style="font-size:clamp(17px,2vw,20px);color:#E7E8EA;">No pressure, no jargon. Jack reads every submission personally and comes back with the smallest responsible first build. Your idea is allowed to begin unfinished.</p>
+    </div>
+  </div>
+</header>
+
+<section class="overlay-sec">
+  <div class="wrap">
+    <div class="smoke wide reveal">
+      <form class="idea-form" id="startForm">
+
+        <span class="eyebrow" style="margin-bottom:4px;">About You</span>
+        <div class="row2">
+          <div class="field"><label>Your name</label><input name="name" type="text" required /></div>
+          <div class="field"><label>Email</label><input name="email" type="email" required /></div>
+        </div>
+        <div class="row2">
+          <div class="field"><label>Phone (optional)</label><input name="phone" type="tel" /></div>
+          <div class="field"><label>City / region</label><input name="location" type="text" placeholder="e.g. Albany, NY" /></div>
+        </div>
+        <div class="field"><label>Which best describes you?</label>
+          <select name="describes" id="f-describes">
+            <option>I have an idea</option>
+            <option>I own a business</option>
+            <option>I represent a nonprofit</option>
+            <option>I'm a school or educator</option>
+            <option>I'm a mentor</option>
+            <option>I'm a technology company</option>
+            <option>I'm a sponsor</option>
+            <option>I'm a community organization</option>
+            <option>Government or economic-development partner</option>
+            <option>I want to support youth in tech</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="field"><label>How did you hear about us? (optional)</label><input name="referral" type="text" /></div>
+
+        <div style="height:8px;"></div>
+        <span class="eyebrow" style="margin-bottom:4px;">Your Idea or Business</span>
+        <div class="row2">
+          <div class="field"><label>Where are you starting from?</label>
+            <select name="stage">
+              <option>Just an idea</option>
+              <option>Already researching it</option>
+              <option>Existing business — need a system</option>
+              <option>Existing business + a new idea</option>
+              <option>Nonprofit / mission project</option>
+              <option>Not sure yet</option>
+            </select>
+          </div>
+          <div class="field"><label>Business or project name (optional)</label><input name="project" type="text" /></div>
+        </div>
+        <div class="field"><label>The idea or problem, in your own words</label><textarea name="idea" required placeholder="What are you trying to build, fix, or launch?"></textarea></div>
+        <div class="field"><label>Who is it for? (the customer or people it helps)</label><textarea name="audience"></textarea></div>
+        <div class="field"><label>What would progress look like for you?</label><textarea name="progress" placeholder="What's the win? A working demo? First customers? More time back?"></textarea></div>
+        <div class="row2">
+          <div class="field"><label>Timeline</label>
+            <select name="timeline">
+              <option>As soon as possible</option>
+              <option>1–3 months</option>
+              <option>3–6 months</option>
+              <option>Just exploring</option>
+            </select>
+          </div>
+          <div class="field"><label>Where do you think you'd start?</label>
+            <select name="level">
+              <option>Not sure — help me decide</option>
+              <option>Idea Session ($250–$1,000)</option>
+              <option>Blueprint &amp; Prototype ($3,500)</option>
+              <option>Working Alpha ($15,000)</option>
+              <option>MVP Launch ($30,000)</option>
+              <option>Platform ($50,000+)</option>
+              <option>AI help for my business</option>
+              <option>Just send me info</option>
+            </select>
+          </div>
+        </div>
+        <div class="field"><label>Anything else we should know? (optional)</label><textarea name="notes"></textarea></div>
+
+        <button type="submit" class="btn btn-primary">Send It to Jack →</button>
+      </form>
+      <p class="form-alt">Prefer to write it yourself? Email <a href="mailto:jack@dayonemvp.com">jack@dayonemvp.com</a> · call/text <a href="tel:+15189126142">518&nbsp;912&nbsp;6142</a>. We read every one personally.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <img class="foot-logo" src="assets/img/day-one-logo.png" alt="Day One MVP™" />
+        <p class="foot-desc">You bring the idea. We build Day One. Founder-led by Jack.</p>
+      </div>
+      <div class="foot-links">
+        <div class="foot-col"><h4>Build</h4><a href="what-we-build.html">What We Build</a><a href="how-it-works.html">How It Works</a><a href="pricing.html">Pricing</a><a href="marketing-launch.html">Marketing &amp; Launch</a></div>
+        <div class="foot-col"><h4>The World</h4><a href="the-g-code.html">The G Code™</a><a href="aibridge.html">AIBridge™</a><a href="impact.html">Impact</a><a href="index.html#founder">Meet Jack</a></div>
+        <div class="foot-col"><h4>Start</h4><a href="start.html">Submit an Idea</a><a href="tech-answers.html">Tech Answers</a><a href="start.html?path=Partner">Partner With Us</a><a href="mailto:jack@dayonemvp.com">Contact</a></div>
+        <div class="foot-col"><h4>Legal</h4><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="privacy.html">Accessibility</a></div>
+      </div>
+    </div>
+    <div class="foot-bottom"><span>© 2026 Day One MVP™ — You bring the idea. We build Day One. All rights reserved.</span><span>Day One MVP™ · The G Code™ · AIBridge™ · The Hive™ — trademarks of Day One MVP™</span></div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
