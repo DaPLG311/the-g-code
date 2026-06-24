@@ -1216,3 +1216,35 @@ body::before {
 .smoke .brandmark { margin-left: 0; }
 .smoke.center .brandmark, .hero .smoke .brandmark { margin-left: auto; margin-right: auto; }
 .foot-logo { display: block; width: 210px; height: auto; margin-bottom: 12px; mix-blend-mode: screen; }
+
+/* =====================================================================
+   DESKTOP LEGIBILITY POLISH — overlay only, marble untouched.
+   Center panels, stop heading overlap, calm the vertical rhythm,
+   balance line breaks. Loaded last so it wins the cascade.
+   ===================================================================== */
+
+/* center every panel; kill the off-center right-edge shove */
+.smoke { margin-left: auto; margin-right: auto; max-width: 860px; }
+.smoke.wide { max-width: 940px; }
+.smoke.right { margin-left: auto; margin-right: auto; }
+.hero .smoke, .page-hero .smoke { max-width: 1040px; }
+
+/* consistent, calmer space between sections (was up to 130px) */
+.overlay-sec { padding: clamp(46px, 6vh, 86px) 0; }
+
+/* HEADINGS: stop the smush (was line-height .9 / 1.02), balance the wraps */
+.mega { line-height: 1.02; letter-spacing: -0.015em; text-wrap: balance; }
+h1.mega { font-size: clamp(36px, 5.2vw, 74px); }
+.statement { line-height: 1.1; text-wrap: balance; }
+.statement .accent { display: block; margin-top: 0.1em; }
+.smoke h2 { text-wrap: balance; line-height: 1.06; }
+
+/* BODY: nicer line endings, comfortable measure */
+.support { text-wrap: pretty; max-width: 64ch; }
+.smoke.center .support { margin-left: auto; margin-right: auto; }
+
+/* a touch more breathing room inside panels on desktop */
+@media (min-width: 760px) {
+  .smoke { padding: 48px 56px; }
+  .cats { gap: 22px 40px; }
+}
