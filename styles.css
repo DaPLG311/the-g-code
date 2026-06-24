@@ -1481,3 +1481,12 @@ body.world .smoke.wide { max-width: 840px; }
   /* trim towering hero titles on phones so stone breathes around them */
   body.world .hero .mega, body.world .page-hero .mega { font-size: clamp(33px, 8.8vw, 46px) !important; line-height: 0.96; }
 }
+
+/* =====================================================================
+   HOW IT WORKS — the .steps panel is a LIGHT card (var(--coal) #E4E6E9).
+   World pages force body text white, so the step words turned into
+   ghost text (white on light = the "glow"). Force them dark, no shadow.
+   ===================================================================== */
+body.world .smoke .step h3 { color: var(--text) !important; text-shadow: none !important; }
+body.world .smoke .step p  { color: #3C4047 !important; text-shadow: none !important; }
+body.world .smoke .step .num { -webkit-text-stroke: 1px var(--gold) !important; }
