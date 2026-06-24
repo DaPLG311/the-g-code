@@ -1293,3 +1293,18 @@ body.world .page-hero {
 .brandmark { display: block; width: clamp(210px, 28vw, 320px); height: auto; margin: 0 0 22px; mix-blend-mode: normal; }
 .smoke.center .brandmark { margin-left: auto; margin-right: auto; }
 .foot-logo { display: block; width: 200px; height: auto; margin-bottom: 14px; mix-blend-mode: normal; }
+
+/* some transparency in the cards — rich marble whispers through (no blur = no film) */
+.smoke {
+  background: linear-gradient(160deg, rgba(21,22,27,0.84), rgba(13,14,18,0.90)) !important;
+}
+
+/* more transparency — let more marble through (watch legibility) */
+.smoke { background: linear-gradient(160deg, rgba(20,21,26,0.70), rgba(12,13,17,0.80)) !important; }
+
+/* more again */
+.smoke { background: linear-gradient(160deg, rgba(18,19,24,0.60), rgba(11,12,16,0.72)) !important; }
+
+/* text-shadow so copy stays readable as the cards go transparent */
+.smoke h1, .smoke h2, .smoke .mega, .smoke .statement, .smoke blockquote { text-shadow: 0 2px 20px rgba(0,0,0,0.55), 0 1px 3px rgba(0,0,0,0.5); }
+.smoke .support, .smoke p, .smoke .eyebrow, .smoke .cat h3, .smoke .cat p, .smoke .powered, .smoke .form-alt { text-shadow: 0 1px 10px rgba(0,0,0,0.75); }
