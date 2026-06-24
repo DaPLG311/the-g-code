@@ -1618,3 +1618,6 @@ body.world .menu-toggle span { background: #DDE0E4; }
 .prevnext a:hover { color:var(--champagne-2); }
 .cat-door { color:#fff !important; text-decoration:none; transition:color .2s; }
 .cat-door:hover { color:var(--champagne-2) !important; }
+
+/* footer location line */
+.foot-loc { font-family:"Oswald",sans-serif; text-transform:uppercase; letter-spacing:.1em; font-size:12px; }
