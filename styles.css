@@ -1579,3 +1579,42 @@ body.world .acc-inner .aw-time { font-family: "Oswald", sans-serif; text-transfo
 .price-cell.offer-cell .pl { color: var(--champagne-2); }
 .price-cell.offer-cell .pv { color:#fff; font-size:14px; }
 .price-cell.offer-cell .pv small { display:block; color: var(--champagne-2); font-size:10px; font-weight:600; margin-top:3px; }
+
+/* nav: imported logo replaces the text wordmark */
+.brand-logo { height: 40px; width: auto; display: block; }
+@media (max-width:600px){ .brand-logo { height: 34px; } }
+
+/* world pages: DARK nav so the imported silver logo + links read crisp (was a pale silver-theme bar) */
+body.world nav { background: rgba(12,13,17,0.28); -webkit-backdrop-filter: blur(12px) saturate(1.05); backdrop-filter: blur(12px) saturate(1.05); border-bottom: 1px solid transparent; }
+body.world nav.scrolled { background: rgba(10,11,15,0.55); border-bottom: 1px solid rgba(255,255,255,0.10); }
+body.world .nav-links a { color: #C7CBD1; }
+body.world .nav-links a:hover { color: #fff; }
+body.world .menu-toggle span { background: #DDE0E4; }
+@media (max-width: 900px) {
+  body.world .nav-links { background: rgba(10,11,15,0.97); border-bottom: 1px solid rgba(255,255,255,0.10); }
+  body.world .nav-links a:not(.btn) { border-bottom: 1px solid rgba(255,255,255,0.08); }
+}
+
+/* ===== What We Build interactive world — tiles + service pages ===== */
+.svc-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:14px; margin-top:28px; }
+@media (max-width:680px){ .svc-grid { grid-template-columns:1fr; } }
+.svc-tile { display:block; text-decoration:none; background:linear-gradient(160deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02)); border:1px solid rgba(255,255,255,0.10); border-radius:8px; padding:20px; transition:border-color .25s, transform .25s, background .25s; }
+.svc-tile:hover { border-color:var(--champagne-2); transform:translateY(-2px); background:linear-gradient(160deg, rgba(200,168,106,0.13), rgba(255,255,255,0.02)); }
+.svc-tile .st-k { font-family:"Archivo",sans-serif; font-weight:800; font-size:12px; letter-spacing:.06em; color:var(--champagne-2); }
+.svc-tile h3 { color:#fff !important; font-size:18px; margin:6px 0; }
+.svc-tile p { color:#C2C5CB !important; font-size:14px; line-height:1.5; margin:0 0 12px; }
+.svc-tile .st-go { font-family:"Oswald",sans-serif; text-transform:uppercase; letter-spacing:.12em; font-size:11px; color:var(--champagne-2); }
+.svc-tile.dev { opacity:.55; cursor:default; }
+.svc-tile.dev:hover { transform:none; border-color:rgba(255,255,255,0.10); background:linear-gradient(160deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02)); }
+.svc-tile.dev .st-go { color:#9A9DA4; }
+.hero-q { font-size:clamp(18px,2.4vw,22px) !important; color:var(--champagne-2) !important; font-style:italic; }
+.lead-p { font-size:clamp(16px,1.8vw,19px) !important; color:#E7E8EA !important; }
+.kv { margin-top:24px; }
+.kv h3 { color:var(--champagne-2) !important; font-size:13px; font-family:"Oswald",sans-serif; text-transform:uppercase; letter-spacing:.14em; margin-bottom:8px; }
+.kv p { color:#DDE0E4 !important; font-size:15.5px; line-height:1.6; }
+.pull-by { display:block; font-family:"Oswald",sans-serif; text-transform:uppercase; letter-spacing:.12em; font-size:12px; color:#9A9DA4; font-style:normal; margin-top:10px; }
+.prevnext { display:flex; justify-content:space-between; gap:14px; margin-top:30px; padding-top:20px; border-top:1px solid rgba(255,255,255,0.10); }
+.prevnext a { color:#DDE0E4; text-decoration:none; font-family:"Oswald",sans-serif; text-transform:uppercase; letter-spacing:.08em; font-size:12px; transition:color .2s; }
+.prevnext a:hover { color:var(--champagne-2); }
+.cat-door { color:#fff !important; text-decoration:none; transition:color .2s; }
+.cat-door:hover { color:var(--champagne-2) !important; }
