@@ -15,6 +15,7 @@ window.GLOSSARY = [
   { t: "Thor™", c: "Day One System", d: "The build and implementation stage. It begins after the idea has been observed, researched, organized, priced, and approved.", ex: "Thor™ is when the hammer comes down and the working product gets built.", r: ["Gaia™", "MVP"] },
   { t: "Maestro Method™", c: "Day One System", d: "The creative method used to direct a project as a coordinated composition rather than a collection of disconnected parts — aligning design, story, product, business, and customer experience.", r: ["Brand System"] },
   { t: "Ask Protocol™", c: "Day One System", d: "A process of asking focused questions until the outcome, audience, visual direction, functionality, and business purpose are sufficiently clear.", r: ["Scope"] },
+  { t: "Bounce Protocol™", c: "Day One System", d: "A structured handoff between models, tools, researchers, designers, builders, and human reviewers. Each stage improves, verifies, or challenges the previous one before the project advances.", r: ["Ask Protocol™", "Black Vault Protocol™"] },
   { t: "Black Vault Protocol™", c: "Day One System", d: "A confidentiality and controlled-access standard for sensitive ideas, company information, systems, credentials, and proprietary projects.", r: ["NDA", "Access Control"] },
 
   /* ---- Product Development ---- */
