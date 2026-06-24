@@ -1527,3 +1527,9 @@ body.world .legal .back:hover { color: #fff; border-color: var(--champagne-2); }
    ===================================================================== */
 body.world .spotlight { background: transparent !important; box-shadow: none !important; }
 body.world .spotlight::before { display: none !important; }
+
+/* DEMARCATION LINES — full-width hairline rules drawn across the marble at
+   section edges (.page-hero + .spotlight border-bottom = var(--line)). The
+   homepage has neither. Remove them on world pages for a seamless backdrop. */
+body.world .page-hero { border-bottom: 0 !important; }
+body.world .spotlight { border-top: 0 !important; border-bottom: 0 !important; }
