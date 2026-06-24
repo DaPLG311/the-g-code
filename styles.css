@@ -1533,3 +1533,35 @@ body.world .spotlight::before { display: none !important; }
    homepage has neither. Remove them on world pages for a seamless backdrop. */
 body.world .page-hero { border-bottom: 0 !important; }
 body.world .spotlight { border-top: 0 !important; border-bottom: 0 !important; }
+
+/* =====================================================================
+   HOW IT WORKS — rich accordion on the world theme. The legacy accordion
+   is light-themed (var(--coal) head, dark body text) and clips at 240px.
+   Re-skin it dark, open it wide, and style the structured body content.
+   ===================================================================== */
+body.world .accordion { border: 1px solid rgba(255,255,255,0.12); border-radius: 8px; margin-top: 24px; }
+body.world .acc-item + .acc-item { border-top: 1px solid rgba(255,255,255,0.10); }
+body.world .acc-head { background: rgba(255,255,255,0.035); color: #fff; padding: 20px 22px; font-size: 14.5px; align-items: center; }
+body.world .acc-head:hover, body.world .acc-head[aria-expanded="true"] { background: rgba(255,255,255,0.07); }
+body.world .acc-ic { color: var(--champagne-2); }
+.acc-label { display: flex; align-items: baseline; gap: 11px; flex-wrap: wrap; }
+.acc-n { font-family: "Archivo", sans-serif; font-weight: 800; font-size: 13px; color: var(--champagne-2); letter-spacing: .03em; }
+.acc-eng { font-family: "Oswald", sans-serif; text-transform: uppercase; letter-spacing: .14em; font-size: 9.5px; color: #B9BDC4; border: 1px solid rgba(200,168,106,0.45); border-radius: 2px; padding: 3px 8px; }
+body.world .acc-body { background: rgba(0,0,0,0.22); }
+body.world .acc-body.open { max-height: 1800px; }
+.acc-body p { padding: 0 !important; margin: 0; }
+.acc-inner { padding: 4px 22px 24px; display: grid; gap: 11px; }
+body.world .acc-inner p { color: #DDE0E4 !important; font-size: 14.5px; line-height: 1.58; }
+body.world .acc-inner .aw-lead { color: #EDEEF0 !important; font-size: 15.5px; }
+body.world .acc-inner strong { color: #fff; }
+body.world .acc-inner .aw-see strong { color: var(--champagne-2); }
+body.world .acc-inner .aw-frame { color: #9A9DA4 !important; font-size: 13px; }
+body.world .acc-inner .aw-reassure { color: #fff !important; font-style: italic; border-left: 2px solid var(--champagne-2); padding-left: 14px !important; }
+body.world .acc-inner .aw-time { font-family: "Oswald", sans-serif; text-transform: uppercase; letter-spacing: .1em; font-size: 11px; color: #9A9DA4 !important; margin-top: 2px; }
+
+/* artifact strip — "what you'll see" quick-scan grid */
+.artifact-strip { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; margin-top: 26px; background: rgba(255,255,255,0.09); border: 1px solid rgba(255,255,255,0.11); border-radius: 6px; overflow: hidden; }
+.artifact-strip .as-row { background: rgba(10,11,14,0.55); padding: 16px 18px; }
+.artifact-strip .as-stage { display: block; font-family: "Oswald", sans-serif; text-transform: uppercase; letter-spacing: .08em; font-size: 10.5px; color: #9A9DA4; margin-bottom: 6px; }
+.artifact-strip .as-art { color: #fff; font-size: 14px; font-weight: 500; }
+@media (max-width: 600px) { .artifact-strip { grid-template-columns: 1fr; } }
