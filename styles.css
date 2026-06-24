@@ -1308,3 +1308,6 @@ body.world .page-hero {
 /* text-shadow so copy stays readable as the cards go transparent */
 .smoke h1, .smoke h2, .smoke .mega, .smoke .statement, .smoke blockquote { text-shadow: 0 2px 20px rgba(0,0,0,0.55), 0 1px 3px rgba(0,0,0,0.5); }
 .smoke .support, .smoke p, .smoke .eyebrow, .smoke .cat h3, .smoke .cat p, .smoke .powered, .smoke .form-alt { text-shadow: 0 1px 10px rgba(0,0,0,0.75); }
+
+/* final card opacity — pulled back a hair toward solid */
+.smoke { background: linear-gradient(160deg, rgba(19,20,25,0.68), rgba(12,13,17,0.80)) !important; }
