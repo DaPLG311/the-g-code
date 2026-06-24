@@ -926,3 +926,239 @@ footer .foot-col a:hover { background-size: 100% 1px; }
   }
   .ember-rule::after { display: none; }
 }
+/* =====================================================================
+   THE G CODE™ — REAL MARBLE BACKDROPS + BARS  (brand photos, gold-veined)
+   Black/silver/gold marble from /assets/img. Backdrops carry tuned scrims
+   so text stays AA; dark zones (footer/close) flip to light text.
+   ===================================================================== */
+
+/* ---------- HERO: marble backdrop, left-graded scrim keeps dark text legible ---------- */
+.hero {
+  background:
+    linear-gradient(100deg,
+      rgba(244,245,247,0.93) 0%,
+      rgba(244,245,247,0.74) 40%,
+      rgba(244,245,247,0.34) 66%,
+      rgba(244,245,247,0.05) 100%),
+    linear-gradient(180deg, rgba(244,245,247,0.80), rgba(244,245,247,0) 240px),
+    url("assets/img/marble4.jpg");
+  background-size: cover, cover, cover;
+  background-position: center, center, 62% center;
+  background-repeat: no-repeat;
+}
+
+/* ---------- SUB-PAGE HERO: lighter marble band ---------- */
+.page-hero {
+  background:
+    linear-gradient(100deg, rgba(244,245,247,0.92) 0%, rgba(244,245,247,0.7) 50%, rgba(244,245,247,0.4) 100%),
+    linear-gradient(180deg, rgba(244,245,247,0.6), rgba(244,245,247,0.78)),
+    url("assets/img/marble3.jpg");
+  background-size: cover, cover, cover;
+  background-position: center, center, center;
+  background-repeat: no-repeat;
+}
+
+/* ---------- FOOTER: dark marble plinth (stays the black anchor) ---------- */
+footer {
+  background:
+    linear-gradient(rgba(8,9,11,0.74), rgba(8,9,11,0.84)),
+    url("assets/img/marble2.jpg");
+  background-size: cover, cover;
+  background-position: center, center;
+}
+
+/* ---------- CLOSE BAND + MINI-CTA: dramatic dark-marble CTA, light text ---------- */
+.close-band, .mini-cta {
+  background:
+    linear-gradient(rgba(8,9,11,0.60), rgba(8,9,11,0.74)),
+    url("assets/img/marble1.jpg") !important;
+  background-size: cover !important;
+  background-position: center !important;
+  border-color: rgba(255,255,255,0.10);
+}
+.close-band h2, .mini-cta h2 { color: #fff; }
+.close-band .kicker, .mini-cta .kicker { color: var(--champagne-2); }
+.close-band .lead, .mini-cta p, .mini-cta .lead { color: #D7DADF; }
+.close-band .contact-line { color: #C7CBD1; }
+.close-band .contact-line a, .mini-cta a:not(.btn) { color: #fff; }
+/* ghost buttons on dark marble → light outline */
+.close-band .btn-ghost, .mini-cta .btn-ghost { color: #fff; border-color: rgba(255,255,255,0.45); }
+.close-band .btn-ghost:hover, .mini-cta .btn-ghost:hover { border-color: #fff; }
+
+/* ---------- BARS: sliced marble strips as accents / dividers ---------- */
+/* home divider → silver-marble bar */
+.hairline {
+  height: 6px; border: 0; box-shadow: none;
+  background: url("assets/img/bar-silver.jpg");
+  background-size: cover; background-position: center;
+}
+/* every spotlight section gets a gold-vein seam bar at the top */
+.spotlight { border-top: 0; }
+.spotlight::before {
+  content: ""; position: absolute; top: 0; left: 0; right: 0; height: 5px;
+  background: url("assets/img/bar-vein.jpg");
+  background-size: cover; background-position: center;
+  z-index: 1;
+}
+/* panel top accent → real gold-marble seam bar (was a flat gradient line) */
+.panel::after {
+  height: 6px;
+  background: url("assets/img/bar-gold.jpg");
+  background-size: cover; background-position: center;
+  opacity: 1;
+}
+/* ember-rule (close-band flourish) → gold-marble strip */
+.ember-rule {
+  height: 4px;
+  background: url("assets/img/bar-gold.jpg");
+  background-size: cover; background-position: center;
+}
+.ember-rule::after { display: none; }
+
+/* =====================================================================
+   MARBLE FILLS v2 — roll marble to the bottom + cut pieces into bubbles
+   (later rules win the cascade). Light scrims keep text AA-legible.
+   ===================================================================== */
+
+/* FULL-PAGE marble backdrop — fixed cover so it rolls behind every section
+   to the very bottom of every page. Light scrim keeps bare-section text legible. */
+body::before {
+  background:
+    linear-gradient(rgba(238,239,242,0.72), rgba(243,244,246,0.78)),
+    url("assets/img/marble3.jpg");
+  background-size: cover, cover;
+  background-position: center top, center top;
+  background-attachment: scroll, scroll;
+  z-index: -1;
+}
+
+/* spotlight band: let the page marble show through (was a flat bare tray) */
+.spotlight {
+  background: linear-gradient(rgba(228,230,233,0.34), rgba(220,223,227,0.46)) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.55), inset 0 -1px 0 rgba(11,11,13,0.05);
+}
+.page-hero { /* keep its own marble3 backdrop, already set above */ }
+
+/* BUBBLES → cut marble tiles (strong light scrim = legible dark text on stone) */
+.card, .ex-card {
+  background:
+    linear-gradient(158deg, rgba(248,249,250,0.85), rgba(231,233,236,0.80)),
+    url("assets/img/marble1.jpg") !important;
+  background-size: cover, cover !important;
+  background-position: center, center !important;
+}
+.panel {
+  background:
+    linear-gradient(158deg, rgba(248,249,250,0.88), rgba(232,234,237,0.84)),
+    url("assets/img/marble4.jpg") !important;
+  background-size: cover, cover !important;
+  background-position: center, center !important;
+}
+.svc, .guide, .split-col, .mode {
+  background:
+    linear-gradient(158deg, rgba(249,250,251,0.88), rgba(233,235,238,0.83)),
+    url("assets/img/marble3.jpg") !important;
+  background-size: cover, cover !important;
+  background-position: center, center !important;
+}
+.motion-cell {
+  background:
+    linear-gradient(158deg, rgba(247,248,250,0.86), rgba(230,232,235,0.82)),
+    url("assets/img/marble2.jpg") !important;
+  background-size: cover, cover !important;
+  background-position: center, center !important;
+}
+.motion-cell:hover {
+  background:
+    linear-gradient(158deg, rgba(244,245,247,0.78), rgba(226,228,232,0.74)),
+    url("assets/img/marble2.jpg") !important;
+  background-size: cover, cover !important;
+  background-position: center, center !important;
+}
+
+/* =====================================================================
+   DAY ONE MVP™ — EDITORIAL TEXT/INTERFACE OVERLAY
+   Marble background is LOCKED — this layer only adds typography, buttons,
+   thin dividers, and subtle translucent smoke panels for readability.
+   Light text on smoke panels = documentary energy, legible over marble.
+   ===================================================================== */
+
+.overlay-sec { padding: clamp(72px, 11vh, 130px) 0; position: relative; }
+
+/* subtle translucent smoke panel (marble stays visible through blur + around it) */
+.smoke {
+  position: relative;
+  max-width: 760px;
+  padding: clamp(30px, 5vw, 62px);
+  background: linear-gradient(180deg, rgba(8,9,11,0.60), rgba(8,9,11,0.50));
+  -webkit-backdrop-filter: blur(9px) saturate(1.04);
+  backdrop-filter: blur(9px) saturate(1.04);
+  border: 1px solid rgba(255,255,255,0.09);
+  border-radius: 7px;
+  box-shadow: 0 34px 90px rgba(0,0,0,0.42), inset 0 1px 0 rgba(255,255,255,0.06);
+  color: #E7E8EA;
+}
+.smoke.right  { margin-left: auto; }
+.smoke.center { margin: 0 auto; text-align: center; }
+.smoke.wide   { max-width: 880px; }
+
+/* champagne hairline accent on panels */
+.smoke::before {
+  content: ""; position: absolute; top: 0; left: clamp(30px,5vw,62px); right: clamp(30px,5vw,62px);
+  height: 1px; background: linear-gradient(90deg, transparent, var(--champagne-2), transparent); opacity: .55;
+}
+.smoke.center::before { left: 22%; right: 22%; }
+
+/* labels + type on smoke */
+.eyebrow {
+  display: block; font-family: "Oswald", sans-serif; text-transform: uppercase;
+  letter-spacing: 0.34em; font-size: 12px; color: var(--champagne-2); margin-bottom: 20px;
+}
+.mega {
+  font-family: "Archivo", sans-serif; font-weight: 900; text-transform: uppercase;
+  font-size: clamp(58px, 11vw, 152px); line-height: 0.9; letter-spacing: -0.02em;
+  color: #fff; margin: 0 0 20px;
+}
+.mega .tm { font-size: 0.26em; vertical-align: super; color: var(--champagne-2); }
+.statement {
+  font-family: "Archivo", sans-serif; font-weight: 800; text-transform: uppercase;
+  font-size: clamp(24px, 4.2vw, 46px); line-height: 1.02; letter-spacing: -0.01em;
+  color: #fff; margin: 0 0 24px;
+}
+.statement .accent { color: var(--champagne-2); display: block; }
+.support { color: #CACDD2; font-size: clamp(16px, 1.6vw, 18px); line-height: 1.6; max-width: 60ch; margin: 0 0 12px; }
+.smoke.center .support { margin-left: auto; margin-right: auto; }
+.powered { font-family: "Oswald", sans-serif; text-transform: uppercase; letter-spacing: 0.18em; font-size: 11px; color: #9A9DA4; margin-top: 24px; }
+.smoke h2 { color: #fff; margin-bottom: 18px; }
+.smoke > p:not(.support):not(.powered) { color: #CACDD2; margin-bottom: 14px; }
+
+/* CTA row + light buttons (sit on smoke / marble) */
+.cta-row { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 28px; }
+.smoke.center .cta-row { justify-content: center; }
+.btn-ghost-light { background: rgba(255,255,255,0.02); color: #fff; border: 1px solid rgba(255,255,255,0.5); }
+.btn-ghost-light:hover { border-color: #fff; transform: translateY(-2px); }
+.link-light { color: #fff; font-family: "Oswald", sans-serif; text-transform: uppercase; letter-spacing: .12em; font-size: 13px; text-decoration: none; border-bottom: 1px solid var(--champagne-2); padding-bottom: 3px; transition: color .2s; }
+.link-light:hover { color: var(--champagne-2); }
+
+/* process — thin dividers, no heavy boxes */
+.process { margin-top: 34px; }
+.pstep {
+  display: grid; grid-template-columns: 220px 1fr; gap: 24px; align-items: baseline;
+  padding: 24px 0; border-top: 1px solid rgba(255,255,255,0.13);
+}
+.pstep:last-child { border-bottom: 1px solid rgba(255,255,255,0.13); }
+.pstep .pn { font-family: "Archivo", sans-serif; font-weight: 800; text-transform: uppercase; color: #fff; font-size: 17px; letter-spacing: 0.02em; }
+.pstep .pn b { color: var(--champagne-2); font-weight: 800; }
+.pstep p { color: #C2C5CB; font-size: 15.5px; line-height: 1.55; }
+
+/* pull quote */
+.pull {
+  font-family: "Archivo", sans-serif; font-weight: 800; text-transform: uppercase;
+  font-size: clamp(22px, 2.9vw, 34px); line-height: 1.1; color: #fff;
+  border-left: 2px solid var(--champagne-2); padding-left: 24px; margin: 26px 0;
+}
+
+@media (max-width: 760px) {
+  .pstep { grid-template-columns: 1fr; gap: 8px; }
+  .smoke { max-width: 100%; }
+}
