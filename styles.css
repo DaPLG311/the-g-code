@@ -1305,12 +1305,13 @@ body.world .page-hero {
 /* more again */
 .smoke { background: linear-gradient(160deg, rgba(18,19,24,0.60), rgba(11,12,16,0.72)) !important; }
 
-/* text-shadow so copy stays readable as the cards go transparent */
-.smoke h1, .smoke h2, .smoke .mega, .smoke .statement, .smoke blockquote { text-shadow: 0 2px 20px rgba(0,0,0,0.55), 0 1px 3px rgba(0,0,0,0.5); }
-.smoke .support, .smoke p, .smoke .eyebrow, .smoke .cat h3, .smoke .cat p, .smoke .powered, .smoke .form-alt { text-shadow: 0 1px 10px rgba(0,0,0,0.75); }
+/* crisp type — tiny shadow for edge definition only (no blur halo = no fog) */
+.smoke h1, .smoke h2, .smoke .mega, .smoke .statement, .smoke blockquote { text-shadow: 0 1px 2px rgba(0,0,0,0.45); }
+.smoke .support, .smoke p, .smoke .eyebrow, .smoke .cat h3, .smoke .cat p, .smoke .powered, .smoke .form-alt { text-shadow: none; }
 
-/* final card opacity — pulled back a hair toward solid */
-.smoke { background: linear-gradient(160deg, rgba(19,20,25,0.68), rgba(12,13,17,0.80)) !important; }
+/* FINAL card surface — near-solid dark glass. Marble whispers through in the
+   dark regions, but text stays crisp over ANY part of the stone. Kills the fog. */
+.smoke { background: linear-gradient(160deg, rgba(16,17,22,0.92), rgba(10,11,14,0.95)) !important; }
 
 /* =====================================================================
    BUILD LEVELS / DETAIL-PAGE COMPONENTS
