@@ -1288,3 +1288,8 @@ body.world::before {
 body.world .page-hero {
   background: linear-gradient(180deg, rgba(8,9,11,0.45), rgba(8,9,11,0.10) 240px) !important;
 }
+
+/* transparent Day One MVP logo — clean, no blend needed */
+.brandmark { display: block; width: clamp(210px, 28vw, 320px); height: auto; margin: 0 0 22px; mix-blend-mode: normal; }
+.smoke.center .brandmark { margin-left: auto; margin-right: auto; }
+.foot-logo { display: block; width: 200px; height: auto; margin-bottom: 14px; mix-blend-mode: normal; }
