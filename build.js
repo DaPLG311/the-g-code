@@ -24,7 +24,7 @@
   function setMeta(t, d){
     document.title = t;
     var m=document.querySelector('meta[name="description"]'); if(m&&d) m.setAttribute("content", d);
-    var c=document.querySelector('link[rel="canonical"]'); if(c) c.setAttribute("href","https://dayonemvp.com/"+location.pathname.split('/').pop()+location.search);
+    var c=document.querySelector('link[rel="canonical"]'); if(c) c.setAttribute("href","https://dayonemvp.com/build.html"+(sSlug?"?s="+encodeURIComponent(sSlug):cSlug?"?cat="+encodeURIComponent(cSlug):""));
   }
 
   function renderService(slug){
