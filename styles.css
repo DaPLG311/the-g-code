@@ -1248,3 +1248,43 @@ h1.mega { font-size: clamp(36px, 5.2vw, 74px); }
   .smoke { padding: 48px 56px; }
   .cats { gap: 22px 40px; }
 }
+
+/* =====================================================================
+   WORLD PAGES (Day One MVP set): richer marble so the gold-black stone
+   reads instead of a flat grey wash. Light pages keep the lighter marble.
+   ===================================================================== */
+body.world::before {
+  background:
+    linear-gradient(rgba(236,237,240,0.22), rgba(240,241,244,0.34)),
+    url("assets/img/marble1.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: scroll;
+}
+
+/* =====================================================================
+   DEFINITIVE FIX — solid cards on rich marble (no translucent film).
+   Cards are opaque + crisp; the gold-black marble runs rich around them.
+   ===================================================================== */
+.smoke {
+  background: linear-gradient(160deg, #181a20, #0f1014) !important;
+  border: 1px solid rgba(255,255,255,0.08) !important;
+  box-shadow: 0 28px 70px rgba(0,0,0,0.45) !important;
+  border-radius: 8px;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+}
+.smoke::before { display: block !important; }
+
+/* rich marble on the Day One pages (drop the heavy white wash) */
+body.world::before {
+  background:
+    linear-gradient(rgba(228,229,233,0.14), rgba(232,233,237,0.26)),
+    url("assets/img/marble1.jpg") !important;
+  background-size: cover !important;
+  background-position: center !important;
+}
+/* don't stack a second marble in the page-hero — let the body marble show */
+body.world .page-hero {
+  background: linear-gradient(180deg, rgba(8,9,11,0.45), rgba(8,9,11,0.10) 240px) !important;
+}
