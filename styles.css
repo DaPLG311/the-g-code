@@ -1515,3 +1515,15 @@ body.world .legal .back:hover { color: #fff; border-color: var(--champagne-2); }
 @media (max-width: 600px) {
   body.world .legal { margin-top: clamp(104px, 15vh, 150px); padding: 30px 24px; }
 }
+
+/* =====================================================================
+   ROOT CAUSE OF THE "FOG" — .spotlight is a LIGHT silver-theme scrim
+   (background: linear-gradient(rgba(228,229,233,~0.4)...) + light inset
+   highlights + a bar-vein seam). On the dark marble world pages it washes
+   the stone into a hazy grey band on every OTHER section. The homepage has
+   NO .spotlight sections — which is exactly why only it looked right.
+   Neutralize it on world pages so the marble shows through clean, making
+   spotlight sections identical to the regular ones (like the homepage).
+   ===================================================================== */
+body.world .spotlight { background: transparent !important; box-shadow: none !important; }
+body.world .spotlight::before { display: none !important; }
