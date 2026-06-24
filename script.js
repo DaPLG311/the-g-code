@@ -51,6 +51,26 @@ document.querySelectorAll('.tabs').forEach((group) => {
   });
 });
 
+// idea-submission form → opens email to Jack (temporary; upgrade to backend later)
+const ideaForm = document.getElementById('ideaForm');
+if (ideaForm) {
+  ideaForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = encodeURIComponent(ideaForm.name.value.trim());
+    const email = encodeURIComponent(ideaForm.email.value.trim());
+    const idea = ideaForm.idea.value.trim();
+    const stage = ideaForm.stage.value;
+    const subject = encodeURIComponent('New idea — ' + ideaForm.name.value.trim());
+    const body = encodeURIComponent(
+      'Name: ' + ideaForm.name.value.trim() +
+      '\nEmail: ' + ideaForm.email.value.trim() +
+      '\nStage: ' + stage +
+      '\n\nThe idea:\n' + idea
+    );
+    window.location.href = 'mailto:jack@dayonemvp.com?subject=' + subject + '&body=' + body;
+  });
+}
+
 // scroll reveal
 const io = new IntersectionObserver((entries) => {
   entries.forEach((e) => {

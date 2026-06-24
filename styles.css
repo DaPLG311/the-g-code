@@ -1162,3 +1162,57 @@ body::before {
   .pstep { grid-template-columns: 1fr; gap: 8px; }
   .smoke { max-width: 100%; }
 }
+
+/* =====================================================================
+   DAY ONE MVP™ — categories, pricing preview, idea form, pricing table
+   (overlay only — marble untouched). Dark smoke context, light text.
+   ===================================================================== */
+
+/* six category one-liners */
+.cats { display: grid; grid-template-columns: 1fr 1fr; gap: 20px 36px; margin-top: 30px; }
+.cat h3 { color: #fff; font-size: 18px; letter-spacing: 0; margin-bottom: 5px; }
+.cat p { color: #C2C5CB; font-size: 14.5px; line-height: 1.5; }
+@media (max-width: 760px) { .cats { grid-template-columns: 1fr; } }
+
+/* pricing preview row */
+.price-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; margin-top: 28px;
+  background: rgba(255,255,255,0.10); border: 1px solid rgba(255,255,255,0.12); border-radius: 6px; overflow: hidden; }
+.price-cell { background: rgba(8,9,11,0.42); padding: 22px 14px; text-align: center; }
+.price-cell .pl { display: block; font-family: "Oswald", sans-serif; text-transform: uppercase; letter-spacing: 0.08em; font-size: 10.5px; color: #C2C5CB; margin-bottom: 9px; }
+.price-cell .pv { font-family: "Archivo", sans-serif; font-weight: 800; color: #fff; font-size: 18px; }
+.price-cell .pv small { display: block; color: var(--champagne-2); font-size: 11px; font-weight: 600; margin-top: 2px; }
+@media (max-width: 760px) { .price-row { grid-template-columns: 1fr 1fr; } }
+
+/* idea-submission form */
+.idea-form { margin-top: 28px; display: grid; gap: 14px; text-align: left; }
+.idea-form .field { display: grid; gap: 6px; }
+.idea-form .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.idea-form label { font-family: "Oswald", sans-serif; text-transform: uppercase; letter-spacing: 0.12em; font-size: 11px; color: var(--champagne-2); }
+.idea-form input, .idea-form textarea, .idea-form select {
+  width: 100%; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.20);
+  border-radius: 4px; padding: 14px 16px; color: #fff; font-family: "Inter", sans-serif; font-size: 15px; }
+.idea-form textarea { min-height: 92px; resize: vertical; }
+.idea-form input:focus, .idea-form textarea:focus, .idea-form select:focus { outline: none; border-color: var(--champagne-2); }
+.idea-form select { appearance: none; cursor: pointer; }
+.idea-form .btn-primary { justify-self: start; cursor: pointer; }
+.form-alt { margin-top: 12px; color: #9A9DA4; font-size: 13px; }
+.form-alt a { color: #fff; }
+@media (max-width: 600px) { .idea-form .row2 { grid-template-columns: 1fr; } .idea-form .btn-primary { justify-self: stretch; text-align: center; justify-content: center; } }
+
+/* pricing table (inside a dark smoke panel) */
+.ptable { width: 100%; border-collapse: collapse; margin-top: 8px; }
+.ptable th, .ptable td { text-align: left; padding: 15px 14px; border-bottom: 1px solid rgba(255,255,255,0.12); font-size: 14px; color: #C2C5CB; vertical-align: top; }
+.ptable th { font-family: "Oswald", sans-serif; text-transform: uppercase; letter-spacing: 0.1em; font-size: 11px; color: #C7CBD1; }
+.ptable td strong { color: #fff; }
+.ptable .price { font-family: "Archivo", sans-serif; font-weight: 800; color: #fff; white-space: nowrap; }
+.ptable tr:last-child td { border-bottom: 0; }
+.ptable-note { color: #9A9DA4; font-size: 13.5px; margin-top: 18px; }
+@media (max-width: 700px) { .ptable, .ptable thead, .ptable tbody, .ptable th, .ptable td, .ptable tr { display: block; }
+  .ptable thead { display: none; } .ptable td { border: 0; padding: 4px 0; }
+  .ptable tr { border-bottom: 1px solid rgba(255,255,255,0.14); padding: 16px 0; } }
+
+/* Day One MVP logo — black-bg art, screen blend drops black on dark panels */
+.brandmark { display: block; width: clamp(230px, 40vw, 400px); height: auto; margin: 0 auto 18px; mix-blend-mode: screen; }
+.smoke .brandmark { margin-left: 0; }
+.smoke.center .brandmark, .hero .smoke .brandmark { margin-left: auto; margin-right: auto; }
+.foot-logo { display: block; width: 210px; height: auto; margin-bottom: 12px; mix-blend-mode: screen; }
