@@ -1117,7 +1117,7 @@ body::before {
 .mega {
   font-family: "Archivo", sans-serif; font-weight: 900; text-transform: uppercase;
   font-size: clamp(58px, 11vw, 152px); line-height: 0.9; letter-spacing: -0.02em;
-  color: #fff; margin: 0 0 20px;
+  color: #fff; margin: 0 0 20px; text-wrap: balance;
 }
 .mega .tm { font-size: 0.26em; vertical-align: super; color: var(--champagne-2); }
 .statement {
@@ -1455,3 +1455,29 @@ body.world .breadcrumb a:hover { color: #fff !important; }
 /* impact partner chips are now links into the form */
 .path-grid a { display:block; text-decoration:none; border:1px solid rgba(255,255,255,0.16); border-radius:5px; padding:16px 14px; text-align:center; color:#DDE0E4; font-family:"Oswald",sans-serif; text-transform:uppercase; letter-spacing:.06em; font-size:12px; transition:border-color .25s,color .25s,transform .25s; }
 .path-grid a:hover { border-color:var(--champagne-2); color:#fff; transform:translateY(-2px); }
+
+/* =====================================================================
+   BREATHE — give the world pages the homepage's airy rhythm.
+   Generous marble bands between every card; the hero opens on stone
+   before the first panel; cards are framed by stone on the sides too.
+   ===================================================================== */
+/* roomier marble gap between stacked cards (was ~50px each side → ~80px) */
+body.world .overlay-sec { padding: clamp(62px, 9.5vh, 124px) 0; }
+
+/* hero breathes: marble shows above the first card (under the nav) and below it */
+body.world .hero, body.world .page-hero { padding-top: clamp(104px, 17vh, 188px); padding-bottom: clamp(44px, 8vh, 104px); }
+
+/* the first content section sits a touch lower so the hero card has room to land */
+body.world .hero + .overlay-sec, body.world .page-hero + .overlay-sec { padding-top: clamp(40px, 6vh, 80px); }
+
+/* frame cards with a little more stone on the sides at wider widths */
+body.world .smoke      { max-width: 720px; }
+body.world .smoke.wide { max-width: 840px; }
+
+/* on a phone: a hair more stone on the sides so each card reads as its own object */
+@media (max-width: 600px) {
+  body.world .wrap { padding-left: 22px; padding-right: 22px; }
+  body.world .overlay-sec { padding: clamp(54px, 8vh, 80px) 0; }
+  /* trim towering hero titles on phones so stone breathes around them */
+  body.world .hero .mega, body.world .page-hero .mega { font-size: clamp(33px, 8.8vw, 46px) !important; line-height: 0.96; }
+}
