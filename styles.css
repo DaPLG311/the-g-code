@@ -1411,3 +1411,11 @@ body.world .page-hero {
 
 /* programs-in-development tag */
 .dev-tag { display:inline-block; font-family:"Oswald",sans-serif; text-transform:uppercase; letter-spacing:.18em; font-size:10px; color:#9A9DA4; border:1px dashed rgba(255,255,255,0.22); padding:5px 12px; border-radius:2px; margin-bottom:18px; }
+
+/* clear the "fog": no white scrim over the marble — show the stone crisp */
+body.world::before {
+  background: url("assets/img/marble1.jpg") !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-attachment: scroll !important;
+}
