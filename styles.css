@@ -1735,3 +1735,7 @@ a.price-cell:hover .pl { color:#fff; }
   .call-fab { left:auto; right:62px; }
   .call-fab img { height:19px; }
 }
+
+/* ===== Dedicated pricing-tier page ===== */
+.tier-price { font-family:"Archivo",sans-serif; font-weight:800; color:var(--champagne-2);
+  font-size:clamp(26px,4vw,40px); letter-spacing:.01em; margin:8px 0 22px; }
