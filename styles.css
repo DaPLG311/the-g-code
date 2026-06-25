@@ -1815,9 +1815,9 @@ a.price-cell:hover .pl { color:#fff; }
 
 /* ===== "Why Day One" nav dropdown ===== */
 .nav-dd { position:relative; display:inline-block; }
-.nav-dd-btn { background:none; border:none; cursor:pointer; color:var(--muted); font-family:"Oswald",sans-serif; text-transform:uppercase; letter-spacing:.04em; font-size:13px; padding:0; display:inline-flex; align-items:center; gap:6px; transition:color .2s; }
-.nav-dd-btn:hover { color:var(--text); }
-.dd-caret { font-size:9px; transition:transform .2s; }
+.nav-dd-btn { background:none; border:none; cursor:pointer; color:var(--champagne-2); font-family:"Oswald",sans-serif; text-transform:uppercase; letter-spacing:.04em; font-size:13px; font-weight:600; padding:0; display:inline-flex; align-items:center; gap:6px; transition:color .2s, text-shadow .2s; text-shadow:0 0 12px rgba(200,162,75,.35); }
+.nav-dd-btn:hover { color:#fff; text-shadow:0 0 12px rgba(200,162,75,.55); }
+.dd-caret { font-size:9px; color:var(--champagne-2); transition:transform .2s; }
 .nav-dd-panel { position:absolute; top:calc(100% + 16px); left:50%; transform:translateX(-50%) translateY(6px); min-width:232px; background:rgba(10,11,15,0.97); -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px); border:1px solid rgba(255,255,255,0.12); border-radius:10px; padding:10px; display:flex; flex-direction:column; gap:2px; opacity:0; visibility:hidden; transition:opacity .18s, transform .18s; box-shadow:0 20px 50px rgba(0,0,0,.5); z-index:60; }
 .nav-dd:hover .nav-dd-panel, .nav-dd.open .nav-dd-panel, .nav-dd:focus-within .nav-dd-panel { opacity:1; visibility:visible; transform:translateX(-50%) translateY(0); }
 .nav-dd:hover .dd-caret, .nav-dd.open .dd-caret { transform:rotate(180deg); }
