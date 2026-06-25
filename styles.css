@@ -1645,3 +1645,8 @@ body.world .menu-toggle span { background: #DDE0E4; }
 .dir { border:1px solid rgba(255,255,255,0.09); border-radius:8px; padding:20px 22px; background:linear-gradient(160deg, rgba(19,20,25,0.55), rgba(12,13,17,0.7)); }
 .dir h4 { color:#fff; font-family:"Oswald",sans-serif; text-transform:uppercase; letter-spacing:.08em; font-size:14px; margin-bottom:8px; }
 .dir p { color:#C2C5CB; font-size:14px; line-height:1.55; }
+
+/* ===== Marble nameplate behind nav logo ===== */
+.brand { position:relative; display:inline-flex; align-items:center; justify-content:center; padding:8px 18px; border-radius:9px; background-image:url("assets/img/nav-marble.png"); background-size:cover; background-position:center; border:1px solid rgba(200,162,75,0.42); box-shadow:0 6px 18px rgba(0,0,0,.38), inset 0 0 0 1px rgba(255,255,255,.22); }
+.brand .brand-logo { filter:drop-shadow(0 1px 2px rgba(0,0,0,.5)); }
+@media (max-width:600px){ .brand { padding:6px 12px; border-radius:7px; } }
