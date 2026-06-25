@@ -111,6 +111,7 @@
     pn += '</div>';
     html += pn + '</div></div></section>';
     root.innerHTML = html;
+    if (window.DOM_AUTOLINK) window.DOM_AUTOLINK(root);
   }
 
   function renderCategory(slug){
@@ -148,6 +149,7 @@
       html += '</div></div></section>';
     }
     root.innerHTML = html;
+    if (window.DOM_AUTOLINK) window.DOM_AUTOLINK(root);
   }
 
   function renderWorlds(){
@@ -160,6 +162,7 @@
     html += D.categories.map(function(c){ return tile("build.html?cat="+c.slug, "World "+c.n, c.title, c.theme, false); }).join('');
     html += '</div></div></div></section>';
     root.innerHTML = html;
+    if (window.DOM_AUTOLINK) window.DOM_AUTOLINK(root);
   }
 
   // attach slugKey to services for related tiles
