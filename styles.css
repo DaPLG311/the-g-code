@@ -1646,15 +1646,24 @@ body.world .menu-toggle span { background: #DDE0E4; }
 .dir h4 { color:#fff; font-family:"Oswald",sans-serif; text-transform:uppercase; letter-spacing:.08em; font-size:14px; margin-bottom:8px; }
 .dir p { color:#C2C5CB; font-size:14px; line-height:1.55; }
 
-/* ===== Nav brand banner — full banner image, logo centered + enlarged, no tag framing ===== */
-nav { padding-top:8px; padding-bottom:8px; }
-.brand { position:relative; display:block; width:360px; max-width:50vw; aspect-ratio:970 / 250;
-  background-image:url("assets/img/nav-banner.png"); background-size:cover; background-position:center;
-  border:none; box-shadow:none; border-radius:6px; overflow:hidden; }
-.brand .brand-logo { position:absolute; top:0; left:0; right:0; bottom:0; margin:auto;
-  height:74%; width:auto; display:block; filter:drop-shadow(0 2px 5px rgba(0,0,0,.55)); }
+/* ===== Full-width header banner — logo is baked into the image (left), black fills the rest ===== */
+body.world nav, nav {
+  background-color:#0a0a0c;
+  background-image:url("assets/img/nav-header.png");
+  background-repeat:no-repeat; background-position:left center; background-size:auto 104px;
+  min-height:84px; padding-top:6px; padding-bottom:6px; }
+body.world nav.scrolled, nav.scrolled {
+  background-color:#0a0a0c;
+  background-image:url("assets/img/nav-header.png");
+  background-repeat:no-repeat; background-position:left center; background-size:auto 104px;
+  border-bottom:1px solid rgba(255,255,255,0.10); }
+/* brand link becomes an invisible clickable hotspot over the banner's logo */
+.brand { display:block; width:200px; max-width:46vw; height:64px; padding:0; margin:0;
+  border:none; box-shadow:none; background:none; border-radius:0; }
+.brand-logo { display:none; }
 @media (max-width:600px){
-  .brand { width:270px; max-width:64vw; border-radius:5px; }
+  body.world nav, nav, body.world nav.scrolled, nav.scrolled { background-size:auto 78px; min-height:64px; }
+  .brand { width:150px; height:50px; }
 }
 
 /* ===== Topic auto-link + plain-English tooltip ===== */
