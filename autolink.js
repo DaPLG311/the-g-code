@@ -85,7 +85,13 @@
     { slug:"sound-design", ex:"The sonic layer that makes media feel polished.", words:["Sound Design"] },
     { slug:"voiceover", ex:"A voice that guides and carries the tone.", words:["Voiceover","Voice-over"] },
     { slug:"content-repurposing", ex:"Get more value from content you already made.", words:["Content Repurposing"] },
-    { slug:"publishing-systems", ex:"The workflow that keeps media output consistent.", words:["Publishing Systems","Publishing System"] }
+    { slug:"publishing-systems", ex:"The workflow that keeps media output consistent.", words:["Publishing Systems","Publishing System"] },
+
+    /* added building blocks */
+    { slug:"market-research", ex:"Check that real demand exists before you build.", words:["Market Research"] },
+    { slug:"integrations", ex:"Make your tools talk to each other.", words:["Integrations","Integration"] },
+    { slug:"certification", ex:"Confirm the training actually stuck.", words:["Certification"] },
+    { slug:"photography", ex:"Real images that build trust fast.", words:["Photography"] }
   ];
 
   function esc(s){ return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); }
