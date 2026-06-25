@@ -1701,3 +1701,7 @@ a.price-cell:hover .pl { color:#fff; }
 @media (max-width:640px){ .prob-list { columns:1; } }
 .principle { margin:30px 0 6px; text-align:center; font-family:"Oswald",sans-serif; font-weight:500;
   text-transform:uppercase; letter-spacing:.06em; font-size:clamp(15px,2vw,19px); color:#fff; }
+
+/* ===== Inline heading link ===== */
+.hlink { color:var(--champagne-2); text-decoration:none; border-bottom:2px solid rgba(200,168,106,0.45); transition:color .15s, border-color .15s; }
+.hlink:hover { color:#fff; border-bottom-color:#fff; }

@@ -151,7 +151,7 @@
 
     /* Learning map (the topic tiles) */
     html += '<section class="overlay-sec"><div class="wrap"><div class="smoke wide reveal">';
-    html += '<span class="eyebrow">The Learning Map</span><h2>Tap any piece to learn what it is.</h2>';
+    html += '<span class="eyebrow">The Learning Map</span><h2>Tap any <a class="hlink" href="tech-answers.html">building block</a> to learn what it is.</h2>';
     if(cat.mission) html += '<p class="support">'+e(cat.mission)+'</p>';
     html += '<div class="svc-grid">';
     cat.order.forEach(function(slug,i){
