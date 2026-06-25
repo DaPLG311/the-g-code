@@ -1765,3 +1765,12 @@ a.price-cell:hover .pl { color:#fff; }
 /* ===== Lead-form consent microline ===== */
 .form-consent { margin-top:14px; color:#9BA0A8; font-size:13px; line-height:1.5; max-width:560px; }
 .form-consent a { color:var(--champagne-2); text-decoration:underline; }
+
+/* ===== Current-page dot indicator in nav (esp. mobile menu) ===== */
+.nav-links a.current:not(.btn) { color:#fff; }
+.nav-links a.current:not(.btn)::before {
+  content:""; display:inline-block; width:7px; height:7px; border-radius:50%;
+  background:var(--gold); margin-right:9px; vertical-align:middle;
+  box-shadow:0 0 8px rgba(200,162,75,0.6); }
+/* current Start My MVP button: gold ring instead of a dot */
+.nav-links a.current.btn { box-shadow:0 0 0 2px var(--gold) inset; }

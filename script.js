@@ -118,6 +118,27 @@ document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
   });
 })();
 
+// Mark the current page in the nav (dot indicator, esp. on the mobile menu)
+(function () {
+  var here = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+  // map sub-pages to their parent nav item
+  var parent = {
+    'build.html': 'what-we-build.html', 'what-we-build.html': 'what-we-build.html',
+    'tier.html': 'pricing.html', 'pricing.html': 'pricing.html',
+    'success.html': 'start.html', 'start.html': 'start.html',
+    'marketing-launch.html': 'what-we-build.html'
+  };
+  var target = parent[here] || here;
+  var links = document.querySelectorAll('.nav-links a');
+  for (var i = 0; i < links.length; i++) {
+    var hrefFile = (links[i].getAttribute('href') || '').split('?')[0].split('#')[0].split('/').pop().toLowerCase();
+    if (hrefFile && hrefFile === target) {
+      links[i].classList.add('current');
+      links[i].setAttribute('aria-current', 'page');
+    }
+  }
+})();
+
 // Floating "Speak to a Human" call button — injected on every page
 (function () {
   if (document.querySelector('.call-fab')) return;
