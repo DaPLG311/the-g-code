@@ -113,3 +113,14 @@ document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
     setTimeout(function () { window.location.href = 'success.html'; }, 800);
   });
 })();
+
+// Floating "Speak to a Human" call button — injected on every page
+(function () {
+  if (document.querySelector('.call-fab')) return;
+  var a = document.createElement('a');
+  a.className = 'call-fab';
+  a.href = 'tel:+15189126142';
+  a.setAttribute('aria-label', 'Call Day One MVP — speak to a human, 518 912 6142');
+  a.innerHTML = '<img src="assets/img/call-button.png" alt="Speak to a human — call 518 912 6142" />';
+  document.body.appendChild(a);
+})();
