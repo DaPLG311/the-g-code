@@ -1621,3 +1621,27 @@ body.world .menu-toggle span { background: #DDE0E4; }
 
 /* footer location line */
 .foot-loc { font-family:"Oswald",sans-serif; text-transform:uppercase; letter-spacing:.1em; font-size:12px; }
+
+/* ===== Interior service-page system (DOM.com) ===== */
+/* clickable topics on What We Build */
+.svc-topics li a { color:#C2C5CB; text-decoration:none; transition:color .18s, padding-left .18s; }
+.svc-topics li:hover::before { opacity:1; transform:scale(1.25); }
+.svc-topics li a:hover { color:var(--gold); }
+.svc-topics li::before { transition:opacity .18s, transform .18s; }
+
+/* CTA supporting microcopy */
+.cta-sub { margin-top:14px; color:#9BA0A8; font-size:14px; line-height:1.55; text-align:center; max-width:520px; margin-left:auto; margin-right:auto; }
+.cta-sub-left { text-align:left; margin-left:0; }
+.cta-mid { margin-top:26px; }
+
+/* hero "small to a giant" line */
+.hero-line { color:#fff !important; font-family:"Oswald",sans-serif; font-weight:500; font-size:clamp(18px,2.2vw,23px); letter-spacing:.005em; margin-bottom:14px; }
+
+/* the common-mistake note callout */
+.kv-note { border-left:2px solid rgba(200,162,75,0.5); padding-left:18px; }
+
+/* "One idea, many directions" expansion grid */
+.directions { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:18px; margin:36px 0 8px; text-align:left; }
+.dir { border:1px solid rgba(255,255,255,0.09); border-radius:8px; padding:20px 22px; background:linear-gradient(160deg, rgba(19,20,25,0.55), rgba(12,13,17,0.7)); }
+.dir h4 { color:#fff; font-family:"Oswald",sans-serif; text-transform:uppercase; letter-spacing:.08em; font-size:14px; margin-bottom:8px; }
+.dir p { color:#C2C5CB; font-size:14px; line-height:1.55; }

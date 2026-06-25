@@ -5,9 +5,33 @@
 (function () {
   var D = window.BUILD, root = document.getElementById("buildRoot");
   if (!D || !root) return;
+  // merge interior-page extension copy (How DOM approaches it / Who it's for)
+  if (window.BUILD_EXT) Object.keys(window.BUILD_EXT).forEach(function (k) {
+    if (D.services[k]) { var x = window.BUILD_EXT[k]; D.services[k].approach = x.approach; D.services[k].whoFor = x.whoFor; }
+  });
   var p = new URLSearchParams(location.search);
   var sSlug = p.get("s"), cSlug = p.get("cat");
   var catBy = function (s) { return D.categories.filter(function (c) { return c.slug === s; })[0]; };
+
+  // Primary action per page: product builds push the MVP CTA; everything else
+  // pushes the founder conversation. Calm-giant voice, one primary action.
+  function primaryCTA(catSlug){
+    if (catSlug === "build-the-product") return {
+      label: "Start My MVP With Jack",
+      href: "start.html?path=" + catSlug,
+      sub: "Talk directly with the founder to scope the right first version."
+    };
+    return {
+      label: "Tell Jack the Idea",
+      href: "start.html?path=" + catSlug,
+      sub: "Founder-led from the first conversation — no handoff, no sales layer."
+    };
+  }
+  function ctaBlock(cta, extraClass){
+    return '<div class="cta-row' + (extraClass ? ' ' + extraClass : '') + '" style="justify-content:center;">' +
+           '<a href="' + cta.href + '" class="btn btn-primary">' + e(cta.label) + ' &rarr;</a></div>' +
+           '<p class="cta-sub">' + e(cta.sub) + '</p>';
+  }
 
   function e(x){ return (x==null?"":String(x)).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
   function crumb(parts){ // [{t,h}] ; last has no link
@@ -30,26 +54,45 @@
   function renderService(slug){
     var s = D.services[slug]; if(!s){ return renderWorlds(); }
     var cat = catBy(s.cat);
+    var cta = primaryCTA(cat.slug);
     setMeta(s.title+" — Day One MVP™", s.definition);
     var prev = s.prev && D.services[s.prev], next = s.next && D.services[s.next];
     var rel = (s.related||[]).map(function(r){ return D.services[r]; }).filter(Boolean);
     var html = '';
+
+    /* 1 — TOP: title, one-line explanation, primary CTA */
     html += '<header class="page-hero"><div class="wrap"><div class="smoke wide">';
     html += crumb([{t:"What We Build",h:"what-we-build.html"},{t:cat.title,h:"build.html?cat="+cat.slug},{t:s.title}]);
     html += '<span class="eyebrow">'+e(cat.title)+'</span>';
     html += '<h1 class="mega" style="font-size:clamp(34px,5.6vw,68px);">'+e(s.title)+'</h1>';
-    html += '<p class="support hero-q">'+e(s.heroQuestion)+'</p>';
+    html += '<p class="support hero-q">'+e(s.definition)+'</p>';
+    html += '<div class="cta-row"><a href="'+cta.href+'" class="btn btn-primary">'+e(cta.label)+' &rarr;</a>'+
+            '<a href="build.html?cat='+cat.slug+'" class="btn btn-ghost-light">Back to '+e(cat.title)+'</a></div>';
+    html += '<p class="cta-sub cta-sub-left">'+e(cta.sub)+'</p>';
     html += '</div></div></header>';
 
+    /* 2 — WHAT THIS IS  &  3 — WHY IT MATTERS */
     html += '<section class="overlay-sec"><div class="wrap"><div class="smoke wide reveal">';
-    html += '<p class="support lead-p">'+e(s.definition)+'</p>';
+    html += '<div class="kv"><h3>What this is</h3><p>'+e(s.heroQuestion)+' '+e(s.businessExample)+'</p></div>';
     html += '<div class="kv"><h3>Why it matters</h3><p>'+e(s.whyItMatters)+'</p></div>';
-    html += '<div class="kv"><h3>What it looks like in a real company</h3><p>'+e(s.businessExample)+'</p></div>';
-    html += '<div class="kv"><h3>What Day One MVP™ may build</h3><ul class="incl">'+ (s.whatWeBuild||[]).map(function(x){return '<li>'+e(x)+'</li>';}).join('') +'</ul></div>';
-    html += '<div class="kv"><h3>Common mistake</h3><p>'+e(s.commonMistake)+'</p></div>';
-    html += '<blockquote class="pull">"'+e(s.jackQuestion)+'"<span class="pull-by">— Jack Rodriguez</span></blockquote>';
+    if(s.commonMistake){ html += '<div class="kv kv-note"><h3>The common mistake</h3><p>'+e(s.commonMistake)+'</p></div>'; }
     html += '</div></div></section>';
 
+    /* 4 — HOW DOM APPROACHES IT (+ mid CTA) */
+    html += '<section class="overlay-sec spotlight"><div class="wrap"><div class="smoke wide reveal">';
+    html += '<span class="eyebrow">How Day One MVP™ approaches it</span>';
+    html += '<p class="support lead-p">'+e(s.approach || s.definition)+'</p>';
+    if(s.jackQuestion){ html += '<blockquote class="pull">"'+e(s.jackQuestion)+'"<span class="pull-by">— Jack Rodriguez</span></blockquote>'; }
+    html += ctaBlock(cta, 'cta-mid');
+    html += '</div></div></section>';
+
+    /* 5 — WHAT GETS DELIVERED  &  6 — WHO IT'S FOR */
+    html += '<section class="overlay-sec"><div class="wrap"><div class="smoke wide reveal">';
+    html += '<div class="kv"><h3>What gets delivered</h3><ul class="incl">'+ (s.whatWeBuild||[]).map(function(x){return '<li>'+e(x)+'</li>';}).join('') +'</ul></div>';
+    if(s.whoFor){ html += '<div class="kv"><h3>Who it’s for</h3><p>'+e(s.whoFor)+'</p></div>'; }
+    html += '</div></div></section>';
+
+    /* RELATED */
     if(rel.length){
       html += '<section class="overlay-sec spotlight"><div class="wrap"><div class="smoke wide reveal">';
       html += '<span class="eyebrow">Continue the Build</span><h2>Related concepts.</h2>';
@@ -57,15 +100,14 @@
       html += '</div></div></section>';
     }
 
+    /* 7 — BOTTOM CTA */
     html += '<section class="overlay-sec"><div class="wrap"><div class="smoke center wide reveal">';
-    html += '<span class="eyebrow">How would this apply to your idea?</span>';
-    html += '<h2 class="statement">Not sure if this belongs in your first build?<span class="accent">Tell Jack the idea.</span></h2>';
-    html += '<div class="cta-row" style="justify-content:center;">';
-    html += '<a href="start.html?path='+cat.slug+'" class="btn btn-primary">Tell Jack the Idea →</a>';
-    html += '<a href="build.html?cat='+cat.slug+'" class="btn btn-ghost-light">Back to '+e(cat.title)+'</a></div>';
+    html += '<span class="eyebrow">Where this could go for you</span>';
+    html += '<h2 class="statement">This may feel complicated.<span class="accent">We know how to simplify it.</span></h2>';
+    html += ctaBlock(cta);
     var pn = '<div class="prevnext">';
-    pn += prev ? '<a href="build.html?s='+s.prev+'">← '+e(prev.title)+'</a>' : '<span></span>';
-    pn += next ? '<a href="build.html?s='+s.next+'">'+e(next.title)+' →</a>' : '<span></span>';
+    pn += prev ? '<a href="build.html?s='+s.prev+'">&larr; '+e(prev.title)+'</a>' : '<span></span>';
+    pn += next ? '<a href="build.html?s='+s.next+'">'+e(next.title)+' &rarr;</a>' : '<span></span>';
     pn += '</div>';
     html += pn + '</div></div></section>';
     root.innerHTML = html;
