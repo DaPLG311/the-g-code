@@ -8,15 +8,6 @@ window.GLOSSARY = [
   { t: "The G Code™", c: "Day One System", d: "The documentary and educational platform showing the real process behind building companies, products, systems, and opportunities.", m: "You can see how Jack thinks, teaches, and directs a build before you ever hire the company.", r: ["Day One MVP™"] },
   { t: "AIBridge™", c: "Day One System", d: "The technology, AI, automation, education, and systems layer behind Day One MVP™.", m: "It connects the human problem to practical technology without shutting you out of the process.", r: ["AI Audit", "AI Agent"] },
   { t: "Atom™", c: "Day One System", d: "The sales and market engine used to understand the customer, shape the offer, sharpen the message, answer objections, and turn attention into customers.", ex: "Atom™ helps determine what the business should sell, who should buy it, and why they should care.", r: ["Offer", "Funnel"] },
-  { t: "Boris™", c: "Day One System", d: "The monetization and commercial engine used to develop pricing, packages, recurring revenue, margins, and realistic business models.", ex: "Boris™ makes sure a good idea can also function as a real business.", r: ["Business Model", "Recurring Revenue"] },
-  { t: "Fenrir™", c: "Day One System", d: "The observation and clarity stage. It examines the idea, people, market, problem, behavior, and risks before a solution is chosen.", ex: "Before building a booking app, Fenrir™ asks whether booking is actually the main problem.", r: ["Odin™", "Idea Audit"] },
-  { t: "Odin™", c: "Day One System", d: "The research and structural-analysis stage. It organizes the concept into users, pages, functions, data, business model, and launch path.", r: ["Fenrir™", "Gaia™"] },
-  { t: "Gaia™", c: "Day One System", d: "The systemization stage. It turns scattered ideas, files, plans, and decisions into an organized operating structure.", r: ["Odin™", "Thor™"] },
-  { t: "Thor™", c: "Day One System", d: "The build and implementation stage. It begins after the idea has been observed, researched, organized, priced, and approved.", ex: "Thor™ is when the hammer comes down and the working product gets built.", r: ["Gaia™", "MVP"] },
-  { t: "Maestro Method™", c: "Day One System", d: "The creative method used to direct a project as a coordinated composition rather than a collection of disconnected parts — aligning design, story, product, business, and customer experience.", r: ["Brand System"] },
-  { t: "Ask Protocol™", c: "Day One System", d: "A process of asking focused questions until the outcome, audience, visual direction, functionality, and business purpose are sufficiently clear.", r: ["Scope"] },
-  { t: "Bounce Protocol™", c: "Day One System", d: "A structured handoff between models, tools, researchers, designers, builders, and human reviewers. Each stage improves, verifies, or challenges the previous one before the project advances.", r: ["Ask Protocol™", "Black Vault Protocol™"] },
-  { t: "Black Vault Protocol™", c: "Day One System", d: "A confidentiality and controlled-access standard for sensitive ideas, company information, systems, credentials, and proprietary projects.", r: ["NDA", "Access Control"] },
 
   /* ---- Product Development ---- */
   { t: "Idea Audit", c: "Product Development", d: "A structured review of an idea's customer, problem, timing, competition, revenue potential, risks, and build requirements.", w: "Level 1 — Blueprint & Prototype.", r: ["Blueprint", "Proof of Concept"] },
@@ -126,7 +117,7 @@ window.GLOSSARY = [
   { t: "Social Proof", c: "Sales and Marketing", d: "Real evidence that others have used, valued, supported, or benefited from the company. Never fabricated.", r: ["Founder-Led Marketing"] },
 
   /* ---- Business and Revenue ---- */
-  { t: "Business Model", c: "Business and Revenue", d: "The complete structure explaining how the company creates value, delivers it, and earns revenue.", r: ["Revenue Model", "Boris™"] },
+  { t: "Business Model", c: "Business and Revenue", d: "The complete structure explaining how the company creates value, delivers it, and earns revenue.", r: ["Revenue Model"] },
   { t: "Revenue Model", c: "Business and Revenue", d: "The specific method used to generate income.", r: ["Subscription", "One-Time Purchase"] },
   { t: "One-Time Purchase", c: "Business and Revenue", d: "A single payment for a defined product or engagement.", r: ["Subscription"] },
   { t: "Subscription", c: "Business and Revenue", d: "A recurring payment for continued access to a product or service.", r: ["Retainer", "SaaS"] },
@@ -145,7 +136,7 @@ window.GLOSSARY = [
   /* ---- Safety, Ownership, and Access ---- */
   { t: "Intellectual Property", c: "Safety, Ownership, and Access", d: "Original creations such as code, designs, names, content, systems, documentation, inventions, and brand assets.", r: ["Source Code", "Licensing"] },
   { t: "Source Code", c: "Safety, Ownership, and Access", d: "The editable instructions used to create software. The project agreement should clearly state what source access and ownership the client receives.", r: ["Ownership and Handoff"] },
-  { t: "NDA", c: "Safety, Ownership, and Access", d: "Nondisclosure agreement — a legal agreement establishing confidentiality responsibilities. It does not automatically protect every legal interest; seek legal review when needed.", r: ["Black Vault Protocol™"] },
+  { t: "NDA", c: "Safety, Ownership, and Access", d: "Nondisclosure agreement — a legal agreement establishing confidentiality responsibilities. It does not automatically protect every legal interest; seek legal review when needed.", r: ["Access Control"] },
   { t: "Privacy", c: "Safety, Ownership, and Access", d: "The responsible handling of personal and sensitive information.", r: ["Consent", "Compliance"] },
   { t: "Consent", c: "Safety, Ownership, and Access", d: "Clear permission from a person before collecting, storing, tracking, contacting, or using certain information.", r: ["Privacy"] },
   { t: "Access Control", c: "Safety, Ownership, and Access", d: "Rules limiting which people or systems can view, edit, export, or manage information.", r: ["Authorization", "Encryption"] },

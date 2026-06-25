@@ -1,4 +1,4 @@
-// The G Code™ — V3 · interaction layer (Loki-polished, kept light)
+// The G Code™ — V3 · interaction layer (kept light)
 
 // nav background on scroll
 const nav = document.getElementById('nav');
