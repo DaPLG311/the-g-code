@@ -103,4 +103,18 @@
 
   root.innerHTML = h;
   if (window.DOM_AUTOLINK) window.DOM_AUTOLINK(root);
+
+  // per-view structured data
+  (function () {
+    var url = 'https://dayonemvp.com/audience.html?a=' + a;
+    var graph = [
+      {"@type":"WebPage","@id":url+"#webpage","url":url,"name":t.title+" — Who We Help — Day One MVP™","description":t.headline,"isPartOf":{"@id":"https://dayonemvp.com/#website"},"breadcrumb":{"@id":url+"#bc"}},
+      {"@type":"Service","name":"Day One MVP™ for "+t.title,"description":t.intro,"provider":{"@type":"Organization","name":"Day One MVP","url":"https://dayonemvp.com/"},"audience":{"@type":"Audience","audienceType":t.title},"url":url},
+      {"@type":"BreadcrumbList","@id":url+"#bc","itemListElement":[
+        {"@type":"ListItem","position":1,"name":"Who We Help","item":"https://dayonemvp.com/who-we-help.html"},
+        {"@type":"ListItem","position":2,"name":t.title}
+      ]}
+    ];
+    try { var sc=document.createElement('script'); sc.type='application/ld+json'; sc.text=JSON.stringify({ "@context":"https://schema.org", "@graph":graph }); document.head.appendChild(sc); } catch(e){}
+  })();
 })();

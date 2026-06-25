@@ -163,4 +163,16 @@
   buildFilters();
   readURL();
   render();
+
+  // glossary hub structured data — DefinedTermSet of all terms
+  (function () {
+    var url = 'https://dayonemvp.com/tech-answers.html';
+    var terms = data.map(function (x) { return { "@type":"DefinedTerm", "name":x.t, "description":x.d, "inDefinedTermSet":url+"#glossary" }; });
+    var graph = [
+      {"@type":"CollectionPage","@id":url+"#webpage","url":url,"name":"Tech Answers — Day One MVP™","description":"A plain-language glossary of technical, business, marketing, AI, and product terms.","isPartOf":{"@id":"https://dayonemvp.com/#website"},"breadcrumb":{"@id":url+"#bc"}},
+      {"@type":"DefinedTermSet","@id":url+"#glossary","name":"The Day One Education Board","url":url,"hasDefinedTerm":terms},
+      {"@type":"BreadcrumbList","@id":url+"#bc","itemListElement":[{"@type":"ListItem","position":1,"name":"Tech Answers"}]}
+    ];
+    try { var sc=document.createElement('script'); sc.type='application/ld+json'; sc.text=JSON.stringify({ "@context":"https://schema.org", "@graph":graph }); document.head.appendChild(sc); } catch(e){}
+  })();
 })();

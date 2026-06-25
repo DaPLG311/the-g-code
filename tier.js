@@ -59,4 +59,27 @@
 
   root.innerHTML = html;
   if (window.DOM_AUTOLINK) window.DOM_AUTOLINK(root);
+
+  // per-view structured data — price only where it's a real, visible figure
+  (function () {
+    var url = 'https://dayonemvp.com/tier.html?p=' + p;
+    var priceMap = { 'idea-session':{min:250,max:1000}, 'blueprint':{price:3500}, 'working-alpha':{price:15000}, 'mvp-launch':{price:30000}, 'platform':{min:50000} };
+    var ps = priceMap[p];
+    var offer = { "@type":"Offer", "priceCurrency":"USD", "category":"Service", "url":url, "description":t.promise };
+    if (ps && ps.price) offer.price = String(ps.price);
+    else if (ps && (ps.min || ps.max)) {
+      offer.priceSpecification = { "@type":"PriceSpecification", "priceCurrency":"USD" };
+      if (ps.min) offer.priceSpecification.minPrice = ps.min;
+      if (ps.max) offer.priceSpecification.maxPrice = ps.max;
+    }
+    var graph = [
+      {"@type":"WebPage","@id":url+"#webpage","url":url,"name":t.title+" — Pricing — Day One MVP™","description":t.promise,"isPartOf":{"@id":"https://dayonemvp.com/#website"},"breadcrumb":{"@id":url+"#bc"}},
+      {"@type":"Service","name":t.title,"description":t.explanation,"serviceType":"Product build","provider":{"@type":"Organization","name":"Day One MVP","url":"https://dayonemvp.com/"},"url":url,"offers":offer},
+      {"@type":"BreadcrumbList","@id":url+"#bc","itemListElement":[
+        {"@type":"ListItem","position":1,"name":"Pricing","item":"https://dayonemvp.com/pricing.html"},
+        {"@type":"ListItem","position":2,"name":t.title}
+      ]}
+    ];
+    try { var sc=document.createElement('script'); sc.type='application/ld+json'; sc.text=JSON.stringify({ "@context":"https://schema.org", "@graph":graph }); document.head.appendChild(sc); } catch(e){}
+  })();
 })();

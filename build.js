@@ -55,11 +55,29 @@
     var c=document.querySelector('link[rel="canonical"]'); if(c) c.setAttribute("href","https://dayonemvp.com/build.html"+(sSlug?"?s="+encodeURIComponent(sSlug):cSlug?"?cat="+encodeURIComponent(cSlug):""));
   }
 
+  // per-view structured data (JSON-LD data block — exempt from script-src CSP)
+  function injectLD(graph){
+    try { var sc=document.createElement('script'); sc.type='application/ld+json';
+      sc.text=JSON.stringify({ "@context":"https://schema.org", "@graph":graph });
+      document.head.appendChild(sc); } catch(e){}
+  }
+  var ORG = { "@type":"Organization", "name":"Day One MVP", "url":"https://dayonemvp.com/" };
+
   function renderService(slug){
     var s = D.services[slug]; if(!s){ return renderWorlds(); }
     var cat = catBy(s.cat);
     var cta = primaryCTA(cat.slug);
     setMeta(s.title+" — Day One MVP™", s.definition);
+    var purl = "https://dayonemvp.com/build.html?s="+slug;
+    injectLD([
+      {"@type":"WebPage","@id":purl+"#webpage","url":purl,"name":s.title+" — Day One MVP™","description":s.definition,"isPartOf":{"@id":"https://dayonemvp.com/#website"},"breadcrumb":{"@id":purl+"#bc"}},
+      {"@type":"Service","name":s.title,"description":s.definition,"category":cat.title,"provider":ORG,"url":purl},
+      {"@type":"BreadcrumbList","@id":purl+"#bc","itemListElement":[
+        {"@type":"ListItem","position":1,"name":"What We Build","item":"https://dayonemvp.com/what-we-build.html"},
+        {"@type":"ListItem","position":2,"name":cat.title,"item":"https://dayonemvp.com/build.html?cat="+cat.slug},
+        {"@type":"ListItem","position":3,"name":s.title}
+      ]}
+    ]);
     var prev = s.prev && D.services[s.prev], next = s.next && D.services[s.next];
     var rel = (s.related||[]).map(function(r){ return D.services[r]; }).filter(Boolean);
     var html = '';
@@ -122,6 +140,15 @@
     var cat = catBy(slug); if(!cat){ return renderWorlds(); }
     var ctaLabel = cat.ctaLabel || "Tell Jack the Idea";
     setMeta(cat.title+" — What We Build — Day One MVP™", cat.explanation || cat.promise);
+    var curl = "https://dayonemvp.com/build.html?cat="+slug;
+    injectLD([
+      {"@type":"CollectionPage","@id":curl+"#webpage","url":curl,"name":cat.title+" — What We Build — Day One MVP™","description":cat.explanation||cat.promise,"isPartOf":{"@id":"https://dayonemvp.com/#website"},"breadcrumb":{"@id":curl+"#bc"}},
+      {"@type":"ItemList","itemListElement":cat.order.map(function(sl,i){ var sv=D.services[sl]; return {"@type":"ListItem","position":i+1,"name":(sv&&sv.title)||sl,"url":"https://dayonemvp.com/build.html?s="+sl}; })},
+      {"@type":"BreadcrumbList","@id":curl+"#bc","itemListElement":[
+        {"@type":"ListItem","position":1,"name":"What We Build","item":"https://dayonemvp.com/what-we-build.html"},
+        {"@type":"ListItem","position":2,"name":cat.title}
+      ]}
+    ]);
     var html = '';
 
     /* Hero — the human question */
