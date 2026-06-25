@@ -2,6 +2,53 @@
    Adds two sections to every service: "How DOM approaches it" (approach)
    and "Who it's for" (whoFor). Merged onto window.BUILD.services by build.js.
    Loaded after build-data.js + build-data-2.js. Voice: calm, capable, founder-led. */
+/* Category-hub content (Part 1 of the research-led expansion) — merged onto
+   window.BUILD.categories by build.js. One research stat max per hub. */
+window.BUILD_CAT_EXT = {
+  "start-the-company": {
+    heroQuestion:"What does the idea need to become a real company?",
+    explanation:"A company begins before the website, logo, or application. It begins with a real customer, a meaningful problem, a clear offer, a responsible price, and a reason for people to believe the company should exist. We help turn an unfinished idea into a structured business people can understand, trust, buy from, support, or invest in.",
+    research:{ title:"Small does not mean insignificant.", body:"Small businesses employ nearly half of America's private-sector workforce. Building stronger small companies is economic development — not merely website design." },
+    problems:["I have several ideas and don't know which one to build.","I can't explain the business clearly.","I don't know who the customer is.","I don't know what to charge.","I have a name but no real offer.","I need something to show a partner or investor.","I started building before designing the business."],
+    jackQuestion:"If someone gave you sixty seconds, could you explain who this is for, what it changes, and why it should exist?",
+    ctaLabel:"Design My Company" },
+  "build-the-product": {
+    heroQuestion:"What is the smallest working product that can prove the idea?",
+    explanation:"A product is not every feature the founder can imagine. It is the smallest responsible experience capable of helping the intended user, demonstrating the concept, and generating useful evidence about what should happen next. We build products around the main user journey — not around feature volume.",
+    note:{ title:"Not every idea needs an app.", body:"The right first product may be a focused landing page, a working prototype, a booking system, a customer portal, a private internal tool, an automated intake process, a complete MVP — or no software yet." },
+    problems:["I need somebody to build my app.","I have sketches but no functioning product.","My website explains the business but doesn't perform useful actions.","My customers need accounts, bookings, payments, updates, or dashboards.","My team is managing everything manually.","I need a prototype for a meeting.","I need a working version people can test."],
+    jackQuestion:"What is the one action your user must be able to complete for this product to matter?",
+    ctaLabel:"Find My First Product" },
+  "install-the-systems": {
+    heroQuestion:"What keeps the business running after the customer says yes?",
+    explanation:"Many businesses don't suffer from a lack of ideas. They suffer from disconnected tools, missed messages, unclear responsibilities, repeated manual work, lost customer information, inconsistent follow-up, and systems that depend on one exhausted person remembering everything. We help connect the work into a visible, teachable operating system.",
+    research:{ title:"Technology advantage shouldn't belong only to larger companies.", body:"Larger organizations currently adopt AI at higher rates than the broader business population. AIBridge™ exists to help smaller organizations gain practical access without adopting tools they don't understand." },
+    problems:["Missed calls and inquiries.","Leads receiving no follow-up.","Customer information stored in several places.","Staff repeating the same work.","No clear onboarding.","No usable reporting.","Nobody knows the current status.","Important information lives only in one person's head.","AI tools used without rules or training."],
+    principle:"Automate the repetition. Preserve human judgment.",
+    jackQuestion:"What does your company repeat every day that should already be organized?",
+    ctaLabel:"Map My Systems" },
+  "grow-the-business": {
+    heroQuestion:"What turns attention into a customer?",
+    explanation:"Marketing creates awareness. Sales creates decisions. Follow-up protects opportunities. Customer experience creates retention. We connect those pieces so growth doesn't depend on random posting, one advertisement, or remembering to call someone back.",
+    principle:"Attention → Understanding → Trust → Action → Follow-Up → Experience → Retention → Referral",
+    problems:["The business gets attention but few inquiries.","Leads arrive but aren't followed up.","The offer is difficult to understand.","The website attracts the wrong people.","The founder relies entirely on referrals.","The business can't track where customers came from.","Customers purchase once and disappear.","There's no review or referral system."],
+    jackQuestion:"If ten qualified people arrived today, what system would turn them into customers?",
+    ctaLabel:"Find the Growth Gap" },
+  "train-the-people": {
+    heroQuestion:"Can the people using the system actually operate it?",
+    explanation:"A strong system can still fail when nobody understands it. Training shouldn't be an afterthought, a forgotten PDF, or a one-hour demo delivered on launch day. We can build training into the product, the workflow, the company, and the employee experience.",
+    principle:"Explain → Demonstrate → Practice → Review → Apply → Reinforce",
+    problems:["Employees are given tools without instruction.","Sales reps use inconsistent language.","New hires learn by guessing.","The founder is the only person who knows the process.","AI is introduced without standards.","Training materials become outdated.","Employees watch videos but never practice.","No one can confirm whether learning transferred into performance."],
+    jackQuestion:"Could a new person learn this correctly without standing beside you for three months?",
+    ctaLabel:"Build My Training System" },
+  "produce-the-media": {
+    heroQuestion:"How will people see, hear, and understand the value?",
+    explanation:"A strong company can stay invisible when its value is hard to explain. Media gives the company a voice, a face, a demonstration, a teaching tool, and a body of proof. We help create media connected to a business purpose — not content produced only to fill a calendar.",
+    problems:["The company is difficult to explain.","The founder is invisible.","Products are shown but never demonstrated.","Long-form content is never repurposed.","Training exists only as spoken instruction.","The business posts often but creates no action.","Audio and video feel disconnected from the sales process.","Valuable conversations disappear after they happen."],
+    jackQuestion:"What would someone need to see or hear before they trusted what you do?",
+    ctaLabel:"Plan My Media System" }
+};
+
 window.BUILD_EXT = {
 
   /* ===== WORLD 1 — START THE COMPANY ===== */

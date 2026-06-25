@@ -9,6 +9,10 @@
   if (window.BUILD_EXT) Object.keys(window.BUILD_EXT).forEach(function (k) {
     if (D.services[k]) { var x = window.BUILD_EXT[k]; D.services[k].approach = x.approach; D.services[k].whoFor = x.whoFor; }
   });
+  // merge category-hub content (hero question, explanation, problems, etc.)
+  if (window.BUILD_CAT_EXT) D.categories.forEach(function (c) {
+    var x = window.BUILD_CAT_EXT[c.slug]; if (x) Object.keys(x).forEach(function (k) { c[k] = x[k]; });
+  });
   var p = new URLSearchParams(location.search);
   var sSlug = p.get("s"), cSlug = p.get("cat");
   var catBy = function (s) { return D.categories.filter(function (c) { return c.slug === s; })[0]; };
@@ -116,16 +120,36 @@
 
   function renderCategory(slug){
     var cat = catBy(slug); if(!cat){ return renderWorlds(); }
-    setMeta(cat.title+" — What We Build — Day One MVP™", cat.promise);
+    var ctaLabel = cat.ctaLabel || "Tell Jack the Idea";
+    setMeta(cat.title+" — What We Build — Day One MVP™", cat.explanation || cat.promise);
     var html = '';
+
+    /* Hero — the human question */
     html += '<header class="page-hero"><div class="wrap"><div class="smoke wide">';
     html += crumb([{t:"What We Build",h:"what-we-build.html"},{t:cat.title}]);
-    html += '<span class="eyebrow">World '+e(cat.n)+'</span>';
-    html += '<h1 class="mega" style="font-size:clamp(36px,6vw,76px);">'+e(cat.title)+'</h1>';
-    html += '<p class="support hero-q">'+e(cat.promise)+'</p>';
-    html += '<div class="cta-row"><a href="start.html?path='+cat.slug+'" class="btn btn-primary">Tell Jack the Idea →</a></div>';
+    html += '<span class="eyebrow">World '+e(cat.n)+' · '+e(cat.title)+'</span>';
+    html += '<h1 class="mega" style="font-size:clamp(30px,5vw,60px);">'+e(cat.heroQuestion || cat.promise)+'</h1>';
+    html += '<div class="cta-row"><a href="start.html?path='+cat.slug+'" class="btn btn-primary">'+e(ctaLabel)+' &rarr;</a></div>';
     html += '</div></div></header>';
 
+    /* What this is + research card */
+    if(cat.explanation || cat.research){
+      html += '<section class="overlay-sec"><div class="wrap"><div class="smoke wide reveal">';
+      if(cat.explanation) html += '<p class="support lead-p">'+e(cat.explanation)+'</p>';
+      if(cat.research) html += '<div class="kv kv-note"><h3>'+e(cat.research.title)+'</h3><p>'+e(cat.research.body)+'</p></div>';
+      if(cat.note) html += '<div class="kv kv-note"><h3>'+e(cat.note.title)+'</h3><p>'+e(cat.note.body)+'</p></div>';
+      html += '</div></div></section>';
+    }
+
+    /* Problems this solves */
+    if(cat.problems && cat.problems.length){
+      html += '<section class="overlay-sec spotlight"><div class="wrap"><div class="smoke wide reveal">';
+      html += '<span class="eyebrow">Sound familiar?</span><h2>What this solves.</h2>';
+      html += '<ul class="prob-list">'+ cat.problems.map(function(p){return '<li>'+e(p)+'</li>';}).join('') +'</ul>';
+      html += '</div></div></section>';
+    }
+
+    /* Learning map (the topic tiles) */
     html += '<section class="overlay-sec"><div class="wrap"><div class="smoke wide reveal">';
     html += '<span class="eyebrow">The Learning Map</span><h2>Tap any piece to learn what it is.</h2>';
     if(cat.mission) html += '<p class="support">'+e(cat.mission)+'</p>';
@@ -134,12 +158,16 @@
       var s = D.services[slug];
       var num = (i+1<10?'0':'')+(i+1);
       if(s && s.status==="live") html += tile("build.html?s="+slug, num, s.title, s.clue, false);
-      else { // dev tile: show humanized title from slug
+      else {
         var t = slug.replace(/-/g," ").replace(/\b\w/g,function(m){return m.toUpperCase();});
         html += tile("", num, t, (window.BUILD_DEV_CLUES&&window.BUILD_DEV_CLUES[cat.slug])||"Deep-dive page coming soon.", true);
       }
     });
-    html += '</div></div></div></section>';
+    html += '</div>';
+    if(cat.principle) html += '<p class="principle">'+e(cat.principle)+'</p>';
+    if(cat.jackQuestion) html += '<blockquote class="pull">"'+e(cat.jackQuestion)+'"<span class="pull-by">— Jack Rodriguez</span></blockquote>';
+    html += '<div class="cta-row"><a href="start.html?path='+cat.slug+'" class="btn btn-primary">'+e(ctaLabel)+' &rarr;</a></div>';
+    html += '</div></div></section>';
 
     var nx = catBy(cat.next);
     if(nx){
