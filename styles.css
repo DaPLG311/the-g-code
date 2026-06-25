@@ -1706,20 +1706,15 @@ a.price-cell:hover .pl { color:#fff; }
 .hlink { color:var(--champagne-2); text-decoration:none; border-bottom:2px solid rgba(200,168,106,0.45); transition:color .15s, border-color .15s; }
 .hlink:hover { color:#fff; border-bottom-color:#fff; }
 
-/* ===== Top (hero) fog box → 100% see-through ===== */
-.hero .smoke, .page-hero .smoke {
-  background:transparent !important;
-  -webkit-backdrop-filter:none !important; backdrop-filter:none !important;
-  border:none !important; box-shadow:none !important;
-  text-shadow:0 2px 18px rgba(0,0,0,0.7), 0 1px 3px rgba(0,0,0,0.6); }
-.hero .smoke::before, .page-hero .smoke::before { display:none !important; }
-
 /* Accordion (How It Works) tooltips open UPWARD so they aren't clipped by the panel's overflow */
 .acc-inner .tlink:hover::after, .acc-inner .tlink:focus::after {
   top:auto; bottom:100%; margin-top:0; margin-bottom:8px; z-index:120; }
 
-/* see-through hero: keep secondary text legible over light + dark marble */
-.hero .smoke .support, .hero .smoke .cta-sub, .hero .smoke .powered,
-.page-hero .smoke .support {
-  color:#F2F3F5 !important;
-  text-shadow:0 1px 2px rgba(0,0,0,0.92), 0 2px 14px rgba(0,0,0,0.78) !important; }
+/* ===== Hero: remove the heavy light "fog" scrim (box 2) so the marble shows clean.
+   The dark .smoke content panel (box 3, the black box) stays as-is. ===== */
+.hero {
+  background:url("assets/img/marble4.jpg") !important;
+  background-size:cover !important; background-position:62% center !important; background-repeat:no-repeat !important; }
+.page-hero {
+  background:url("assets/img/marble3.jpg") !important;
+  background-size:cover !important; background-position:center !important; background-repeat:no-repeat !important; }
