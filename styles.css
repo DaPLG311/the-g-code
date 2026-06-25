@@ -1726,14 +1726,19 @@ a.price-cell:hover .pl { color:#fff; }
   transition:background .2s, border-color .2s; }
 .board-showall:hover { background:rgba(200,168,106,0.14); border-color:var(--champagne-2); }
 
-/* ===== "Speak to a Human" call button — in the header, half size ===== */
-.call-fab { position:absolute; left:232px; top:50%; transform:translateY(-50%); z-index:5; display:block; line-height:0;
+/* ===== "Speak to a Human" call button — in the header, right side ===== */
+/* mobile: absolute, just left of the hamburger */
+.call-fab { position:absolute; right:60px; top:50%; transform:translateY(-50%); z-index:5; display:block; line-height:0;
   filter:drop-shadow(0 3px 8px rgba(0,0,0,0.5)); transition:transform .18s ease; }
-.call-fab img { height:22px; width:auto; display:block; }
+.call-fab img { height:21px; width:auto; display:block; }
 .call-fab:hover { transform:translateY(-50%) scale(1.05); }
-@media (max-width:760px){
-  .call-fab { left:auto; right:62px; }
-  .call-fab img { height:19px; }
+/* desktop: flex into the right cluster, just left of the nav links (no overlap) */
+@media (min-width:761px){
+  nav .brand { margin-right:auto; }
+  .call-fab { position:static; transform:none; order:1; margin-right:20px; align-self:center; }
+  .call-fab:hover { transform:scale(1.05); }
+  .nav-links { order:2; }
+  .call-fab img { height:24px; }
 }
 
 /* ===== Dedicated pricing-tier page ===== */
