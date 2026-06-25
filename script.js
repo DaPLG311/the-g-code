@@ -107,10 +107,14 @@ document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
       if (lab && ctl && (ctl.value || '').trim()) parts.push(lab.textContent.trim() + ': ' + ctl.value.trim());
     });
     var nm = (f.querySelector('[name=name]') || { value: '' }).value.trim();
+    var plain = 'NEW INQUIRY VIA DAYONEMVP.COM\n\n' + parts.join('\n\n');
     var subj = encodeURIComponent('New Day One MVP inquiry — ' + (nm || 'someone'));
-    var body = encodeURIComponent('NEW INQUIRY VIA DAYONEMVP.COM\n\n' + parts.join('\n\n'));
+    var body = encodeURIComponent(plain);
+    // Reliability: copy the full inquiry to the clipboard so a lead is never lost
+    // even if the device has no mail client configured. (Then open mail + confirm.)
+    try { if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText('To: jack@dayonemvp.com\n\n' + plain); } catch (err) {}
     window.location.href = 'mailto:jack@dayonemvp.com?subject=' + subj + '&body=' + body;
-    setTimeout(function () { window.location.href = 'success.html'; }, 800);
+    setTimeout(function () { window.location.href = 'success.html'; }, 900);
   });
 })();
 

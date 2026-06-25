@@ -1761,3 +1761,7 @@ a.price-cell:hover .pl { color:#fff; }
 .prog { display:flex; flex-direction:column; gap:9px; border:1px solid rgba(255,255,255,0.10); border-radius:8px; padding:18px 20px; background:rgba(255,255,255,0.03); }
 .prog-name { color:#fff; font-weight:600; font-size:15.5px; }
 .prog-status { align-self:flex-start; font-family:"Oswald",sans-serif; text-transform:uppercase; letter-spacing:.08em; font-size:10.5px; color:var(--champagne-2); border:1px solid rgba(200,168,106,0.4); border-radius:999px; padding:3px 11px; }
+
+/* ===== Lead-form consent microline ===== */
+.form-consent { margin-top:14px; color:#9BA0A8; font-size:13px; line-height:1.5; max-width:560px; }
+.form-consent a { color:var(--champagne-2); text-decoration:underline; }
