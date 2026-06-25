@@ -1133,7 +1133,7 @@ body::before {
 .smoke > p:not(.support):not(.powered) { color: #CACDD2; margin-bottom: 14px; }
 
 /* CTA row + light buttons (sit on smoke / marble) */
-.cta-row { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 28px; }
+.cta-row { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-top: 28px; }
 .smoke.center .cta-row { justify-content: center; }
 .btn-ghost-light { background: rgba(255,255,255,0.02); color: #fff; border: 1px solid rgba(255,255,255,0.5); }
 .btn-ghost-light:hover { border-color: #fff; transform: translateY(-2px); }
