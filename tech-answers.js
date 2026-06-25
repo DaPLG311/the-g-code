@@ -14,7 +14,9 @@
   var elEmpty = document.getElementById('boardEmpty');
   if (!elList) return;
 
-  var state = { q: '', cat: 'All' };
+  var state = { q: '', cat: 'All', all: false };
+  var SHOW_LIMIT = 10;
+  var FEATURED = ["MVP","Website","Web Application","CRM","Prototype","Landing Page","Dashboard","Automation","Domain","API","Hosting","Onboarding"];
 
   // build filter chips
   function chip(label) {
@@ -23,7 +25,7 @@
     b.type = 'button';
     b.textContent = label;
     b.setAttribute('aria-pressed', label === state.cat ? 'true' : 'false');
-    b.addEventListener('click', function () { state.cat = label; syncURL(); render(); });
+    b.addEventListener('click', function () { state.cat = label; state.all = false; syncURL(); render(); });
     return b;
   }
   function buildFilters() {
@@ -92,9 +94,31 @@
     });
     elList.innerHTML = '';
     var shown = data.filter(matches);
-    shown.forEach(function (x) { elList.appendChild(termCard(x)); });
-    elCount.textContent = shown.length + ' of ' + data.length + ' terms' +
-      (state.cat !== 'All' ? ' · ' + state.cat : '') + (state.q ? ' · “' + state.q + '”' : '');
+    // "browsing" = no search, no category filter, not expanded → show a short curated set
+    var browsing = (!state.q && state.cat === 'All' && !state.all);
+    var toRender = shown;
+    if (browsing) {
+      var feat = [];
+      FEATURED.forEach(function (name) {
+        var hit = shown.filter(function (x) { return x.t === name; })[0];
+        if (hit) feat.push(hit);
+      });
+      var rest = shown.filter(function (x) { return feat.indexOf(x) === -1; });
+      toRender = feat.concat(rest).slice(0, SHOW_LIMIT);
+    }
+    toRender.forEach(function (x) { elList.appendChild(termCard(x)); });
+    if (browsing && shown.length > toRender.length) {
+      var more = document.createElement('button');
+      more.className = 'board-showall';
+      more.type = 'button';
+      more.textContent = 'Show all ' + shown.length + ' terms →';
+      more.addEventListener('click', function () { state.all = true; render(); });
+      elList.appendChild(more);
+    }
+    elCount.textContent = browsing
+      ? ('Showing ' + toRender.length + ' of ' + data.length + ' terms — search or filter for more')
+      : (shown.length + ' of ' + data.length + ' terms' +
+        (state.cat !== 'All' ? ' · ' + state.cat : '') + (state.q ? ' · “' + state.q + '”' : ''));
     elEmpty.hidden = shown.length !== 0;
   }
 

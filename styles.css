@@ -1718,3 +1718,10 @@ a.price-cell:hover .pl { color:#fff; }
 .page-hero {
   background:url("assets/img/marble3.jpg") !important;
   background-size:cover !important; background-position:center !important; background-repeat:no-repeat !important; }
+
+/* ===== Tech Answers: "show all terms" toggle ===== */
+.board-showall { display:block; margin:22px auto 0; padding:13px 26px; cursor:pointer;
+  background:rgba(255,255,255,0.04); color:#fff; border:1px solid rgba(200,168,106,0.4); border-radius:8px;
+  font-family:"Oswald",sans-serif; text-transform:uppercase; letter-spacing:.1em; font-size:13px;
+  transition:background .2s, border-color .2s; }
+.board-showall:hover { background:rgba(200,168,106,0.14); border-color:var(--champagne-2); }
