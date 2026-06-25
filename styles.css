@@ -1646,25 +1646,26 @@ body.world .menu-toggle span { background: #DDE0E4; }
 .dir h4 { color:#fff; font-family:"Oswald",sans-serif; text-transform:uppercase; letter-spacing:.08em; font-size:14px; margin-bottom:8px; }
 .dir p { color:#C2C5CB; font-size:14px; line-height:1.55; }
 
-/* ===== Full-width marble header strip (16:1) with our logo overlaid on the left ===== */
+/* ===== Full-width marble header strip (16:1) — opacity baked into the image,
+   so it's a plain background that scales (cover) and shrinks cleanly to mobile ===== */
 body.world nav, nav {
   background-color:#0a0a0c;
-  background-image:url("assets/img/nav-strip.png");
-  background-repeat:no-repeat; background-position:left center; background-size:cover;
+  background-image:url("assets/img/nav-strip2.png");
+  background-repeat:no-repeat; background-position:center; background-size:cover;
   min-height:88px; padding-top:6px; padding-bottom:6px; }
 body.world nav.scrolled, nav.scrolled {
   background-color:#0a0a0c;
-  background-image:url("assets/img/nav-strip.png");
-  background-repeat:no-repeat; background-position:left center; background-size:cover;
+  background-image:url("assets/img/nav-strip2.png");
+  background-repeat:no-repeat; background-position:center; background-size:cover;
   border-bottom:1px solid rgba(255,255,255,0.10); }
-/* our logo — large, nudged slightly down to sit on the strip's optical center */
+/* our logo — large, centered vertically */
 .brand { display:flex; align-items:center; width:auto; max-width:none; height:auto; padding:0; margin:0;
   border:none; box-shadow:none; background:none; border-radius:0; }
-.brand-logo { display:block; height:72px; width:auto; margin-top:8px;
+.brand-logo { display:block; height:72px; width:auto;
   filter:drop-shadow(0 2px 6px rgba(0,0,0,.7)); }
 @media (max-width:600px){
   body.world nav, nav, body.world nav.scrolled, nav.scrolled { min-height:66px; }
-  .brand-logo { height:52px; margin-top:6px; }
+  .brand-logo { height:52px; }
 }
 
 /* ===== Topic auto-link + plain-English tooltip ===== */
