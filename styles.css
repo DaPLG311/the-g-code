@@ -1812,3 +1812,21 @@ a.price-cell:hover .pl { color:#fff; }
 .proc-n { font-family:"Archivo",sans-serif; font-weight:800; color:var(--champagne-2); font-size:18px; min-width:28px; }
 .proc-step h3 { color:#fff; font-size:17px; margin-bottom:4px; }
 .proc-step p { color:#C2C5CB; font-size:14px; line-height:1.55; }
+
+/* ===== "Why Day One" nav dropdown ===== */
+.nav-dd { position:relative; display:inline-block; }
+.nav-dd-btn { background:none; border:none; cursor:pointer; color:var(--muted); font-family:"Oswald",sans-serif; text-transform:uppercase; letter-spacing:.04em; font-size:13px; padding:0; display:inline-flex; align-items:center; gap:6px; transition:color .2s; }
+.nav-dd-btn:hover { color:var(--text); }
+.dd-caret { font-size:9px; transition:transform .2s; }
+.nav-dd-panel { position:absolute; top:calc(100% + 16px); left:50%; transform:translateX(-50%) translateY(6px); min-width:232px; background:rgba(10,11,15,0.97); -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px); border:1px solid rgba(255,255,255,0.12); border-radius:10px; padding:10px; display:flex; flex-direction:column; gap:2px; opacity:0; visibility:hidden; transition:opacity .18s, transform .18s; box-shadow:0 20px 50px rgba(0,0,0,.5); z-index:60; }
+.nav-dd:hover .nav-dd-panel, .nav-dd.open .nav-dd-panel, .nav-dd:focus-within .nav-dd-panel { opacity:1; visibility:visible; transform:translateX(-50%) translateY(0); }
+.nav-dd:hover .dd-caret, .nav-dd.open .dd-caret { transform:rotate(180deg); }
+.nav-dd-panel a { display:block; padding:9px 12px; border-radius:7px; color:#C7CBD1 !important; font-family:"Oswald",sans-serif; text-transform:uppercase; letter-spacing:.04em; font-size:12.5px; text-decoration:none; white-space:nowrap; border-bottom:0 !important; transition:background .15s, color .15s; }
+.nav-dd-panel a:hover { background:rgba(200,168,106,0.14); color:#fff !important; }
+@media (max-width:760px){
+  .nav-dd { display:block; width:100%; }
+  .nav-dd-btn { width:100%; justify-content:space-between; padding:14px 0; font-size:15px; border-bottom:1px solid rgba(255,255,255,0.08); }
+  .nav-dd-panel { position:static; transform:none !important; min-width:0; background:none; backdrop-filter:none; -webkit-backdrop-filter:none; border:none; box-shadow:none; padding:0; display:none; opacity:1; visibility:visible; }
+  .nav-dd.open .nav-dd-panel { display:flex; padding:6px 0 8px 14px; }
+  .nav-dd-panel a { padding:11px 0; font-size:14px; }
+}

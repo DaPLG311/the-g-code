@@ -118,6 +118,38 @@ document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
   });
 })();
 
+// "Why Day One" dropdown — injected into the nav (model / proof / who-we-help pages)
+(function () {
+  var links = document.getElementById('navLinks');
+  if (!links || links.querySelector('.nav-dd')) return;
+  var items = [
+    ['the-day-one-stack.html', 'The Day One Stack'],
+    ['how-we-collapse-time.html', 'How We Collapse Time'],
+    ['proof-one-day-build.html', 'The One-Day Build'],
+    ['protocols.html', 'Our Process'],
+    ['research-ai-assisted-execution.html', 'Research'],
+    ['who-we-help.html', 'Who We Help'],
+    ['the-human-advantage.html', 'The Human Advantage'],
+    ['the-destination.html', 'The Destination']
+  ];
+  var dd = document.createElement('div');
+  dd.className = 'nav-dd';
+  var btn = document.createElement('button');
+  btn.type = 'button'; btn.className = 'nav-dd-btn'; btn.setAttribute('aria-expanded', 'false');
+  btn.innerHTML = 'Why Day One <span class="dd-caret" aria-hidden="true">▾</span>';
+  var panel = document.createElement('div');
+  panel.className = 'nav-dd-panel';
+  panel.innerHTML = items.map(function (i) { return '<a href="' + i[0] + '">' + i[1] + '</a>'; }).join('');
+  dd.appendChild(btn); dd.appendChild(panel);
+  btn.addEventListener('click', function (e) {
+    e.preventDefault();
+    var open = dd.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  var cta = links.querySelector('a.btn');
+  if (cta) links.insertBefore(dd, cta); else links.appendChild(dd);
+})();
+
 // Mark the current page in the nav (dot indicator, esp. on the mobile menu)
 (function () {
   var here = (location.pathname.split('/').pop() || 'index.html').toLowerCase();

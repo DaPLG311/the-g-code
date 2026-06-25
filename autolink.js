@@ -91,7 +91,19 @@
     { slug:"market-research", ex:"Check that real demand exists before you build.", words:["Market Research"] },
     { slug:"integrations", ex:"Make your tools talk to each other.", words:["Integrations","Integration"] },
     { slug:"certification", ex:"Confirm the training actually stuck.", words:["Certification"] },
-    { slug:"photography", ex:"Real images that build trust fast.", words:["Photography"] }
+    { slug:"photography", ex:"Real images that build trust fast.", words:["Photography"] },
+
+    /* operating-model concepts → Tech Answers definitions */
+    { slug:"time-collapse", href:"tech-answers.html?term=time-collapse", ex:"Removing the waiting between the work — not the work.", words:["Time Collapse","time collapse","collapses time","collapse time"] },
+    { slug:"operating-model", href:"tech-answers.html?term=operating-model", ex:"One coordinated system from idea to result.", words:["operating model"] },
+    { slug:"vertically-integrated", href:"tech-answers.html?term=vertically-integrated", ex:"Many connected layers, one strategic core.", words:["vertically integrated","vertically-integrated"] },
+    { slug:"the-day-one-stack", href:"tech-answers.html?term=the-day-one-stack", ex:"Six worlds as one company-building operating system.", words:["the Day One Stack","Day One Stack"] },
+    { slug:"coordination-cost", href:"tech-answers.html?term=coordination-cost", ex:"Time lost to handoffs, approvals, and re-explaining.", words:["coordination cost","coordination drag"] },
+    { slug:"source-of-truth", href:"tech-answers.html?term=source-of-truth", ex:"One current place the facts live.", words:["source of truth"] },
+    { slug:"compounding-work", href:"tech-answers.html?term=compounding-work", ex:"Each output becomes the next layer's input.", words:["compounding work","the work compounds"] },
+    { slug:"data-driven-engine", href:"tech-answers.html?term=data-driven-engine", ex:"One template renders many pages from data.", words:["data-driven engine","data-driven engines","data-driven systems"] },
+    { slug:"controlled-acceleration", href:"tech-answers.html?term=controlled-acceleration", ex:"Faster, with human review kept in the loop.", words:["controlled acceleration"] },
+    { slug:"structured-data", href:"tech-answers.html?term=structured-data", ex:"Markup that tells search engines what a page is.", words:["structured data"] }
   ];
 
   function esc(s){ return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); }
@@ -138,7 +150,7 @@
         after.nodeValue = after.nodeValue.slice(full.length);
         var a = document.createElement("a");
         a.className = "tlink";
-        a.href = "build.html?s=" + T.slug;
+        a.href = T.href || ("build.html?s=" + T.slug);
         a.setAttribute("data-ex", T.ex);
         a.setAttribute("title", T.ex);
         a.textContent = full;

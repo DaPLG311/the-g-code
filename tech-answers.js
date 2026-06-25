@@ -164,6 +164,14 @@
   readURL();
   render();
 
+  // deep link: tech-answers.html?term=<slug> opens that exact definition
+  (function () {
+    var tp = new URLSearchParams(location.search).get('term');
+    if (!tp) return;
+    var hit = data.filter(function (x) { return slug(x.t) === tp.toLowerCase(); })[0];
+    if (hit) openTerm(hit.t);
+  })();
+
   // glossary hub structured data — DefinedTermSet of all terms
   (function () {
     var url = 'https://dayonemvp.com/tech-answers.html';
