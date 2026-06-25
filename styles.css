@@ -1679,3 +1679,17 @@ body.world nav.scrolled, nav.scrolled {
   letter-spacing:0; text-transform:none; box-shadow:0 12px 32px rgba(0,0,0,.5); pointer-events:none;
 }
 @media (max-width:600px){ .tlink:hover::after, .tlink:focus::after { max-width:220px; } }
+
+/* ===== Home pricing cells jump to explanations + Idea Session card ===== */
+a.price-cell { text-decoration:none; color:inherit; cursor:pointer; transition:background .2s, transform .2s; }
+a.price-cell:hover { background:rgba(200,168,106,0.12); transform:translateY(-2px); }
+a.price-cell:hover .pl { color:#fff; }
+/* anchor targets clear the fixed header */
+#idea-session, #blueprint, #working-alpha, #mvp-launch, #platform, #small-business { scroll-margin-top:112px; }
+/* Idea Session explainer card on the pricing page */
+.idea-session-card { border:1px solid rgba(200,168,106,0.30); border-radius:8px; padding:24px 28px; margin:18px 0 26px;
+  background:linear-gradient(160deg, rgba(24,22,18,0.70), rgba(12,13,17,0.82)); }
+.idea-session-card .is-head { display:flex; align-items:baseline; gap:14px; flex-wrap:wrap; margin-bottom:8px; }
+.idea-session-card h3 { color:#fff; font-size:22px; margin:0; }
+.idea-session-card .lp { font-family:"Archivo",sans-serif; font-weight:800; color:var(--champagne-2); font-size:18px; margin-left:auto; }
+.idea-session-card p { color:#C2C5CB; font-size:15px; line-height:1.6; margin:0 0 16px; }
