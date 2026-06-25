@@ -1726,13 +1726,12 @@ a.price-cell:hover .pl { color:#fff; }
   transition:background .2s, border-color .2s; }
 .board-showall:hover { background:rgba(200,168,106,0.14); border-color:var(--champagne-2); }
 
-/* ===== Floating "Speak to a Human" call button (all pages) ===== */
-.call-fab { position:fixed; top:100px; right:20px; z-index:60; display:block; line-height:0;
-  filter:drop-shadow(0 6px 16px rgba(0,0,0,0.55)); transition:transform .18s ease; }
-.call-fab img { height:44px; width:auto; display:block; }
-.call-fab:hover { transform:translateY(-2px) scale(1.02); }
-.call-fab:active { transform:translateY(0) scale(.99); }
+/* ===== "Speak to a Human" call button — in the header, half size ===== */
+.call-fab { position:absolute; left:232px; top:50%; transform:translateY(-50%); z-index:5; display:block; line-height:0;
+  filter:drop-shadow(0 3px 8px rgba(0,0,0,0.5)); transition:transform .18s ease; }
+.call-fab img { height:22px; width:auto; display:block; }
+.call-fab:hover { transform:translateY(-50%) scale(1.05); }
 @media (max-width:760px){
-  .call-fab { top:auto; bottom:16px; right:12px; }
-  .call-fab img { height:40px; }
+  .call-fab { left:auto; right:62px; }
+  .call-fab img { height:19px; }
 }
