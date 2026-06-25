@@ -1732,12 +1732,12 @@ a.price-cell:hover .pl { color:#fff; }
   filter:drop-shadow(0 3px 8px rgba(0,0,0,0.5)); transition:transform .18s ease; }
 .call-fab img { height:21px; width:auto; display:block; }
 .call-fab:hover { transform:translateY(-50%) scale(1.05); }
-/* desktop: flex into the right cluster, just left of the nav links (no overlap) */
+/* desktop: flex into the FAR right slot — after the nav links (Call is rightmost) */
 @media (min-width:761px){
   nav .brand { margin-right:auto; }
-  .call-fab { position:static; transform:none; order:1; margin-right:20px; align-self:center; }
-  .call-fab:hover { transform:scale(1.05); }
   .nav-links { order:2; }
+  .call-fab { position:static; transform:none; order:3; margin-left:22px; align-self:center; }
+  .call-fab:hover { transform:scale(1.05); }
   .call-fab img { height:24px; }
 }
 
