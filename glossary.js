@@ -22,7 +22,7 @@ window.GLOSSARY = [
   { t: "Scope", c: "Product Development", d: "The agreed boundary of what will and will not be built during a project.", m: "Clear scope is how you avoid surprise costs.", r: ["Revision", "Roadmap"] },
   { t: "Revision", c: "Product Development", d: "An approved round of changes to work already included in the project scope — different from adding an entirely new feature.", r: ["Scope"] },
   { t: "Roadmap", c: "Product Development", d: "A prioritized plan showing what should be built now, next, and later.", r: ["Blueprint", "Scope"] },
-  { t: "User Journey", c: "Product Development", d: "The series of steps a person takes from first discovering the company to completing an important action.", r: ["User Story", "Funnel"] },
+  { t: "User Journey", c: "Product Development", d: "The series of steps a person takes from first discovering the company to completing an important action.", r: ["Funnel", "Acceptance Criteria"] },
   { t: "Acceptance Criteria", c: "Product Development", d: "The conditions that must be true for a feature to be considered complete and working as agreed.", r: ["Scope", "Quality Assurance"] },
 
   /* ---- Websites and Applications ---- */
@@ -45,7 +45,7 @@ window.GLOSSARY = [
   { t: "Responsive Design", c: "Websites and Applications", d: "A design that adjusts properly across phones, tablets, laptops, and desktop screens.", r: ["Mobile-First"] },
   { t: "Mobile-First", c: "Websites and Applications", d: "Designing the phone experience first rather than shrinking a desktop page after it is already complete.", r: ["Responsive Design"] },
   { t: "Accessibility", c: "Websites and Applications", d: "Designing so people with different abilities can understand, navigate, and use a product — including contrast, keyboard access, readable text, alternative text, and labels.", r: ["UX"] },
-  { t: "Design System", c: "Websites and Applications", d: "A reusable collection of colors, fonts, spacing rules, buttons, cards, form elements, and interface patterns.", r: ["Component", "Brand System"] },
+  { t: "Design System", c: "Websites and Applications", d: "A reusable collection of colors, fonts, spacing rules, buttons, cards, form elements, and interface patterns.", r: ["Component", "UI"] },
   { t: "Component", c: "Websites and Applications", d: "A reusable interface element such as a button, navigation bar, card, form, or modal.", r: ["Design System"] },
   { t: "Information Architecture", c: "Websites and Applications", d: "The way pages, sections, content, and navigation are organized so people can find what they need.", r: ["User Journey"] },
 

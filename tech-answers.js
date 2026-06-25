@@ -126,6 +126,7 @@
   function openTerm(name) {
     state.cat = 'All';
     state.q = '';
+    state.all = true; // show full list so the target term is rendered (not hidden behind the 10-term preview)
     if (elSearch) elSearch.value = '';
     render();
     var node = document.getElementById('term-' + slug(name));
