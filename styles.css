@@ -1944,3 +1944,25 @@ a.price-cell:hover .pl { color:#fff; }
   .cap-list.two{grid-template-columns:1fr;}
   .founder-read p,.founder-read .lead{max-width:none;}
 }
+
+/* ===================== FLOW & ARTISTIC TYPE REFINEMENT =====================
+   Lighter display weights, open leading, balanced wrapping. Headings read as
+   flowing lines instead of dense uppercase blocks. Sitewide; appended last so
+   it wins the cascade over earlier type declarations. */
+h1, h2, h3 { font-weight: 700; line-height: 1.14; letter-spacing: -0.012em; text-wrap: balance; }
+.mega { font-weight: 800; line-height: 1.06; letter-spacing: -0.018em; text-wrap: balance; }
+.mega .tm { font-weight: 700; }
+.statement { font-weight: 700; line-height: 1.16; letter-spacing: -0.006em; text-wrap: balance; }
+.statement .accent { margin-top: 0.14em; }
+.smoke h2 { line-height: 1.18; }
+.founder-role { line-height: 1.22; }
+.eyebrow { line-height: 1.5; }
+.support, .smoke > p:not(.support):not(.powered), .founder-read p { line-height: 1.72; text-wrap: pretty; }
+.creed { line-height: 1.36; }
+.creed.big { line-height: 1.18; }
+.cap-list li { line-height: 1.35; }
+@media (max-width: 600px) {
+  body.world .hero .mega, body.world .page-hero .mega { line-height: 1.08; }
+  .mega { line-height: 1.1; }
+  .statement { line-height: 1.2; }
+}
