@@ -1836,3 +1836,72 @@ a.price-cell:hover .pl { color:#fff; }
   .nav-dd.open .nav-dd-panel { display:flex; padding:6px 0 8px 14px; }
   .nav-dd-panel a { padding:11px 0; font-size:14px; }
 }
+
+/* =====================================================================
+   ELITE BOX ANIMATION SYSTEM — entrance cascade + hover lift/glow/arrow/trace
+   GPU: transform + opacity only. Entrance uses @keyframes (not transition)
+   so hover stays instant. Gold #DAA520 per spec. Reduced-motion safe.
+   ===================================================================== */
+@keyframes boxIn { from { opacity:0; transform:translateY(40px); } to { opacity:1; transform:translateY(0); } }
+@keyframes arrowPulse {
+  0%   { transform:translateX(0)   scale(1.12); opacity:1; }
+  25%  { transform:translateX(4px) scale(1.12); opacity:.8; }
+  50%  { transform:translateX(0)   scale(1.12); opacity:1; }
+  75%  { transform:translateX(4px) scale(1.12); opacity:.8; }
+  100% { transform:translateX(0)   scale(1.12); opacity:1; }
+}
+
+/* ENTRANCE — staggered fade-up (only inside a revealed container) */
+.reveal.in .svc-tile,
+.reveal.in .aud-card,
+.reveal.in .stack-row,
+.reveal.in .lvl-card,
+.reveal.in .stat,
+.reveal.in .cat,
+.reveal.in .dir,
+.reveal.in .prog,
+.reveal.in .price-cell,
+.reveal.in .compare { animation: boxIn .6s cubic-bezier(0.34,1.56,0.64,1) both; }
+.reveal.in :is(.svc-tile,.aud-card,.stack-row,.lvl-card,.stat,.cat,.dir,.prog,.price-cell,.compare):nth-child(2){animation-delay:.12s}
+.reveal.in :is(.svc-tile,.aud-card,.stack-row,.lvl-card,.stat,.cat,.dir,.prog,.price-cell,.compare):nth-child(3){animation-delay:.24s}
+.reveal.in :is(.svc-tile,.aud-card,.stack-row,.lvl-card,.stat,.cat,.dir,.prog,.price-cell,.compare):nth-child(4){animation-delay:.36s}
+.reveal.in :is(.svc-tile,.aud-card,.stack-row,.lvl-card,.stat,.cat,.dir,.prog,.price-cell,.compare):nth-child(5){animation-delay:.48s}
+.reveal.in :is(.svc-tile,.aud-card,.stack-row,.lvl-card,.stat,.cat,.dir,.prog,.price-cell,.compare):nth-child(6){animation-delay:.60s}
+.reveal.in :is(.svc-tile,.aud-card,.stack-row,.lvl-card,.stat,.cat,.dir,.prog,.price-cell,.compare):nth-child(7){animation-delay:.72s}
+.reveal.in :is(.svc-tile,.aud-card,.stack-row,.lvl-card,.stat,.cat,.dir,.prog,.price-cell,.compare):nth-child(n+8){animation-delay:.84s}
+
+/* HOVER — lift -8px + gold glow + border; exit faster than enter */
+.svc-tile:not(.dev), .aud-card, .stack-row, .lvl-card {
+  position:relative; overflow:hidden; will-change:transform;
+  transition: transform .25s cubic-bezier(.65,0,.35,1), border-color .25s ease, box-shadow .25s ease;
+}
+.svc-tile:not(.dev):hover, .aud-card:hover, .stack-row:hover, .lvl-card:hover {
+  transform: translateY(-8px);
+  border-color:#DAA520;
+  box-shadow: 0 16px 38px rgba(0,0,0,0.5), 0 0 16px rgba(218,165,32,0.4);
+  transition: transform .3s cubic-bezier(.33,1,.68,1), border-color .3s ease, box-shadow .3s ease;
+}
+
+/* ARROW — fade .7→1, scale, then a 2-pulse ping-pong on hover */
+.svc-tile .st-go, .aud-card .aud-go, .stack-row .st-go, .lvl-card .go {
+  display:inline-block; opacity:.7; transition: opacity .2s ease-out, transform .2s ease-out;
+}
+.svc-tile:not(.dev):hover .st-go, .aud-card:hover .aud-go, .stack-row:hover .st-go, .lvl-card:hover .go {
+  opacity:1; transform:scale(1.12); animation: arrowPulse .6s ease-in-out 1;
+}
+
+/* BORDER TRACE — gold line sweeps left→right on hover */
+.svc-tile:not(.dev)::after, .aud-card::after, .stack-row::after, .lvl-card::after {
+  content:""; position:absolute; left:0; bottom:0; height:2px; width:100%;
+  background:#DAA520; transform:scaleX(0); transform-origin:left;
+  transition: transform .4s cubic-bezier(.65,0,.35,1); pointer-events:none;
+}
+.svc-tile:not(.dev):hover::after, .aud-card:hover::after, .stack-row:hover::after, .lvl-card:hover::after { transform:scaleX(1); }
+
+/* RESPECT reduced motion — kill entrance + hover motion */
+@media (prefers-reduced-motion: reduce){
+  .reveal.in :is(.svc-tile,.aud-card,.stack-row,.lvl-card,.stat,.cat,.dir,.prog,.price-cell,.compare){ animation:none !important; }
+  .svc-tile:not(.dev):hover, .aud-card:hover, .stack-row:hover, .lvl-card:hover { transform:none !important; }
+  .svc-tile:hover .st-go, .aud-card:hover .aud-go, .stack-row:hover .st-go, .lvl-card:hover .go { animation:none !important; transform:none !important; }
+  .svc-tile:hover::after, .aud-card:hover::after, .stack-row:hover::after, .lvl-card:hover::after { transform:scaleX(0) !important; }
+}
