@@ -1966,3 +1966,10 @@ h1, h2, h3 { font-weight: 700; line-height: 1.14; letter-spacing: -0.012em; text
   .mega { line-height: 1.1; }
   .statement { line-height: 1.2; }
 }
+
+/* ELROY layer 1 — pre-hide hero items so the GSAP cascade has no flash.
+   Only when motion is allowed; only where .elroy-hero-item exists. */
+@media (prefers-reduced-motion: no-preference) {
+  html.elroy .hero .elroy-hero-item,
+  html.elroy .page-hero .elroy-hero-item { opacity: 0; }
+}
