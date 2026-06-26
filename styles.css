@@ -1413,12 +1413,18 @@ body.world .page-hero {
 /* programs-in-development tag */
 .dev-tag { display:inline-block; font-family:"Oswald",sans-serif; text-transform:uppercase; letter-spacing:.18em; font-size:10px; color:#9A9DA4; border:1px dashed rgba(255,255,255,0.22); padding:5px 12px; border-radius:2px; margin-bottom:18px; }
 
-/* clear the "fog": no white scrim over the marble — show the stone crisp */
+/* Controlled contrast: mute the content-section marble so dark boxes stay king,
+   with a dark-top → lighter-bottom gradient to guide the eye, a slight zoom for
+   cleaner/larger pattern sections, and a touch more gold saturation so the
+   veining breathes. (Hero areas keep their own marble + black box.) */
 body.world::before {
-  background: url("assets/img/marble1.jpg") !important;
-  background-size: cover !important;
-  background-position: center !important;
+  background:
+    linear-gradient(180deg, rgba(8,9,11,0.66) 0%, rgba(8,9,11,0.50) 48%, rgba(8,9,11,0.32) 100%),
+    url("assets/img/marble1.jpg") !important;
+  background-size: cover, 134% !important;
+  background-position: center, center !important;
   background-attachment: scroll !important;
+  filter: saturate(1.18) contrast(1.05) !important;
 }
 
 /* =====================================================================
