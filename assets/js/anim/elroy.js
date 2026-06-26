@@ -1,13 +1,17 @@
 /* ELROY engine — named, reusable GSAP sequences for the static site.
-   Layer 1 = cinematic hero entrance. Layer 3 = scrubbed scroll reveal + pinned
-   rail (defined here, wired per-page as needed). Guarded for reduced-motion,
-   mobile, and missing-GSAP. Self-hosted GSAP => CSP 'self' clean. */
+   Layer 1 = cinematic hero entrance. Layer 3 = scrubbed scroll reveal (defined
+   here, wired per-page as needed). Guarded for reduced-motion, mobile, and
+   missing-GSAP. Self-hosted GSAP => CSP 'self' clean.
+
+   SAFETY: the hero resting state is always VISIBLE. We animate with
+   immediateRender:false, so the hidden start-state is only applied once the
+   tween actually ticks. If GSAP never loads, the tab is throttled, or the tween
+   stalls, content simply stays visible — it can never get stuck hidden. */
 (function () {
   "use strict";
-  var d = document, root = d.documentElement;
+  var d = document;
 
-  // GSAP must be present; if not, reveal anything we pre-hid and bail.
-  if (!window.gsap) { root.classList.remove("elroy"); return; }
+  if (!window.gsap) return; // no GSAP -> nothing hidden, nothing to do
 
   var mqReduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)");
   var reduce = mqReduce && mqReduce.matches;
@@ -21,40 +25,40 @@
 
   /* ---------- named sequence factories (reusable across pages) ---------- */
 
-  // Layer 1 — cinematic hero cascade (plays on load)
+  // Layer 1 — cinematic hero cascade (plays on load).
+  // Auto-targets the direct children of the hero content box on any page.
   function heroSequence(scopeSel) {
-    var sel = scopeSel ? (scopeSel + " .elroy-hero-item")
-                       : ".hero .elroy-hero-item, .page-hero .elroy-hero-item";
+    var sel = scopeSel
+      ? (scopeSel + " .elroy-hero-item")
+      : ".hero .smoke > *, .page-hero .smoke > *";
     var items = d.querySelectorAll(sel);
     if (!items.length) return;
     var y = isMobile ? 20 : (T.distance ? T.distance.cascade : 40);
     var stg = isMobile ? (T.stagger ? T.stagger.medium : 0.08) : (T.stagger ? T.stagger.loose : 0.12);
-    gsap.fromTo(items,
-      { opacity: 0, y: y },
-      { opacity: 1, y: 0, duration: dur("long", 520), ease: easeBack, stagger: stg, clearProps: "transform" }
-    );
+    gsap.from(items, {
+      opacity: 0, y: y, duration: dur("long", 520), ease: easeBack, stagger: stg,
+      immediateRender: false,        // never pre-apply the hidden state
+      clearProps: "opacity,transform" // leave no inline styles behind
+    });
   }
 
-  // Layer 3 — scrubbed progressive reveal of a card stack (no pin; safe everywhere)
+  // Layer 3 — scrubbed progressive reveal of a card stack (no pin; safe).
+  // Also immediateRender:false so cards rest visible if anything goes wrong.
   function revealStack(sectionEl) {
     var cards = sectionEl.querySelectorAll(".elroy-stack-item");
     if (!cards.length) return;
-    gsap.fromTo(cards,
-      { opacity: 0.35, y: 40 },
-      {
-        opacity: 1, y: 0, ease: ease, stagger: 0.12,
-        scrollTrigger: { trigger: sectionEl, start: "top 75%", end: "top 35%", scrub: 0.5 }
-      }
-    );
+    gsap.from(cards, {
+      opacity: 0, y: 40, ease: ease, stagger: 0.12, immediateRender: false,
+      scrollTrigger: { trigger: sectionEl, start: "top 80%", once: true }
+    });
   }
   ELROY.heroSequence = heroSequence;
   ELROY.revealStack = revealStack;
 
   /* ---------------------------- init ---------------------------- */
   function init() {
-    if (reduce) { root.classList.remove("elroy"); return; } // never leave content hidden
+    if (reduce) return;            // resting state is visible; just don't animate
     heroSequence();
-    // selective: only sections that opt in via data-attr get scroll work
     if (window.ScrollTrigger) {
       d.querySelectorAll("[data-elroy='reveal-stack']").forEach(revealStack);
     }
