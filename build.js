@@ -118,7 +118,7 @@
     if(rel.length){
       html += '<section class="overlay-sec spotlight"><div class="wrap"><div class="smoke wide reveal">';
       html += '<span class="eyebrow">Continue the Build</span><h2>Related concepts.</h2>';
-      html += '<div class="svc-grid">'+ rel.map(function(r){ return tile("build.html?s="+r.slugKey, catBy(r.cat).title, r.title, r.clue, r.status!=="live"); }).join('') +'</div>';
+      html += '<div class="svc-grid" data-elroy=\"swipe\">'+ rel.map(function(r){ return tile("build.html?s="+r.slugKey, catBy(r.cat).title, r.title, r.clue, r.status!=="live"); }).join('') +'</div>';
       html += '</div></div></section>';
     }
 
@@ -180,7 +180,7 @@
     html += '<section class="overlay-sec"><div class="wrap"><div class="smoke wide reveal">';
     html += '<span class="eyebrow">The Learning Map</span><h2>Tap any <a class="hlink" href="tech-answers.html">building block</a> to learn what it is.</h2>';
     if(cat.mission) html += '<p class="support">'+e(cat.mission)+'</p>';
-    html += '<div class="svc-grid">';
+    html += '<div class="svc-grid" data-elroy=\"swipe\">';
     cat.order.forEach(function(slug,i){
       var s = D.services[slug];
       var num = (i+1<10?'0':'')+(i+1);
@@ -213,7 +213,7 @@
     html += crumb([{t:"What We Build"}]);
     html += '<span class="eyebrow">The Six Worlds</span><h1 class="mega" style="font-size:clamp(38px,6.4vw,80px);">Enter the Build.</h1>';
     html += '<p class="support hero-q">Every part of building a company — as a place you can explore.</p></div></div></header>';
-    html += '<section class="overlay-sec"><div class="wrap"><div class="smoke wide reveal"><div class="svc-grid">';
+    html += '<section class="overlay-sec"><div class="wrap"><div class="smoke wide reveal"><div class="svc-grid" data-elroy=\"swipe\">';
     html += D.categories.map(function(c){ return tile("build.html?cat="+c.slug, "World "+c.n, c.title, c.theme, false); }).join('');
     html += '</div></div></div></section>';
     root.innerHTML = html;

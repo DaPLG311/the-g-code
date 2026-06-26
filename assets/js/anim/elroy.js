@@ -52,8 +52,39 @@
       scrollTrigger: { trigger: sectionEl, start: "top 80%", once: true }
     });
   }
+  // Sideways "swipe-right" entrance — cards slide in from the LEFT (x<0 -> 0),
+  // moving left->right so it reads as a positive "swipe right" in the mind.
+  // Randomized per-item offset for an organic, non-mechanical feel.
+  // Scroll-triggered, once. Safe: immediateRender:false => cards rest visible.
+  function swipeReveal(container) {
+    var items = container.children;
+    if (!items.length || !window.ScrollTrigger) return;
+    gsap.from(items, {
+      opacity: 0,
+      x: function () { return -((isMobile ? 22 : 52) + Math.random() * (isMobile ? 16 : 44)); },
+      duration: dur("long", 520), ease: easeBack,
+      stagger: { each: isMobile ? 0.06 : 0.1, from: "start" },
+      immediateRender: false, clearProps: "opacity,transform",
+      scrollTrigger: { trigger: container, start: "top 84%", once: true }
+    });
+  }
+
+  // Fade-up entrance for a grid's children (the calmer counterpart to swipe).
+  function fadeReveal(container) {
+    var items = container.children;
+    if (!items.length || !window.ScrollTrigger) return;
+    gsap.from(items, {
+      opacity: 0, y: isMobile ? 20 : 36, duration: dur("long", 520), ease: ease,
+      stagger: { each: isMobile ? 0.06 : 0.09, from: "start" },
+      immediateRender: false, clearProps: "opacity,transform",
+      scrollTrigger: { trigger: container, start: "top 86%", once: true }
+    });
+  }
+
   ELROY.heroSequence = heroSequence;
   ELROY.revealStack = revealStack;
+  ELROY.swipeReveal = swipeReveal;
+  ELROY.fadeReveal = fadeReveal;
 
   /* ---------------------------- init ---------------------------- */
   function init() {
@@ -61,6 +92,15 @@
     heroSequence();
     if (window.ScrollTrigger) {
       d.querySelectorAll("[data-elroy='reveal-stack']").forEach(revealStack);
+      d.querySelectorAll("[data-elroy='swipe']").forEach(swipeReveal);
+      // Make every view exciting: animate the remaining card grids site-wide,
+      // sprinkling the left->right swipe in at random (the rest fade up).
+      var AUTO = ".stack, .lvl-grid, .stat-grid, .prog-grid, .compare-grid, .num-list, .proc";
+      d.querySelectorAll(AUTO).forEach(function (el) {
+        if (el.hasAttribute("data-elroy")) return;   // already handled above
+        el.setAttribute("data-elroy-managed", "");    // suppress CSS Elite-Box entrance
+        (Math.random() < 0.4 ? swipeReveal : fadeReveal)(el);
+      });
     }
   }
 

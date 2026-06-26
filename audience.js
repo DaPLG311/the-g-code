@@ -81,7 +81,7 @@
   if (t.services && t.services.length) {
     h += '<section class="overlay-sec spotlight"><div class="wrap"><div class="smoke wide reveal">';
     h += '<span class="eyebrow">Related building blocks</span><h2>Pieces that often fit.</h2>';
-    h += '<div class="svc-grid">' + t.services.map(function (s){
+    h += '<div class="svc-grid" data-elroy=\"swipe\">' + t.services.map(function (s){
       return '<a class="svc-tile" href="build.html?s=' + e(s.slug) + '"><h3>' + e(s.label) + '</h3><span class="st-go">Explore →</span></a>';
     }).join('') + '</div>';
     if (t.buildsHref) h += '<div class="cta-row" style="margin-top:8px;"><a class="btn btn-ghost-light" href="' + e(t.buildsHref) + '">' + e(t.buildsLabel || 'See the build world') + ' &rarr;</a></div>';

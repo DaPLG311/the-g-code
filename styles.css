@@ -1967,3 +1967,8 @@ h1, h2, h3 { font-weight: 700; line-height: 1.14; letter-spacing: -0.012em; text
   .statement { line-height: 1.2; }
 }
 
+
+/* ELROY sideways swipe-in — GSAP owns the left->right entrance of these cards,
+   so suppress the CSS Elite Box entrance to avoid double-animation. */
+[data-elroy="swipe"] > *,
+[data-elroy-managed] > * { animation: none !important; }
