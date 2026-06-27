@@ -61,11 +61,11 @@
     if (!items.length || !window.ScrollTrigger) return;
     gsap.from(items, {
       opacity: 0,
-      x: function () { return -((isMobile ? 22 : 52) + Math.random() * (isMobile ? 16 : 44)); },
-      duration: dur("long", 520), ease: easeBack,
-      stagger: { each: isMobile ? 0.06 : 0.1, from: "start" },
+      x: function () { return -((isMobile ? 30 : 70) + Math.random() * (isMobile ? 18 : 50)); },
+      duration: isMobile ? 1.05 : 1.35, ease: "power2.out",   // slow, deliberate glide
+      stagger: { each: isMobile ? 0.12 : 0.18, from: "start" },
       immediateRender: false, clearProps: "opacity,transform",
-      scrollTrigger: { trigger: container, start: "top 84%", once: true }
+      scrollTrigger: { trigger: container, start: "top 88%", once: true }
     });
   }
 
@@ -74,10 +74,10 @@
     var items = container.children;
     if (!items.length || !window.ScrollTrigger) return;
     gsap.from(items, {
-      opacity: 0, y: isMobile ? 20 : 36, duration: dur("long", 520), ease: ease,
-      stagger: { each: isMobile ? 0.06 : 0.09, from: "start" },
+      opacity: 0, y: isMobile ? 28 : 44, duration: isMobile ? 1.0 : 1.2, ease: "power2.out",
+      stagger: { each: isMobile ? 0.1 : 0.15, from: "start" },
       immediateRender: false, clearProps: "opacity,transform",
-      scrollTrigger: { trigger: container, start: "top 86%", once: true }
+      scrollTrigger: { trigger: container, start: "top 90%", once: true }
     });
   }
 
@@ -89,7 +89,8 @@
   /* ---------------------------- init ---------------------------- */
   function init() {
     if (reduce) return;            // resting state is visible; just don't animate
-    heroSequence();
+    // NOTE: the hero (first box) stays STATIC on every page — no entrance motion.
+    // heroSequence() intentionally not called. Scroll entrances handle the rest.
     if (window.ScrollTrigger) {
       d.querySelectorAll("[data-elroy='reveal-stack']").forEach(revealStack);
       d.querySelectorAll("[data-elroy='swipe']").forEach(swipeReveal);
