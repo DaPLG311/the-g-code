@@ -1591,9 +1591,9 @@ body.world .acc-inner .aw-time { font-family: "Oswald", sans-serif; text-transfo
 @media (max-width:600px){ .brand-logo { height: 34px; } }
 
 /* world pages: DARK nav so the imported silver logo + links read crisp (was a pale silver-theme bar) */
-body.world nav { background: rgba(12,13,17,0.28); -webkit-backdrop-filter: blur(12px) saturate(1.05); backdrop-filter: blur(12px) saturate(1.05); border-bottom: 1px solid transparent; }
-body.world nav.scrolled { background: rgba(10,11,15,0.55); border-bottom: 1px solid rgba(255,255,255,0.10); }
-body.world .nav-links a { color: #C7CBD1; }
+body.world nav { background: rgba(11,12,16,0.52); -webkit-backdrop-filter: blur(12px) saturate(1.05); backdrop-filter: blur(12px) saturate(1.05); border-bottom: 1px solid transparent; }
+body.world nav.scrolled { background: rgba(10,11,15,0.68); border-bottom: 1px solid rgba(255,255,255,0.10); }
+body.world .nav-links a { color: #D7DAE0; text-shadow: 0 1px 3px rgba(0,0,0,0.55); }
 body.world .nav-links a:hover { color: #fff; }
 body.world .menu-toggle span { background: #DDE0E4; }
 @media (max-width: 900px) {
@@ -2089,6 +2089,28 @@ h1, h2, h3 { font-weight: 700; line-height: 1.14; letter-spacing: -0.012em; text
   .stat-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
   .stat-cell { padding: 18px 12px; }
 }
+
+/* ===================== ACCESSIBILITY ===================== */
+/* Skip link — visible only on keyboard focus */
+.skip-link {
+  position: absolute; left: -9999px; top: 0; z-index: 2000;
+  background: var(--champagne-2); color: #0B0B0D;
+  padding: 10px 18px; font-family: 'Oswald', sans-serif; font-weight: 600;
+  letter-spacing: 0.06em; text-decoration: none; border-radius: 0 0 8px 0;
+}
+.skip-link:focus { left: 0; }
+
+/* Global visible focus ring for keyboard users (zero-specificity base) */
+:where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+  outline: 2px solid var(--champagne-2);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+/* Restore a keyboard-visible ring on fields that previously stripped outline.
+   Mouse focus (:focus without :focus-visible) keeps the calmer border-only look. */
+.idea-form input:focus-visible, .idea-form textarea:focus-visible, .idea-form select:focus-visible,
+.board-search input:focus-visible { outline: 2px solid var(--champagne-2); outline-offset: 2px; }
+.tlink:focus-visible { outline: 2px solid var(--champagne-2); outline-offset: 2px; }
 
 /* ELROY sideways swipe-in — GSAP owns the left->right entrance of these cards,
    so suppress the CSS Elite Box entrance to avoid double-animation. */

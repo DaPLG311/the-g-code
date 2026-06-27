@@ -178,6 +178,6 @@ document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
   a.className = 'call-fab';
   a.href = 'tel:+15189126142';
   a.setAttribute('aria-label', 'Call Day One MVP — speak to a human, 518 912 6142');
-  a.innerHTML = '<img src="assets/img/call-button.png" alt="Speak to a human — call 518 912 6142" />';
+  a.innerHTML = '<img src="assets/img/call-button.png" alt="Speak to a human — call 518 912 6142" loading="lazy" decoding="async" width="160" height="29" />';
   (document.getElementById('nav') || document.body).appendChild(a);
 })();

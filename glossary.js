@@ -91,7 +91,7 @@ window.GLOSSARY = [
   { t: "Offer", c: "Sales and Marketing", d: "The complete package a customer is asked to purchase — the outcome, price, process, inclusions, and conditions.", r: ["Value Proposition", "Call to Action"] },
   { t: "Value Proposition", c: "Sales and Marketing", d: "The clearest explanation of why a specific customer should choose this solution.", r: ["Offer", "Ideal Customer"] },
   { t: "Ideal Customer", c: "Sales and Marketing", d: "The type of person or organization most likely to need, value, purchase, and succeed with the offer.", r: ["Qualified Lead"] },
-  { t: "Call to Action", c: "Sales and Marketing", d: "The next action the visitor is being asked to take — for example Start My MVP, Submit My Idea, or Watch The G Code™.", r: ["Conversion"] },
+  { t: "Call to Action", c: "Sales and Marketing", d: "The next action the visitor is being asked to take — for example Book an Operated Call™, Submit an Idea, or Get Started.", r: ["Conversion"] },
   { t: "Lead", c: "Sales and Marketing", d: "A person or organization that has shown potential interest.", r: ["Qualified Lead", "Pipeline"] },
   { t: "Qualified Lead", c: "Sales and Marketing", d: "A lead that meets the conditions required to be a realistic customer.", r: ["Lead", "Lead Routing"] },
   { t: "Funnel", c: "Sales and Marketing", d: "The sequence that moves a person from awareness to interest, decision, purchase, onboarding, and retention.", r: ["Conversion", "Nurture Campaign"] },

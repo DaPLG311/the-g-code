@@ -21,14 +21,14 @@
   // pushes the founder conversation. Calm-giant voice, one primary action.
   function primaryCTA(catSlug){
     if (catSlug === "build-the-product") return {
-      label: "Start My MVP With Jack",
+      label: "Book an Operated Call™",
       href: "start.html?path=" + catSlug,
-      sub: "Talk directly with the founder to scope the right first version."
+      sub: "A working session with the operator to scope the right first version — no handoff, no sales layer."
     };
     return {
-      label: "Tell Jack the Idea",
+      label: "Book an Operated Call™",
       href: "start.html?path=" + catSlug,
-      sub: "Founder-led from the first conversation — no handoff, no sales layer."
+      sub: "Founder-led from the first conversation — speak directly with the operator shaping the work."
     };
   }
   function ctaBlock(cta, extraClass){
@@ -138,7 +138,7 @@
 
   function renderCategory(slug){
     var cat = catBy(slug); if(!cat){ return renderWorlds(); }
-    var ctaLabel = cat.ctaLabel || "Tell Jack the Idea";
+    var ctaLabel = cat.ctaLabel || "Book an Operated Call™";
     setMeta(cat.title+" — What We Build — Day One MVP™", cat.explanation || cat.promise);
     var curl = "https://dayonemvp.com/build.html?cat="+slug;
     injectLD([

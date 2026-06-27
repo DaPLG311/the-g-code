@@ -10,7 +10,7 @@ window.PRICING = {
       includes:["Idea review","Problem definition","Customer review","Offer review","Product + technology direction","Sales or marketing review","Build-level recommendation","Immediate next actions"],
       note:{ title:"An honest recommendation", body:"The right answer might be: do more research, build nothing yet, fix one workflow, start with an AI Audit™, create a Blueprint, build a prototype, enter a larger build — or even work with a different specialist." },
       qualification:"A short fit conversation may be offered at no charge. A full strategic consultation is normally paid; qualified projects may receive a complimentary initial consultation at Jack's discretion.",
-      cta:{ label:"Discuss an Idea Session", href:"start.html?path=idea-session" },
+      cta:{ label:"Book an Idea Session", href:"start.html?path=idea-session" },
       prev:null, next:"blueprint" },
 
     "blueprint": {
@@ -19,7 +19,7 @@ window.PRICING = {
       explanation:"The Blueprint organizes the customer, problem, offer, user journey, product structure, marketing direction, and recommended build path. It turns a conversation into an executable plan you own — whether we build it or not.",
       includesTitle:"Market & Launch Blueprint",
       includes:["Target audience + positioning","The main promise","Clear calls to action","Launch channels","Content themes","Objections handled","Early campaign direction","A recommended build path"],
-      cta:{ label:"Start My Blueprint", href:"start.html?path=blueprint" },
+      cta:{ label:"Book an Operated Call™", href:"start.html?path=blueprint" },
       prev:"idea-session", next:"working-alpha" },
 
     "working-alpha": {
@@ -29,7 +29,7 @@ window.PRICING = {
       payStructure:["$5,000 deposit","$5,000 milestone","$5,000 delivery"],
       includesTitle:"Validation & Soft-Launch Campaign",
       includes:["Early-access page + waitlist","Test-user outreach","Founder announcement","Demonstration content","Follow-up + feedback capture","Analytics","Early proof development"],
-      cta:{ label:"Build My Working Alpha", href:"start.html?path=working-alpha" },
+      cta:{ label:"Book an Operated Call™", href:"start.html?path=working-alpha" },
       prev:"blueprint", next:"mvp-launch" },
 
     "mvp-launch": {
@@ -38,7 +38,7 @@ window.PRICING = {
       explanation:"A polished, launch-ready MVP combined with the onboarding, tracking, communication, sales direction, and launch assets needed to enter the market responsibly — not just a product, but a business going live around it.",
       includesTitle:"Complete MVP Launch Campaign",
       includes:["Pre-launch campaign + landing pages","Founder story + product demonstrations","Email and SMS sequences","Partner + local outreach","CRM stages + conversion tracking","Onboarding","Review and referral requests","Initial optimization"],
-      cta:{ label:"Plan My MVP Launch", href:"start.html?path=mvp-launch" },
+      cta:{ label:"Book an Operated Call™", href:"start.html?path=mvp-launch" },
       prev:"working-alpha", next:"platform" },
 
     "platform": {
@@ -47,7 +47,7 @@ window.PRICING = {
       explanation:"For multi-role products, marketplaces, organizational systems, membership ecosystems, advanced portals, and enterprise or regional pilots — the full system, not a single screen.",
       includesTitle:"Full Market-Entry & Growth System",
       includes:["Market segmentation + audience pages","Offer ladder","CRM architecture + sales routing","Media systems","Partner strategy","Staff training","Private pilot, then public launch","Optimization + expansion"],
-      cta:{ label:"Discuss a Platform", href:"start.html?path=platform" },
+      cta:{ label:"Book an Operated Call™", href:"start.html?path=platform" },
       prev:"mvp-launch", next:"community-rate" },
 
     "community-rate": {
@@ -58,7 +58,7 @@ window.PRICING = {
       includesTitle:"What it can lead to",
       includes:["A smaller scope","A phased build","A pilot","A relationship rate","A payment structure","A workshop","A limited system installation","Or an honest referral elsewhere"],
       note:{ title:"Not automatic discount pricing", body:"This is a fit-based conversation, not a coupon. We will not sell a business more technology than it can responsibly use." },
-      cta:{ label:"Request a Small-Business Interview", href:"start.html?path=small-business" },
+      cta:{ label:"Book a Fit Call", href:"start.html?path=small-business" },
       prev:"platform", next:null }
   }
 };

@@ -12,7 +12,7 @@ window.AUDIENCE = {
       paths:[{label:"Idea Session",href:"tier.html?p=idea-session"},{label:"Blueprint",href:"tier.html?p=blueprint"},{label:"Working Alpha",href:"tier.html?p=working-alpha"},{label:"MVP Launch",href:"tier.html?p=mvp-launch"}],
       services:[{label:"Idea Discovery",slug:"idea-discovery"},{label:"Offer Design",slug:"offer-design"},{label:"Positioning",slug:"positioning"},{label:"MVPs",slug:"mvps"}],
       buildsHref:"build.html?cat=start-the-company", buildsLabel:"Explore Start the Company",
-      cta:{label:"Tell Jack the Idea", href:"start.html?path=founder"},
+      cta:{label:"Book an Operated Call™", href:"start.html?path=founder"},
       status:"Founder-led from the first conversation. You'll get an honest read on the most responsible first move — even if that's “not yet.”",
       prev:"youth-in-tech", next:"small-business" },
 
@@ -27,7 +27,7 @@ window.AUDIENCE = {
       paths:[{label:"Small-Business Path",href:"tier.html?p=community-rate"},{label:"Idea Session",href:"tier.html?p=idea-session"},{label:"Blueprint",href:"tier.html?p=blueprint"}],
       services:[{label:"Websites",slug:"websites"},{label:"CRM Systems",slug:"crm-systems"},{label:"Booking Systems",slug:"booking-systems"},{label:"Automation",slug:"automation"},{label:"Local SEO",slug:"local-seo"},{label:"Reputation",slug:"reputation"}],
       buildsHref:"build.html?cat=install-the-systems", buildsLabel:"Explore Install the Systems",
-      cta:{label:"Request a Small-Business Interview", href:"start.html?path=small-business"},
+      cta:{label:"Book a Fit Call", href:"start.html?path=small-business"},
       status:"The Small-Business Path is a fit-based conversation, not automatic discount pricing — it may lead to a smaller scope, a phased build, a pilot, or a relationship rate.",
       prev:"founders", next:"nonprofits" },
 
