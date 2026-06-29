@@ -2506,3 +2506,21 @@ body.world :where(a, button, input, select, textarea, summary, [tabindex]):focus
 @media (max-width: 600px) {
   .method-grid { grid-template-columns: 1fr; }
 }
+
+/* =====================================================================
+   PANEL GLASS — lighten the boxes from near-black to translucent dark grey
+   The line-1314 override forced .smoke to ~0.92–0.95 opacity near-black,
+   which read as solid black. Restore a frosted dark-glass: dark GREY tint,
+   a little see-through so the marble shows softly, stronger backdrop blur
+   so white text stays crisp. Scoped body.world (dark theme only).
+   ===================================================================== */
+body.world .smoke {
+  background: linear-gradient(160deg, rgba(38,41,48,0.80), rgba(27,29,35,0.86)) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(1.06);
+  backdrop-filter: blur(16px) saturate(1.06);
+}
+/* hero/page-hero card: a touch more presence (it's the anchor), still grey + glassy */
+body.world .hero .smoke,
+body.world .page-hero .smoke {
+  background: linear-gradient(160deg, rgba(40,43,50,0.82), rgba(28,30,36,0.88)) !important;
+}
