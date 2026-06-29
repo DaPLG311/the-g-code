@@ -2116,3 +2116,393 @@ h1, h2, h3 { font-weight: 700; line-height: 1.14; letter-spacing: -0.012em; text
    so suppress the CSS Elite Box entrance to avoid double-animation. */
 [data-elroy="swipe"] > *,
 [data-elroy-managed] > * { animation: none !important; }
+
+
+/* =====================================================================
+   DAY ONE MVP™ — PRECISION-ATELIER ELEVATION LAYER  (FINAL · appended)
+   Synthesis of three ultra-premium passes into one cohesive, brand-safe
+   refinement of the dark "world" theme. Append-only → wins by cascade.
+   Scoped under body.world so the light silver-marble :root variant is
+   untouched. Palette preserved: onyx base · champagne gold (#C8A86A) ·
+   platinum. No new entrance animation, no transforms on hero / .reveal /
+   [data-elroy] children — hover states only; transitions confined to
+   transform / opacity / box-shadow / border / background / color. Gold is
+   used surgically, like a single piece of jewelry — restraint = premium.
+   ===================================================================== */
+
+/* ---------- one coherent material + motion vocabulary (dark world only) ---------- */
+body.world {
+  /* radius scale */
+  --e-rad-sm: 6px;
+  --e-rad:    12px;
+  --e-rad-lg: 16px;
+
+  /* layered ink-depth shadows — ambient + key + contact, tuned to onyx.
+     A faint champagne rim lives only in the hover/float tier. */
+  --e-sh-1: 0 1px 0 rgba(255,255,255,0.05) inset,
+            0 8px 22px -12px rgba(0,0,0,0.55),
+            0 22px 52px -28px rgba(0,0,0,0.66);
+  --e-sh-2: 0 1px 0 rgba(255,255,255,0.06) inset,
+            0 16px 38px -16px rgba(0,0,0,0.60),
+            0 40px 84px -40px rgba(0,0,0,0.74);
+  --e-sh-float: 0 1px 0 rgba(255,255,255,0.08) inset,
+            0 22px 48px -18px rgba(0,0,0,0.62),
+            0 52px 110px -46px rgba(0,0,0,0.78),
+            0 0 0 1px rgba(200,168,106,0.20),
+            0 16px 50px -24px rgba(200,168,106,0.18);
+
+  /* hairline edges + inset top sheen (the machined-stone bevel) */
+  --e-edge:       rgba(255,255,255,0.10);
+  --e-edge-strong:rgba(255,255,255,0.14);
+  --e-bevel:      inset 0 1px 0 rgba(255,255,255,0.07);
+
+  /* surgical champagne */
+  --e-champ:      #C8A86A;
+  --e-gold-line:  rgba(200,168,106,0.42);
+  --e-gold-line-hi: rgba(200,168,106,0.60);
+  --e-gold-glow:  rgba(200,168,106,0.30);
+
+  /* easing — slow settle, quick lift */
+  --e-ease:     cubic-bezier(.22,.61,.36,1);
+  --e-ease-out: cubic-bezier(.16,1,.3,1);
+}
+
+/* ---------- typography: optical tightening + editorial kicker tick ---------- */
+body.world h1,
+body.world h2,
+body.world h3 { letter-spacing: -0.014em; }
+body.world .mega { letter-spacing: -0.02em; }
+body.world .statement { letter-spacing: -0.008em; }
+
+body.world h1, body.world h2, body.world h3,
+body.world .mega, body.world .statement {
+  font-feature-settings: "kern" 1, "liga" 1;
+  text-rendering: optimizeLegibility;
+}
+
+/* eyebrow / kicker — precise luxury track + a restrained gold tick */
+body.world .eyebrow { letter-spacing: 0.34em; font-weight: 500; }
+body.world .kicker  { letter-spacing: 0.32em; font-weight: 500; }
+body.world .smoke .eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+body.world .smoke .eyebrow::before {
+  content: "";
+  width: 22px;
+  height: 1px;
+  flex: 0 0 auto;
+  background: linear-gradient(90deg, var(--e-champ), rgba(200,168,106,0));
+}
+/* centered panels: drop the tick so the eyebrow stays optically centered */
+body.world .smoke.center .eyebrow { display: block; }
+body.world .smoke.center .eyebrow::before { display: none; }
+
+body.world .lvl-card .lvln,
+body.world .lvl-badge,
+body.world .offer-badge,
+body.world .dev-tag { letter-spacing: 0.22em; }
+
+/* editorial measure + nicer line endings (no contrast change) */
+body.world .support { max-width: 62ch; line-height: 1.72; text-wrap: pretty; }
+body.world .lead, body.world .lead-p { max-width: 60ch; text-wrap: pretty; }
+
+/* ---------- links: one champagne interaction family ---------- */
+body.world .link-light,
+body.world .prevnext a,
+body.world .cat-door,
+body.world .hlink {
+  transition: color .22s var(--e-ease), border-color .22s var(--e-ease);
+}
+body.world .link-light:hover,
+body.world .prevnext a:hover,
+body.world .cat-door:hover { color: var(--e-champ); }
+
+/* ---------- buttons: machined-metal primary, champagne-edge ghosts ---------- */
+body.world .btn {
+  border-radius: var(--e-rad-sm);
+  min-height: 46px;
+  transition: transform .24s var(--e-ease-out),
+              box-shadow .32s var(--e-ease),
+              background .32s var(--e-ease),
+              border-color .3s var(--e-ease),
+              color .2s var(--e-ease);
+}
+
+body.world .btn-primary {
+  background: linear-gradient(180deg, #1d1e24 0%, #131419 58%, #0e0f12 100%);
+  color: #FBF7EE;
+  border: 1px solid var(--e-gold-line);
+  box-shadow: var(--e-bevel),
+              0 2px 6px rgba(0,0,0,0.34),
+              0 12px 30px -14px rgba(0,0,0,0.50);
+  animation: none; /* retire the autoplay goldPulse on world pages */
+}
+body.world .btn-primary:hover {
+  transform: translateY(-2px);
+  border-color: var(--e-champ);
+  background: linear-gradient(180deg, #23242b 0%, #15161b 58%, #0f1013 100%);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.12),
+              0 4px 12px rgba(0,0,0,0.40),
+              0 18px 42px -16px rgba(0,0,0,0.52),
+              0 0 0 1px rgba(200,168,106,0.30),
+              0 0 24px var(--e-gold-glow);
+}
+body.world .btn-primary:active {
+  transform: translateY(0);
+  box-shadow: var(--e-bevel), 0 2px 8px rgba(0,0,0,0.38);
+}
+
+body.world .btn-ghost {
+  color: #EDEEF0;
+  border: 1px solid var(--e-edge-strong);
+  background: rgba(255,255,255,0.015);
+}
+body.world .btn-ghost:hover {
+  transform: translateY(-2px);
+  color: #fff;
+  border-color: var(--e-gold-line-hi);
+  background: rgba(200,168,106,0.06);
+  box-shadow: var(--e-bevel), 0 0 0 1px rgba(200,168,106,0.18), 0 12px 28px -16px rgba(0,0,0,0.5);
+}
+body.world .btn-ghost-light {
+  background: rgba(255,255,255,0.025);
+  border: 1px solid rgba(255,255,255,0.5);
+}
+body.world .btn-ghost-light:hover {
+  transform: translateY(-2px);
+  border-color: #fff;
+  background: rgba(255,255,255,0.07);
+  box-shadow: var(--e-bevel), 0 12px 28px -16px rgba(0,0,0,0.46);
+}
+
+/* ---------- smoke panels: deeper dark-glass material ---------- */
+body.world .smoke {
+  border-radius: var(--e-rad);
+  box-shadow: var(--e-bevel),
+              0 24px 56px -28px rgba(0,0,0,0.62),
+              0 56px 110px -52px rgba(0,0,0,0.78) !important;
+}
+/* champagne seam → a brighter glowing inlay (restrained jewelry) */
+body.world .smoke::before {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--e-champ), transparent) !important;
+  opacity: 0.7 !important;
+  box-shadow: 0 0 12px rgba(200,168,106,0.22);
+}
+
+/* hero / page-hero: title-card authority via depth only (GSAP-safe — no
+   ::after layer, no overflow change; the base owns position + children). */
+body.world .hero .smoke,
+body.world .page-hero .smoke {
+  border-radius: var(--e-rad-lg);
+  border: 1px solid rgba(255,255,255,0.10) !important;
+  box-shadow: var(--e-bevel),
+              0 36px 80px -30px rgba(0,0,0,0.66),
+              0 80px 150px -60px rgba(0,0,0,0.80),
+              0 0 0 1px rgba(200,168,106,0.14) !important;
+}
+body.world .hero .mega,
+body.world .page-hero .mega {
+  text-shadow: 0 2px 26px rgba(0,0,0,0.50), 0 1px 1px rgba(0,0,0,0.5);
+}
+body.world .mega .tm { color: var(--e-champ); }
+
+/* offer panel keeps its champagne ring, now on the new depth */
+body.world .smoke.offer {
+  border-color: var(--e-gold-line-hi) !important;
+  box-shadow: var(--e-bevel),
+              0 24px 56px -28px rgba(0,0,0,0.62),
+              0 56px 110px -52px rgba(0,0,0,0.78),
+              0 0 0 1px rgba(200,168,106,0.30),
+              0 0 48px -16px rgba(200,168,106,0.20) !important;
+}
+
+/* ---------- card family: unified bevel + restrained champagne hover ---------- */
+/* shared resting depth + radius across the live world-page components */
+body.world .method-card,
+body.world .stat-cell,
+body.world .lvl-card,
+body.world .svc-tile:not(.dev),
+body.world .aud-card,
+body.world .stack-row,
+body.world .compare,
+body.world .dir,
+body.world .svc-cat,
+body.world .idea-session-card {
+  border-radius: var(--e-rad);
+  box-shadow: var(--e-sh-1);
+}
+
+/* NON-managed cards: gentle lift + warm rim (ELROY entrance untouched) */
+body.world .method-card,
+body.world .stat-cell,
+body.world .compare,
+body.world .dir,
+body.world .svc-cat,
+body.world .idea-session-card {
+  transition: transform .3s var(--e-ease-out),
+              border-color .3s var(--e-ease),
+              box-shadow .32s var(--e-ease),
+              background .32s var(--e-ease);
+}
+body.world .method-card:hover,
+body.world .stat-cell:hover,
+body.world .compare:hover,
+body.world .dir:hover,
+body.world .svc-cat:hover,
+body.world .idea-session-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--e-gold-line-hi);
+  box-shadow: var(--e-sh-float);
+}
+
+/* ELROY / Elite-Box-managed cards own their OWN transform timing — enrich
+   resting + hover SHADOW only, never declare a transform here. */
+body.world .svc-tile:not(.dev):hover,
+body.world .aud-card:hover,
+body.world .stack-row:hover,
+body.world .lvl-card:hover {
+  box-shadow: var(--e-sh-float);
+}
+
+/* method cards — precision-instrument feel + engraved champagne numeral */
+body.world .method-card {
+  border: 1px solid var(--e-gold-line);
+  background: linear-gradient(150deg, rgba(200,168,106,0.07), rgba(200,168,106,0.015) 55%, rgba(255,255,255,0.01));
+}
+body.world .method-card:hover {
+  background: linear-gradient(150deg, rgba(200,168,106,0.13), rgba(200,168,106,0.03) 55%, rgba(255,255,255,0.015));
+}
+body.world .method-number {
+  background: linear-gradient(180deg, rgba(200,168,106,0.88), rgba(200,168,106,0.30));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* stat cells — engraved-panel read, tighter big numeral */
+body.world .stat-cell {
+  border: 1px solid var(--e-edge);
+  background: linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.012));
+}
+body.world .stat-cell .stat-n { letter-spacing: -0.02em; }
+
+/* lvl cards — deepen the resting state; champagne hover border from base */
+body.world .lvl-card {
+  box-shadow: var(--e-bevel), var(--e-sh-1);
+}
+body.world .lvl-card .lvln { color: var(--e-champ); }
+
+/* secondary surfaces — consistent edge + radius language */
+body.world .compare,
+body.world .svc-cat,
+body.world .dir {
+  border: 1px solid var(--e-edge);
+}
+
+/* ---------- pricing rail: a single machined panel ---------- */
+body.world .price-row {
+  border-radius: var(--e-rad);
+  border: 1px solid var(--e-edge-strong);
+  box-shadow: var(--e-bevel), var(--e-sh-1);
+  overflow: hidden;
+}
+body.world .price-cell {
+  transition: background .25s var(--e-ease), transform .25s var(--e-ease-out);
+}
+body.world a.price-cell:hover {
+  background: rgba(200,168,106,0.12);
+}
+body.world .price-cell .pv small { color: var(--e-champ); }
+/* offer cell — a contained warm glow, not a loud fill */
+body.world .price-cell.offer-cell {
+  background: linear-gradient(160deg, rgba(200,168,106,0.24), rgba(200,168,106,0.08));
+  box-shadow: inset 0 0 0 1px rgba(200,168,106,0.28);
+}
+body.world .price-cell.offer-cell:hover { background: rgba(200,168,106,0.34); }
+
+/* pull quote / creed — warm the rule */
+body.world .pull { border-left: 2px solid var(--e-champ); }
+
+/* ---------- form fields: calmer rest, warm hover (focus ring untouched) ---------- */
+body.world .idea-form input,
+body.world .idea-form textarea,
+body.world .idea-form select,
+body.world .board-search input {
+  border-radius: var(--e-rad-sm);
+  background: rgba(255,255,255,0.035);
+  border: 1px solid var(--e-edge-strong);
+  transition: border-color .2s var(--e-ease), background .2s var(--e-ease);
+}
+body.world .idea-form input:hover,
+body.world .idea-form textarea:hover,
+body.world .idea-form select:hover,
+body.world .board-search input:hover { border-color: rgba(255,255,255,0.22); }
+
+/* ---------- accessibility: re-affirm the global champagne focus ring ---------- */
+body.world :where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+  outline: 2px solid var(--e-champ);
+  outline-offset: 2px;
+}
+
+/* ---------- mobile: scale depth + targets gracefully at ~390px ---------- */
+@media (max-width: 600px) {
+  body.world {
+    --e-sh-1: 0 1px 0 rgba(255,255,255,0.04) inset, 0 12px 28px -16px rgba(0,0,0,0.6);
+    --e-sh-float: 0 1px 0 rgba(255,255,255,0.06) inset,
+                  0 18px 40px -18px rgba(0,0,0,0.66),
+                  0 0 0 1px rgba(200,168,106,0.20);
+  }
+  body.world .btn { padding: 14px 24px; min-height: 48px; }
+  body.world .btn-sm { padding: 12px 20px; min-height: 44px; }
+  body.world .eyebrow, body.world .kicker { letter-spacing: 0.3em; }
+  body.world .nav-links a:not(.btn) { min-height: 46px; display: flex; align-items: center; }
+  body.world .smoke,
+  body.world .method-card,
+  body.world .stat-cell,
+  body.world .lvl-card,
+  body.world .compare,
+  body.world .svc-cat,
+  body.world .dir { border-radius: var(--e-rad-sm); }
+  body.world .hero .smoke,
+  body.world .page-hero .smoke {
+    border-radius: var(--e-rad);
+    box-shadow: var(--e-bevel),
+                0 26px 56px -28px rgba(0,0,0,0.70),
+                0 0 0 1px rgba(200,168,106,0.14) !important;
+  }
+  body.world .hero .mega,
+  body.world .page-hero .mega { text-shadow: 0 2px 18px rgba(0,0,0,0.5); }
+}
+
+/* ---------- reduced motion: keep static depth, neutralize hover lifts ---------- */
+@media (prefers-reduced-motion: reduce) {
+  body.world .btn-primary,
+  body.world .btn-ghost,
+  body.world .btn-ghost-light,
+  body.world .method-card,
+  body.world .stat-cell,
+  body.world .compare,
+  body.world .dir,
+  body.world .svc-cat,
+  body.world .idea-session-card,
+  body.world .price-cell { transition: none !important; }
+  body.world .btn-primary:hover,
+  body.world .btn-ghost:hover,
+  body.world .btn-ghost-light:hover,
+  body.world .method-card:hover,
+  body.world .stat-cell:hover,
+  body.world .compare:hover,
+  body.world .dir:hover,
+  body.world .svc-cat:hover,
+  body.world .idea-session-card:hover,
+  body.world a.price-cell:hover { transform: none !important; }
+}
+
+/* Fix: method grid must single-column on narrow phones (minmax 280px overflowed at 320px) */
+@media (max-width: 600px) {
+  .method-grid { grid-template-columns: 1fr; }
+}
