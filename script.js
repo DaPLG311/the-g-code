@@ -56,18 +56,22 @@ const ideaForm = document.getElementById('ideaForm');
 if (ideaForm) {
   ideaForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    const name = encodeURIComponent(ideaForm.name.value.trim());
-    const email = encodeURIComponent(ideaForm.email.value.trim());
-    const idea = ideaForm.idea.value.trim();
-    const stage = ideaForm.stage.value;
-    const subject = encodeURIComponent('New idea — ' + ideaForm.name.value.trim());
-    const body = encodeURIComponent(
-      'Name: ' + ideaForm.name.value.trim() +
-      '\nEmail: ' + ideaForm.email.value.trim() +
-      '\nStage: ' + stage +
-      '\n\nThe idea:\n' + idea
-    );
+    const get = (n) => { const el = ideaForm.querySelector('[name=' + n + ']'); return el ? el.value.trim() : ''; };
+    const nm = get('name');
+    const convo = get('conversation');
+    const plain =
+      'NEW INQUIRY VIA DAYONEMVP.COM\n\n' +
+      'Name: ' + nm +
+      '\nEmail: ' + get('email') +
+      (convo ? '\nWants: ' + convo : '') +
+      '\nStage: ' + get('stage') +
+      '\n\nThe idea:\n' + get('idea');
+    const subject = encodeURIComponent('New Day One MVP inquiry — ' + (nm || 'someone'));
+    const body = encodeURIComponent(plain);
+    // Reliability: never lose a lead even with no mail client — copy to clipboard, then open mail + confirm.
+    try { if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText('To: jack@dayonemvp.com\n\n' + plain); } catch (err) {}
     window.location.href = 'mailto:jack@dayonemvp.com?subject=' + subject + '&body=' + body;
+    setTimeout(function () { window.location.href = 'success.html'; }, 900);
   });
 }
 
@@ -90,11 +94,22 @@ document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
   if (!f) return;
   var path = new URLSearchParams(location.search).get('path');
   if (path) {
+    var pl = path.toLowerCase();
     var sel = document.getElementById('f-describes');
     if (sel) {
-      var pl = path.toLowerCase();
       for (var i = 0; i < sel.options.length; i++) {
         if (sel.options[i].value.toLowerCase().indexOf(pl) > -1) { sel.selectedIndex = i; break; }
+      }
+    }
+    // Map intent paths to the conversation-type selector (Fit Call / Operated Call / Training / Review)
+    var conv = document.getElementById('f-conversation');
+    if (conv) {
+      var map = { 'fit-call': 'fit', 'fit': 'fit', 'operated-call': 'operated', 'training': 'training', 'review': 'review', 'project-review': 'review' };
+      var key = map[pl];
+      if (key) {
+        for (var j = 0; j < conv.options.length; j++) {
+          if (conv.options[j].text.toLowerCase().indexOf(key) > -1) { conv.selectedIndex = j; break; }
+        }
       }
     }
   }

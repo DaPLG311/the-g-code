@@ -2524,3 +2524,43 @@ body.world .hero .smoke,
 body.world .page-hero .smoke {
   background: linear-gradient(160deg, rgba(40,43,50,0.82), rgba(28,30,36,0.88)) !important;
 }
+
+/* "What happens next" reassurance list — quiet, premium, trust at the ask */
+body.world .next-steps {
+  list-style: none;
+  margin: 0 auto 26px;
+  padding: 20px 24px;
+  max-width: 640px;
+  text-align: left;
+  background: linear-gradient(160deg, rgba(200,168,106,0.06), rgba(255,255,255,0.012));
+  border: 1px solid rgba(200,168,106,0.18);
+  border-radius: var(--e-rad, 12px);
+}
+body.world .next-steps li {
+  position: relative;
+  padding: 7px 0 7px 26px;
+  color: #CFD2D8;
+  font-size: 15px;
+  line-height: 1.55;
+}
+body.world .next-steps li + li { border-top: 1px solid rgba(255,255,255,0.05); }
+body.world .next-steps li::before {
+  content: "";
+  position: absolute; left: 2px; top: 15px;
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--champagne-2, #C8A86A);
+  box-shadow: 0 0 9px rgba(200,168,106,0.5);
+}
+body.world .next-steps strong { color: #F4EFE4; font-weight: 600; }
+
+/* Founder credibility chips — quiet authority, restrained gold */
+body.world .cred-row {
+  list-style: none; margin: 4px 0 18px; padding: 0;
+  display: flex; flex-wrap: wrap; gap: 10px;
+}
+body.world .cred-row li {
+  font-family: 'Oswald', sans-serif; font-size: 12px; letter-spacing: 0.08em;
+  text-transform: uppercase; color: #DDE0E4;
+  padding: 7px 13px; border: 1px solid rgba(200,168,106,0.32);
+  border-radius: 2px; background: rgba(200,168,106,0.05);
+}
