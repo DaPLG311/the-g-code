@@ -2564,3 +2564,8 @@ body.world .cred-row li {
   padding: 7px 13px; border: 1px solid rgba(200,168,106,0.32);
   border-radius: 2px; background: rgba(200,168,106,0.05);
 }
+
+/* Category door subtitle on What We Build (matches the homepage/ stack taglines) */
+body.world .svc-cat-sub { color: #9DA1A8; font-size: 14px; line-height: 1.5; margin: -6px 0 16px; max-width: 60ch; }
+/* 3-item "what gets delivered" lists stack cleanly instead of a ragged 2+1 */
+body.world .overlay-sec .kv > .incl { columns: 1; }

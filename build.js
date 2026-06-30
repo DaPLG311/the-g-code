@@ -160,6 +160,7 @@
     html += crumb([{t:"What We Build",h:"what-we-build.html"},{t:cat.title}]);
     html += '<span class="eyebrow">World '+e(cat.n)+' · '+e(cat.title)+'</span>';
     html += '<h1 class="mega" style="font-size:clamp(30px,5vw,60px);">'+e(cat.heroQuestion || cat.promise)+'</h1>';
+    if(cat.promise || cat.theme){ html += '<p class="support hero-q">'+e(cat.promise || cat.theme)+'</p>'; }
     html += '<div class="cta-row"><a href="start.html?path='+cat.slug+'" class="btn btn-primary">'+e(ctaLabel)+' &rarr;</a></div>';
     html += '</div></div></header>';
 
