@@ -77,7 +77,7 @@
   }
   function runScan(p) {
     var L = p._lab; if (!L) return;
-    decode(L.sec, L.secT, 480); decode(L.name, L.nameT, 660); decode(L.terr, L.terrT, 820); decode(L.land, L.landT, 980);
+    decode(L.sec, L.secT, 680); decode(L.name, L.nameT, 940); decode(L.terr, L.terrT, 1180); decode(L.land, L.landT, 1380);
   }
 
   // ---- renderer / scene / camera ----
@@ -209,8 +209,8 @@
     g.setAttribute("color", new THREE.BufferAttribute(col, 3));
     return g;
   }
-  var starGeo = points(mobile ? 1100 : 2600, function (i, pos, col, c) {
-    var r = rnd(120, 600), th = rnd(0, 7), ph = Math.acos(rnd(-1, 1));
+  var starGeo = points(mobile ? 1500 : 3400, function (i, pos, col, c) {
+    var r = rnd(150, 950), th = rnd(0, 7), ph = Math.acos(rnd(-1, 1));
     pos[i * 3] = r * Math.sin(ph) * Math.cos(th); pos[i * 3 + 1] = r * Math.cos(ph) * 0.5; pos[i * 3 + 2] = r * Math.sin(ph) * Math.sin(th);
     c.setHSL(rnd(0.55, 0.66), 0.4, rnd(0.6, 0.95)); col[i * 3] = c.r; col[i * 3 + 1] = c.g; col[i * 3 + 2] = c.b;
   });
@@ -220,10 +220,10 @@
 
   // ---- spiral arm dust (the visible galaxy structure) ----
   var ARMS = 2, armCols = [[0.95, 0.78, 0.42], [0.55, 0.7, 1.0], [0.8, 0.55, 1.0], [0.45, 0.9, 1.0], [1.0, 0.6, 0.85]];
-  var dustGeo = points(mobile ? 2400 : 6500, function (i, pos, col, c) {
+  var dustGeo = points(mobile ? 3000 : 8200, function (i, pos, col, c) {
     var arm = i % ARMS, t = Math.pow(Math.random(), 0.62);
-    var radius = 16 + t * 92, ang = arm * (Math.PI * 2 / ARMS) + t * 5.2 + (Math.random() - 0.5) * (0.55 / (0.22 + t));
-    var jitter = (Math.random() - 0.5) * (3 + t * 9);
+    var radius = 16 + t * 124, ang = arm * (Math.PI * 2 / ARMS) + t * 5.6 + (Math.random() - 0.5) * (0.55 / (0.22 + t));
+    var jitter = (Math.random() - 0.5) * (3 + t * 13);
     pos[i * 3] = Math.cos(ang) * radius + jitter; pos[i * 3 + 1] = (Math.random() - 0.5) * (2 + t * 5); pos[i * 3 + 2] = Math.sin(ang) * radius + jitter;
     var cc = t < 0.18 ? armCols[0] : armCols[1 + ((Math.random() * (armCols.length - 1)) | 0)];
     var b = rnd(0.5, 1); col[i * 3] = cc[0] * b; col[i * 3 + 1] = cc[1] * b; col[i * 3 + 2] = cc[2] * b;
@@ -232,10 +232,12 @@
   galaxy.add(dust);
 
   // ---- nebula haze sprites ----
-  [["rgba(60,90,210,0.5)", "rgba(40,60,150,0.18)", -40, 6, -30, 150, 0x3a5ad0],
-   ["rgba(150,70,200,0.5)", "rgba(110,50,160,0.16)", 50, 4, 30, 170, 0x9648c8],
-   ["rgba(50,200,220,0.4)", "rgba(40,150,170,0.12)", 10, -4, 60, 130, 0x39d0e0]].forEach(function (n) {
-    var sp = new THREE.Sprite(new THREE.SpriteMaterial({ map: radialSprite(n[0], n[1]), color: n[6], transparent: true, opacity: 0.5, blending: THREE.AdditiveBlending, depthWrite: false }));
+  [["rgba(60,90,210,0.5)", "rgba(40,60,150,0.18)", -90, 6, -60, 300, 0x3a5ad0],
+   ["rgba(150,70,200,0.5)", "rgba(110,50,160,0.16)", 110, 4, 60, 340, 0x9648c8],
+   ["rgba(50,200,220,0.4)", "rgba(40,150,170,0.12)", 20, -6, 110, 260, 0x39d0e0],
+   ["rgba(120,60,180,0.4)", "rgba(80,40,130,0.12)", -140, -5, 90, 320, 0x7a3cc8],
+   ["rgba(70,110,220,0.4)", "rgba(40,70,160,0.12)", 150, -3, -110, 300, 0x4a6ad8]].forEach(function (n) {
+    var sp = new THREE.Sprite(new THREE.SpriteMaterial({ map: radialSprite(n[0], n[1]), color: n[6], transparent: true, opacity: 0.42, blending: THREE.AdditiveBlending, depthWrite: false }));
     sp.position.set(n[2], n[3], n[4]); sp.scale.set(n[5], n[5], 1); galaxy.add(sp);
   });
   var coreGlow = new THREE.Sprite(new THREE.SpriteMaterial({ map: radialSprite("rgba(255,230,180,0.7)", "rgba(180,60,140,0.18)"), color: 0xffd9a0, transparent: true, opacity: 0.6, blending: THREE.AdditiveBlending, depthWrite: false }));
@@ -327,7 +329,7 @@
         by += ((landPos.y + tmpV.y * LD) - by) * land;
         bz += ((landPos.z + tmpV.z * LD) - bz) * land;
       }
-      var ltx = hp ? landPos.x * 0.7 : 0, lty = hp ? landPos.y * 0.7 : 0, ltz = hp ? landPos.z * 0.7 : 0;
+      var ltx = hp ? landPos.x * 0.92 : 0, lty = hp ? landPos.y * 0.92 : 0, ltz = hp ? landPos.z * 0.92 : 0;
       lookT.x += (ltx - lookT.x) * 0.08; lookT.y += (lty - lookT.y) * 0.08; lookT.z += (ltz - lookT.z) * 0.08;
       camera.position.set(bx, by, bz);
       camera.lookAt(lookT.x, lookT.y, lookT.z);
