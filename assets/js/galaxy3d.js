@@ -182,7 +182,7 @@
       rg.rotation.x = Math.PI * 0.5 - 0.42; rg.rotation.y = 0.2; grp.add(rg);
     }
     // invisible hit sphere — a "zoom window" larger than the planet so hover stays stable (no flicker as it bobs)
-    var hit = new THREE.Mesh(new THREE.SphereGeometry(rad * 2.4, 12, 12), new THREE.MeshBasicMaterial({ colorWrite: false, depthWrite: false }));
+    var hit = new THREE.Mesh(new THREE.SphereGeometry(rad * 3.4, 12, 12), new THREE.MeshBasicMaterial({ colorWrite: false, depthWrite: false }));
     hit.userData.node = p; hit.userData.group = grp; grp.add(hit); p._hit = hit;
     p._mesh = mesh; p._grp = grp; p._baseY = py; p._rad = rad; p._spin = rnd(0.0015, 0.004) * (idx % 2 ? 1 : -1);
     planetsGrp.add(grp);
@@ -247,7 +247,7 @@
 
   // ---- interaction ----
   var ray = new THREE.Raycaster(), pointer = new THREE.Vector2(), hover = null, downXY = null;
-  var engaged = null, pendingOff = 0, DELAY = 2200;   // sticky hover: hold the zoom, then release after a delay
+  var engaged = null, pendingOff = 0, DELAY = 3000;   // sticky hover: hold the zoom, then release after a delay
   function engage(nd) { engaged = nd; pendingOff = 0; labelEls.forEach(function (p) { p._label.classList.toggle("is-hover", p === nd); }); if (nd && nd._lab) runScan(nd); }
   function disengage() { engaged = null; pendingOff = 0; labelEls.forEach(function (p) { p._label.classList.remove("is-hover"); }); }
   var hitMeshes = PLANETS.map(function (p) { return p._hit; }).concat([sun]);
