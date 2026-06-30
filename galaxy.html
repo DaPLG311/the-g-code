@@ -45,13 +45,19 @@ body.galaxy-page .nav-links a[href="galaxy.html"] { color: var(--champagne-2,#C8
 .gx3-frame { max-width:60ch; margin:14px auto 0; color:#C9CCD3; font-size:clamp(13px,1.5vw,16px); line-height:1.65; text-wrap:pretty; }
 
 /* projected planet labels */
-.gx3-label { position:absolute; left:0; top:0; pointer-events:none; display:flex; align-items:center; gap:7px;
-  background:rgba(8,9,13,0.62); border:1px solid rgba(200,168,106,0.55); -webkit-backdrop-filter:blur(6px); backdrop-filter:blur(6px);
-  padding:6px 13px; border-radius:999px; color:#fff; white-space:nowrap; opacity:0; visibility:hidden;
-  font-family:"Oswald",sans-serif; text-transform:uppercase; letter-spacing:0.12em; font-size:11px; font-weight:500;
-  box-shadow:0 8px 24px -10px rgba(0,0,0,0.7); transition: opacity .22s ease, visibility .22s ease; }
-.gx3-label .gx3-dot { width:6px; height:6px; border-radius:50%; background:var(--champagne-2,#C8A86A); box-shadow:0 0 8px rgba(200,168,106,0.9); }
+/* hover scan card — alien text decodes to english */
+.gx3-label { position:absolute; left:0; top:0; pointer-events:none; display:flex; flex-direction:column; align-items:flex-start; gap:2px;
+  width:230px; background:rgba(8,9,13,0.74); border:1px solid rgba(200,168,106,0.5); -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px);
+  padding:11px 14px 12px; border-radius:11px; opacity:0; visibility:hidden; text-align:left;
+  box-shadow:0 14px 36px -14px rgba(0,0,0,0.8), 0 0 0 1px rgba(255,255,255,0.04); transition: opacity .2s ease, visibility .2s ease; }
+.gx3-label::after { content:""; position:absolute; left:50%; bottom:-7px; transform:translateX(-50%); width:1px; height:7px; background:rgba(200,168,106,0.6); }
+.gx3-l-sec { font-family:"Oswald",sans-serif; text-transform:uppercase; letter-spacing:0.24em; font-size:9px; color:var(--champagne-2,#C8A86A); min-height:11px; }
+.gx3-l-name { font-family:"Archivo",sans-serif; font-weight:800; font-size:14px; color:#F4F1EA; line-height:1.1; margin:1px 0 5px; min-height:15px; }
+.gx3-l-row { display:flex; gap:8px; align-items:baseline; line-height:1.35; }
+.gx3-l-row i { font-style:normal; font-family:"Oswald",sans-serif; letter-spacing:0.12em; font-size:8.5px; color:var(--champagne-2,#C8A86A); min-width:30px; }
+.gx3-l-row b { font-weight:400; font-size:10.5px; color:#C4C8D0; letter-spacing:0.02em; }
 .gx3-label.is-hover { opacity:1; visibility:visible; }
+.gx3-p-scan { font-family:"Oswald",sans-serif; text-transform:uppercase; letter-spacing:0.16em; font-size:10px; color:var(--champagne-2,#C8A86A); margin:8px 0 0; opacity:0.85; }
 
 /* dot nav */
 .gx3-dots { position:absolute; left:0; right:0; bottom:26px; display:flex; justify-content:center; align-items:center; gap:9px; z-index:4; pointer-events:none; padding:0 16px; flex-wrap:wrap; }
@@ -169,6 +175,7 @@ body.gx3-nowebgl .gx3-stage { min-height:62vh; }
     <button class="gx3-p-close" type="button" aria-label="Close">×</button>
     <span class="gx3-p-kicker"></span>
     <h2 class="gx3-p-name"></h2>
+    <p class="gx3-p-scan"></p>
     <p class="gx3-p-head"></p>
     <p class="gx3-p-copy"></p>
     <a class="gx3-p-cta" href="#">Open</a>
@@ -196,7 +203,7 @@ body.gx3-nowebgl .gx3-stage { min-height:62vh; }
 </main>
 
 <script src="assets/js/vendor/three.min.js?v=r149"></script>
-<script src="assets/js/galaxy3d.js?v=20260630c"></script>
+<script src="assets/js/galaxy3d.js?v=20260630d"></script>
 <script src="script.js?v=20260626f"></script>
 </body>
 </html>

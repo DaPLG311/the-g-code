@@ -51,6 +51,35 @@
       copy: "We do not remove the work — we remove the delay around it. The method is invisible. The progress is not.", cta: "See the Method" }
   ];
 
+  // per-world "scan" copy — sci-fi landing report tied to the business meaning
+  var SCAN = {
+    start:    { terr: "Bedrock of customer, offer, and price",   land: "Where the idea takes root as a real direction" },
+    build:    { terr: "Raw ground shaped into a first build",     land: "The smallest version that proves the idea" },
+    install:  { terr: "Cool networks of CRM, flow, and reporting", land: "The quiet wiring that runs the business" },
+    grow:     { terr: "Vast storm-bands of offers and campaigns", land: "Where attention is pulled into customers" },
+    train:    { terr: "Dense atmosphere of skill transfer",       land: "People learning to operate what is built" },
+    media:    { terr: "Deep currents of story, sound, and video", land: "The company's voice, made visible" },
+    operated: { terr: "Ringed channel of real-time decisions",    land: "Speak with the operator shaping the work" },
+    maestro:  { terr: "Hidden architecture that removes delay",   land: "Complex work, one direction, less time lost" }
+  };
+
+  // alien-glyph decode: scramble cryptic glyphs that resolve to the target text, left→right
+  var GLYPHS = "ｱｲｳｴｵｶｷｸｹｺｻｼｽｾﾀﾁﾂﾃﾄﾅﾆﾇﾊﾋﾌﾍﾎΛΨΩΞΣΔΦΘ◊◈△▽▶◀⟁⌁01".split("");
+  function decode(el, target, dur) {
+    if (!el) return; el._tok = target; var t0 = performance.now();
+    (function tick(now) {
+      if (el._tok !== target) return;                       // a newer decode took over
+      var p = Math.min(1, (now - t0) / dur), lock = Math.floor(p * target.length), s = "";
+      for (var i = 0; i < target.length; i++) { var ch = target[i]; s += (ch === " " || i < lock) ? ch : GLYPHS[(Math.random() * GLYPHS.length) | 0]; }
+      el.textContent = s;
+      if (p < 1) requestAnimationFrame(tick); else el.textContent = target;
+    })(t0);
+  }
+  function runScan(p) {
+    var L = p._lab; if (!L) return;
+    decode(L.sec, L.secT, 480); decode(L.name, L.nameT, 660); decode(L.terr, L.terrT, 820); decode(L.land, L.landT, 980);
+  }
+
   // ---- renderer / scene / camera ----
   var renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: !mobile, alpha: false, powerPreference: "high-performance" });
   renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, mobile ? 1.5 : 2));
@@ -63,8 +92,8 @@
   scene.fog = new THREE.FogExp2(0x05060a, 0.0026);
 
   var camera = new THREE.PerspectiveCamera(50, 1, 0.1, 2000);
-  var camNear = new THREE.Vector3(0, 72, 59);   // cursor active → comes closer
-  var camFar = new THREE.Vector3(0, 98, 80);    // resting / idle → further away
+  var camNear = new THREE.Vector3(0, 80, 65);   // cursor active → comes closer (kept back so peripherals stay framed)
+  var camFar = new THREE.Vector3(0, 100, 82);   // resting / idle → further away
   camera.position.copy(camFar);
   camera.lookAt(0, 0, 0);
 
@@ -129,7 +158,7 @@
   });
 
   // ---- planets on a log spiral ----
-  var TURN = Math.PI * 1.7, R0 = 17, RMAX = 64;
+  var TURN = Math.PI * 1.7, R0 = 16, RMAX = 58;
   var sizes = { start: 4.4, build: 3.6, install: 3.4, grow: 5.2, train: 3.8, media: 3.9, operated: 4.8, maestro: 4.6 };
   var labelEls = [];
   PLANETS.forEach(function (p, idx) {
@@ -155,13 +184,19 @@
     }
     p._mesh = mesh; p._grp = grp; p._baseY = py; p._rad = rad; p._spin = rnd(0.0015, 0.004) * (idx % 2 ? 1 : -1);
     planetsGrp.add(grp);
-    // html label
+    // html scan card (hover-reveal; alien text decodes to english)
     if (labelLayer) {
-      var el = document.createElement("button");
-      el.className = "gx3-label"; el.type = "button"; el.setAttribute("data-id", p.id);
-      el.innerHTML = '<span class="gx3-dot"></span><span class="gx3-lname">' + p.name + "</span>";
-      el.addEventListener("click", function (e) { e.stopPropagation(); openPanel(p); });
-      labelLayer.appendChild(el); p._label = el; labelEls.push(p);
+      var sc = SCAN[p.id] || { terr: "", land: "" };
+      var el = document.createElement("div");
+      el.className = "gx3-label"; el.setAttribute("data-id", p.id);
+      el.innerHTML = '<span class="gx3-l-sec"></span><span class="gx3-l-name"></span>' +
+        '<span class="gx3-l-row"><i>TERR</i><b class="gx3-l-terr"></b></span>' +
+        '<span class="gx3-l-row"><i>LAND</i><b class="gx3-l-land"></b></span>';
+      labelLayer.appendChild(el); p._label = el;
+      p._lab = { sec: el.querySelector(".gx3-l-sec"), name: el.querySelector(".gx3-l-name"),
+        terr: el.querySelector(".gx3-l-terr"), land: el.querySelector(".gx3-l-land"),
+        secT: "SECTOR " + (idx < 9 ? "0" : "") + (idx + 1) + " · WORLD", nameT: p.name.toUpperCase(), terrT: sc.terr, landT: sc.land };
+      labelEls.push(p);
     }
   });
 
@@ -214,7 +249,8 @@
   canvas.addEventListener("pointermove", function (e) {
     setPointer(e); var o = pick();
     if (o !== hover) { hover = o; canvas.style.cursor = o ? "pointer" : "default";
-      labelEls.forEach(function (p) { p._label.classList.toggle("is-hover", o === p._mesh); }); }
+      labelEls.forEach(function (p) { p._label.classList.toggle("is-hover", o === p._mesh); });
+      if (o && o.userData.node && o.userData.node._lab) runScan(o.userData.node); }
   });
   canvas.addEventListener("pointerdown", function (e) { downXY = [e.clientX, e.clientY]; });
   canvas.addEventListener("pointerup", function (e) {
@@ -231,6 +267,8 @@
     if (!panel) { window.location.href = p.href; return; }
     panel.querySelector(".gx3-p-kicker").textContent = p.kicker;
     panel.querySelector(".gx3-p-name").textContent = p.name;
+    var sc = SCAN[p.id], si = PLANETS.indexOf(p) + 1, sl = panel.querySelector(".gx3-p-scan");
+    if (sl) sl.textContent = sc ? ("SECTOR " + (si < 10 ? "0" : "") + si + " · " + sc.terr) : "";
     panel.querySelector(".gx3-p-head").textContent = p.head || "";
     panel.querySelector(".gx3-p-copy").textContent = p.copy || "";
     var a = panel.querySelector(".gx3-p-cta"); a.textContent = p.cta || "Open"; a.href = p.href;
@@ -259,7 +297,7 @@
       tmp.setFromMatrixPosition(p._grp.matrixWorld); tmp.project(camera);
       var vis = tmp.z < 1;
       p._label.style.display = vis ? "flex" : "none";
-      if (vis) { p._label.style.transform = "translate(-50%,-50%) translate(" + ((tmp.x * 0.5 + 0.5) * w) + "px," + ((-tmp.y * 0.5 + 0.5) * h) + "px)"; }
+      if (vis) { p._label.style.transform = "translate(-50%,-122%) translate(" + ((tmp.x * 0.5 + 0.5) * w) + "px," + ((-tmp.y * 0.5 + 0.5) * h) + "px)"; }
     });
   }
 
@@ -284,7 +322,7 @@
       land += ((hp ? 1 : 0) - land) * 0.06;
       if (land > 0.001) {
         tmpV.set(bx, by, bz).sub(landPos).normalize();           // planet→camera direction
-        var LD = 24;                                             // landing distance from the planet
+        var LD = 32;                                             // landing distance (kept back so peripheral worlds stay in frame)
         bx += ((landPos.x + tmpV.x * LD) - bx) * land;
         by += ((landPos.y + tmpV.y * LD) - by) * land;
         bz += ((landPos.z + tmpV.z * LD) - bz) * land;
