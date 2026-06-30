@@ -13,6 +13,7 @@
   var c = document.querySelector('link[rel="canonical"]'); if (c) c.setAttribute('href', 'https://dayonemvp.com/audience.html?a=' + a);
   var og = document.querySelector('meta[property="og:title"]'); if (og) og.setAttribute('content', t.title + ' — Day One MVP™');
   var ogd = document.querySelector('meta[property="og:description"]'); if (ogd) ogd.setAttribute('content', t.headline);
+  var ou = document.querySelector('meta[property="og:url"]'); if (ou) ou.setAttribute('content', 'https://dayonemvp.com/audience.html?a=' + a);
 
   var prev = t.prev && D.people[t.prev], next = t.next && D.people[t.next];
   var h = '';

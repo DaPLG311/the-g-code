@@ -9,8 +9,13 @@
   if (!t) { location.replace('pricing.html'); return; }
 
   document.title = t.title + ' — Pricing — Day One MVP™';
-  var m = document.querySelector('meta[name="description"]'); if (m) m.setAttribute('content', t.promise + ' ' + t.explanation.slice(0, 120));
-  var c = document.querySelector('link[rel="canonical"]'); if (c) c.setAttribute('href', 'https://dayonemvp.com/tier.html?p=' + p);
+  var url = 'https://dayonemvp.com/tier.html?p=' + p;
+  var desc = t.promise + ' ' + t.explanation.slice(0, 120);
+  var m = document.querySelector('meta[name="description"]'); if (m) m.setAttribute('content', desc);
+  var c = document.querySelector('link[rel="canonical"]'); if (c) c.setAttribute('href', url);
+  var ot = document.querySelector('meta[property="og:title"]'); if (ot) ot.setAttribute('content', t.title + ' — Pricing — Day One MVP™');
+  var od = document.querySelector('meta[property="og:description"]'); if (od) od.setAttribute('content', t.promise);
+  var ou = document.querySelector('meta[property="og:url"]'); if (ou) ou.setAttribute('content', url);
 
   var prev = t.prev && D.tiers[t.prev], next = t.next && D.tiers[t.next];
   var html = '';

@@ -51,8 +51,12 @@
   }
   function setMeta(t, d){
     document.title = t;
+    var url="https://dayonemvp.com/build.html"+(sSlug?"?s="+encodeURIComponent(sSlug):cSlug?"?cat="+encodeURIComponent(cSlug):"");
     var m=document.querySelector('meta[name="description"]'); if(m&&d) m.setAttribute("content", d);
-    var c=document.querySelector('link[rel="canonical"]'); if(c) c.setAttribute("href","https://dayonemvp.com/build.html"+(sSlug?"?s="+encodeURIComponent(sSlug):cSlug?"?cat="+encodeURIComponent(cSlug):""));
+    var c=document.querySelector('link[rel="canonical"]'); if(c) c.setAttribute("href",url);
+    var ot=document.querySelector('meta[property="og:title"]'); if(ot) ot.setAttribute("content", t);
+    var od=document.querySelector('meta[property="og:description"]'); if(od&&d) od.setAttribute("content", d);
+    var ou=document.querySelector('meta[property="og:url"]'); if(ou) ou.setAttribute("content", url);
   }
 
   // per-view structured data (JSON-LD data block — exempt from script-src CSP)
