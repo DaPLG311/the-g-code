@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Day One Galaxy — The Flagship World | Day One MVP™</title>
+<meta name="description" content="Day One Galaxy — the first world inside Day One MVP™. A cinematic gateway into the operated calls, methods, builds, and answers behind the work. Founder-led by Jack Rodriguez." />
+<meta name="robots" content="index, follow" />
+<meta name="theme-color" content="#050507" />
+<link rel="canonical" href="https://dayonemvp.com/galaxy.html" />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=Oswald:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css?v=20260626l" />
+<meta property="og:title" content="Day One Galaxy — The Flagship World | Day One MVP™" />
+<meta property="og:description" content="The first world inside Day One — a cinematic gateway into the systems, methods, and operated calls behind the build." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://dayonemvp.com/galaxy.html" />
+<meta property="og:image" content="https://dayonemvp.com/assets/img/og-cover.png" /><meta property="og:image:width" content="1200" /><meta property="og:image:height" content="630" /><meta name="twitter:card" content="summary_large_image" /><meta name="twitter:image" content="https://dayonemvp.com/assets/img/og-cover.png" />
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://dayonemvp.com/galaxy.html#webpage","url":"https://dayonemvp.com/galaxy.html","name":"Day One Galaxy — The Flagship World of Day One MVP™","isPartOf":{"@id":"https://dayonemvp.com/#website"},"description":"A cinematic gateway into the systems, methods, and operated calls behind Day One MVP."},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Day One MVP","item":"https://dayonemvp.com/"},{"@type":"ListItem","position":2,"name":"Day One Galaxy"}]}]}</script>
+<style>
+/* ===================== DAY ONE GALAXY — flagship cosmic stage =====================
+   Luxury Operator Lounge opened into deep space. Brand stays gold-on-dark; cosmic
+   color lives ONLY in the atmosphere (nebula/core/star glow), never on UI chrome.
+   Inline style is CSP-allowed (style-src 'unsafe-inline'); all JS stays external. */
+body.galaxy-page { background:#050507; overflow-x:hidden; }
+
+/* nav floats over the galaxy — drop the marble, keep it legible */
+body.galaxy-page nav, body.galaxy-page nav.scrolled {
+  background: linear-gradient(180deg, rgba(5,5,8,0.62), rgba(5,5,8,0) ) !important;
+  -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px);
+  box-shadow:none !important; border-bottom:1px solid rgba(255,255,255,0.05) !important;
+}
+body.galaxy-page .nav-links a[href="galaxy.html"] { color: var(--champagne-2, #C8A86A); }
+
+/* ---- the sky: fixed full-viewport atmosphere behind everything ---- */
+.gx-sky { position:fixed; inset:0; z-index:0; overflow:hidden; background:
+  radial-gradient(140% 120% at 50% -10%, #0a0b14 0%, #070710 45%, #040406 100%); }
+#galaxy { position:absolute; inset:0; width:100%; height:100%; display:block; }
+.gx-neb { position:absolute; inset:-10%; pointer-events:none; mix-blend-mode:screen; filter:blur(36px); will-change:transform,opacity; }
+.gx-neb-1 { background: radial-gradient(40% 50% at 22% 76%, rgba(16,42,115,0.62), transparent 62%); animation: gxDrift1 26s ease-in-out infinite; }
+.gx-neb-2 { background: radial-gradient(42% 48% at 80% 22%, rgba(107,59,209,0.5), transparent 58%),
+                        radial-gradient(34% 40% at 88% 40%, rgba(176,50,134,0.42), transparent 60%); animation: gxDrift2 30s ease-in-out infinite; }
+.gx-neb-3 { background: radial-gradient(50% 40% at 60% 58%, rgba(57,213,232,0.16), transparent 55%); animation: gxBreath 22s ease-in-out infinite; }
+/* the luminous galactic core — off-center, champagne + magenta bloom */
+.gx-core { position:absolute; width:60vw; height:60vw; max-width:760px; max-height:760px; left:54%; top:46%; transform:translate(-50%,-50%);
+  pointer-events:none; filter:blur(8px); mix-blend-mode:screen;
+  background: radial-gradient(circle at 50% 50%, rgba(241,198,106,0.22) 0%, rgba(176,50,134,0.16) 26%, rgba(75,47,163,0.12) 46%, transparent 66%);
+  animation: gxBreath 18s ease-in-out infinite; }
+.gx-vignette { position:absolute; inset:0; pointer-events:none; background: radial-gradient(120% 90% at 50% 45%, transparent 55%, rgba(3,3,5,0.66) 100%); }
+
+@keyframes gxDrift1 { 0%,100%{ transform:translate(0,0) scale(1);} 50%{ transform:translate(3%,-2%) scale(1.06);} }
+@keyframes gxDrift2 { 0%,100%{ transform:translate(0,0) scale(1);} 50%{ transform:translate(-3%,2%) scale(1.05);} }
+@keyframes gxBreath { 0%,100%{ opacity:0.85;} 50%{ opacity:1;} }
+
+/* ---- content over the sky ---- */
+.gx-wrap { position:relative; z-index:1; min-height:100vh; display:flex; flex-direction:column;
+  align-items:center; justify-content:center; text-align:center; padding:130px 24px 70px; }
+.gx-eyebrow { font-family:"Oswald",sans-serif; text-transform:uppercase; letter-spacing:0.34em; font-size:12px;
+  color:var(--champagne-2,#C8A86A); display:inline-flex; align-items:center; gap:12px; margin-bottom:18px; }
+.gx-eyebrow::before, .gx-eyebrow::after { content:""; width:26px; height:1px; background:linear-gradient(90deg,transparent,rgba(200,168,106,0.7),transparent); }
+.gx-title { font-family:"Archivo",sans-serif; font-weight:900; text-transform:uppercase; letter-spacing:0.12em;
+  font-size:clamp(40px,9vw,108px); line-height:0.98; color:#F4F1EA; margin:0;
+  text-shadow:0 0 26px rgba(200,168,106,0.18), 0 0 70px rgba(75,47,163,0.22); }
+.gx-title .accent { background:linear-gradient(90deg,#F4F1EA, #F1C66A 45%, #F4F1EA); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+.gx-frame { max-width:60ch; margin:22px auto 0; color:#C9CCD3; font-size:clamp(15px,1.7vw,18px); line-height:1.7; text-wrap:pretty; }
+
+/* primary CTA portal — the gravitational center */
+.gx-cta-wrap { margin:34px 0 8px; }
+.gx-cta { position:relative; display:inline-flex; flex-direction:column; align-items:center; gap:3px;
+  padding:22px 46px; border-radius:999px; text-decoration:none; color:#0B0B0D;
+  font-family:"Oswald",sans-serif; text-transform:uppercase; letter-spacing:0.1em; font-weight:600; font-size:16px;
+  background:linear-gradient(180deg,#F1D79B,#C8A86A 55%,#A9863F);
+  box-shadow:0 0 0 1px rgba(255,255,255,0.25) inset, 0 14px 40px -10px rgba(200,168,106,0.5), 0 0 60px -10px rgba(241,198,106,0.5);
+  animation: gxPulse 5s ease-in-out infinite; transition: transform .3s cubic-bezier(.16,1,.3,1), box-shadow .3s ease; }
+.gx-cta small { font-size:11px; letter-spacing:0.08em; opacity:0.8; text-transform:none; font-family:"Inter",sans-serif; }
+.gx-cta:hover { transform:translateY(-3px); box-shadow:0 0 0 1px rgba(255,255,255,0.35) inset, 0 20px 50px -10px rgba(200,168,106,0.6), 0 0 80px -6px rgba(241,198,106,0.65); }
+@keyframes gxPulse { 0%,100%{ box-shadow:0 0 0 1px rgba(255,255,255,0.25) inset, 0 14px 40px -10px rgba(200,168,106,0.45), 0 0 50px -12px rgba(241,198,106,0.4);} 50%{ box-shadow:0 0 0 1px rgba(255,255,255,0.3) inset, 0 14px 40px -10px rgba(200,168,106,0.55), 0 0 78px -8px rgba(241,198,106,0.62);} }
+
+/* ---- constellation of portal nodes ---- */
+.gx-orbit-label { font-family:"Oswald",sans-serif; text-transform:uppercase; letter-spacing:0.24em; font-size:11px; color:rgba(216,188,138,0.92); margin:46px 0 18px; text-shadow:0 1px 10px rgba(0,0,0,0.8); }
+.gx-constellation { display:flex; flex-wrap:wrap; justify-content:center; gap:18px; max-width:1080px; width:100%; }
+.gx-node { position:relative; display:flex; flex-direction:column; gap:6px; text-decoration:none; text-align:left;
+  width:200px; padding:20px 22px; border-radius:16px;
+  background:linear-gradient(160deg, rgba(18,18,26,0.66), rgba(8,8,12,0.72));
+  -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px);
+  border:1px solid rgba(200,168,106,0.28); overflow:hidden;
+  transition: transform .32s cubic-bezier(.16,1,.3,1), box-shadow .32s ease, border-color .3s ease, background .32s ease; }
+.gx-node::before { content:""; position:absolute; inset:0; opacity:0.5; pointer-events:none;
+  background: radial-gradient(120% 80% at 0% 0%, var(--glow, rgba(75,47,163,0.28)), transparent 60%); transition:opacity .32s ease; }
+.gx-node:hover, .gx-node:focus-visible { transform:translateY(-6px); border-color:rgba(200,168,106,0.7);
+  box-shadow:0 18px 44px -18px rgba(0,0,0,0.7), 0 0 0 1px rgba(200,168,106,0.25), 0 0 40px -12px var(--glow, rgba(107,59,209,0.5)); outline:none; }
+.gx-node:hover::before, .gx-node:focus-visible::before { opacity:0.9; }
+.gx-node .nk { position:relative; font-family:"Oswald",sans-serif; text-transform:uppercase; letter-spacing:0.16em; font-size:10px; color:var(--champagne-2,#C8A86A); }
+.gx-node .nt { position:relative; font-family:"Archivo",sans-serif; font-weight:700; font-size:18px; color:#F4F1EA; line-height:1.15; }
+.gx-node .nl { position:relative; font-size:13px; line-height:1.5; color:#A8ACB4; }
+/* major nodes: larger, brighter; slight constellation offsets on desktop */
+.gx-node.major { width:206px; padding:22px 22px; border-color:rgba(200,168,106,0.4); }
+.gx-node.major .nt { font-size:20px; }
+@media (min-width:880px){
+  .gx-constellation.majors .gx-node:nth-child(2){ transform:translateY(-24px); }
+  .gx-constellation.majors .gx-node:nth-child(4){ transform:translateY(-24px); }
+  .gx-constellation.majors .gx-node:nth-child(2):hover,
+  .gx-constellation.majors .gx-node:nth-child(4):hover { transform:translateY(-30px); }
+}
+
+.gx-foot { position:relative; z-index:1; text-align:center; padding:10px 24px 40px; color:#7E828A; font-size:13px; }
+.gx-foot a { color:var(--champagne-2,#C8A86A); text-decoration:none; }
+.gx-foot a:hover { text-decoration:underline; }
+
+/* reduced motion: freeze the atmosphere, keep hover/focus */
+@media (prefers-reduced-motion: reduce) {
+  .gx-neb, .gx-core, .gx-cta { animation:none !important; }
+}
+/* mobile: stacked portal cards, CTA already first, simpler */
+@media (max-width:760px){
+  .gx-wrap{ padding:108px 18px 50px; }
+  .gx-constellation{ gap:12px; }
+  .gx-node, .gx-node.major{ width:100%; max-width:420px; }
+  .gx-constellation.majors .gx-node{ transform:none !important; }
+  .gx-core{ width:90vw; height:90vw; }
+}
+</style>
+</head>
+<body class="world galaxy-page">
+<a class="skip-link" href="#gxMain">Skip to navigation</a>
+
+<nav id="nav">
+  <a href="index.html" class="brand" aria-label="Day One MVP™ home"><img src="assets/img/day-one-logo.png" alt="Day One MVP™" class="brand-logo" /></a>
+  <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  <div class="nav-links" id="navLinks">
+    <a href="galaxy.html">Galaxy</a>
+    <a href="what-we-build.html">What We Build</a>
+    <a href="how-it-works.html">How It Works</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="tech-answers.html">Tech Answers</a>
+    <a href="impact.html">Impact</a>
+    <a href="start.html" class="btn btn-primary btn-sm">Book an Operated Call™</a>
+  </div>
+</nav>
+
+<div class="gx-sky" aria-hidden="true">
+  <canvas id="galaxy"></canvas>
+  <div class="gx-neb gx-neb-1"></div>
+  <div class="gx-neb gx-neb-2"></div>
+  <div class="gx-neb gx-neb-3"></div>
+  <div class="gx-core"></div>
+  <div class="gx-vignette"></div>
+</div>
+
+<main id="gxMain" class="gx-wrap">
+  <span class="gx-eyebrow">The Flagship World of Day One MVP™</span>
+  <h1 class="gx-title">Day One <span class="accent">Galaxy</span></h1>
+  <p class="gx-frame">The first world inside Day One — a cinematic gateway into the systems, methods, and operated calls behind the build. Bring the idea. We operate the first move.</p>
+
+  <div class="gx-cta-wrap">
+    <a class="gx-cta" href="start.html">Book an Operated Call™<small>Start with the clearest next move.</small></a>
+  </div>
+
+  <span class="gx-orbit-label">Core Paths</span>
+  <div class="gx-constellation majors">
+    <a class="gx-node major" style="--glow:rgba(200,168,106,0.34);" href="operated-calls.html"><span class="nk">Core Path</span><span class="nt">Operated Calls™</span><span class="nl">A working call with the person who builds it.</span></a>
+    <a class="gx-node major" style="--glow:rgba(107,59,209,0.4);" href="maestro-method.html"><span class="nk">The Method</span><span class="nt">The Maestro Method™</span><span class="nl">Complex work, one direction, less time lost.</span></a>
+    <a class="gx-node major" style="--glow:rgba(16,42,115,0.5);" href="what-we-build.html"><span class="nk">The Work</span><span class="nt">What We Build</span><span class="nl">Company, product, systems, growth, media — coordinated.</span></a>
+    <a class="gx-node major" style="--glow:rgba(176,50,134,0.38);" href="pricing.html"><span class="nk">The Ladder</span><span class="nt">Pricing</span><span class="nl">Clear starting points, scoped before we build.</span></a>
+    <a class="gx-node major" style="--glow:rgba(57,213,232,0.32);" href="how-it-works.html"><span class="nk">The Path</span><span class="nt">How It Works</span><span class="nl">From idea to a real first build.</span></a>
+  </div>
+
+  <span class="gx-orbit-label">Outer Orbit</span>
+  <div class="gx-constellation">
+    <a class="gx-node" style="--glow:rgba(75,47,163,0.32);" href="who-we-help.html"><span class="nk">Explore</span><span class="nt">Who We Help</span><span class="nl">Founders, small business, nonprofits, youth in tech.</span></a>
+    <a class="gx-node" style="--glow:rgba(57,213,232,0.26);" href="tech-answers.html"><span class="nk">Explore</span><span class="nt">Tech Answers</span><span class="nl">Plain-language answers, no tech attitude.</span></a>
+    <a class="gx-node" style="--glow:rgba(200,168,106,0.3);" href="founder.html"><span class="nk">Explore</span><span class="nt">Meet Jack</span><span class="nl">The founder and operator behind the work.</span></a>
+    <a class="gx-node" style="--glow:rgba(176,50,134,0.3);" href="impact.html"><span class="nk">Explore</span><span class="nt">Impact</span><span class="nl">Why this exists — technology for everyone else.</span></a>
+  </div>
+</main>
+
+<div class="gx-foot">Built for founders who move on day one. · <a href="index.html">Back to dayonemvp.com →</a></div>
+
+<script src="assets/js/galaxy.js?v=20260626a"></script>
+<script src="script.js?v=20260626f"></script>
+</body>
+</html>
