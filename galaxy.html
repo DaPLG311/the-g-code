@@ -35,7 +35,8 @@ body.galaxy-page .nav-links a[href="galaxy.html"] { color: var(--champagne-2,#C8
 .gx3-layer { position:absolute; inset:0; pointer-events:none; }
 
 /* title block */
-.gx3-head { position:absolute; left:0; right:0; top:104px; text-align:center; pointer-events:none; padding:0 20px; z-index:3; }
+.gx3-head { position:absolute; left:0; right:0; top:104px; text-align:center; pointer-events:none; padding:0 20px; z-index:3; transition: opacity .55s ease; }
+body.gx3-zoom .gx3-head { opacity:0; }   /* fade the title out while a world is engaged so it doesn't block the view */
 .gx3-eyebrow { font-family:"Oswald",sans-serif; text-transform:uppercase; letter-spacing:0.34em; font-size:12px;
   color:var(--champagne-2,#C8A86A); display:inline-flex; align-items:center; gap:12px; margin-bottom:12px; }
 .gx3-eyebrow::before,.gx3-eyebrow::after { content:""; width:24px; height:1px; background:linear-gradient(90deg,transparent,rgba(200,168,106,0.7),transparent); }
@@ -203,7 +204,7 @@ body.gx3-nowebgl .gx3-stage { min-height:62vh; }
 </main>
 
 <script src="assets/js/vendor/three.min.js?v=r149"></script>
-<script src="assets/js/galaxy3d.js?v=20260630i"></script>
+<script src="assets/js/galaxy3d.js?v=20260630j"></script>
 <script src="script.js?v=20260626f"></script>
 </body>
 </html>
