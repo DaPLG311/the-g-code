@@ -1656,12 +1656,12 @@ body.world .menu-toggle span { background: #DDE0E4; }
    so it's a plain background that scales (cover) and shrinks cleanly to mobile ===== */
 body.world nav, nav {
   background-color:#0a0a0c;
-  background-image:url("assets/img/nav-strip2.png");
+  background-image: linear-gradient(rgba(7,8,11,0.62), rgba(7,8,11,0.62)), url("assets/img/nav-lux.jpg");
   background-repeat:no-repeat; background-position:center; background-size:cover;
   min-height:88px; padding-top:6px; padding-bottom:6px; }
 body.world nav.scrolled, nav.scrolled {
   background-color:#0a0a0c;
-  background-image:url("assets/img/nav-strip2.png");
+  background-image: linear-gradient(rgba(7,8,11,0.72), rgba(7,8,11,0.72)), url("assets/img/nav-lux.jpg");
   background-repeat:no-repeat; background-position:center; background-size:cover;
   border-bottom:1px solid rgba(255,255,255,0.10); }
 /* our logo — large, centered vertically */
