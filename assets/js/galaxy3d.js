@@ -265,6 +265,7 @@
 
   // ---- mouse parallax + loop ----
   var mx = 0, my = 0, ex = 0, ey = 0, zoom = 0, lastMoveMs = 0;
+  var land = 0, lookT = new THREE.Vector3(0, 0, 0), landPos = new THREE.Vector3(), tmpV = new THREE.Vector3();
   if (!reduce) window.addEventListener("pointermove", function (e) { mx = (e.clientX / window.innerWidth - 0.5); my = (e.clientY / window.innerHeight - 0.5); lastMoveMs = performance.now(); }, { passive: true });
   var t0 = 0, raf = null;
   function frame(ms) {
@@ -274,14 +275,28 @@
       ex += (mx - ex) * 0.04; ey += (my - ey) * 0.04;
       var idle = (performance.now() - lastMoveMs) > 1300;        // dolly far<->near on cursor activity
       zoom += ((idle ? 0 : 1) - zoom) * 0.035;
-      camera.position.x = (camFar.x + (camNear.x - camFar.x) * zoom) + ex * 14;
-      camera.position.y = (camFar.y + (camNear.y - camFar.y) * zoom) - ey * 9;
-      camera.position.z = camFar.z + (camNear.z - camFar.z) * zoom;
-      camera.lookAt(0, 0, 0);
+      var bx = (camFar.x + (camNear.x - camFar.x) * zoom) + ex * 14;
+      var by = (camFar.y + (camNear.y - camFar.y) * zoom) - ey * 9;
+      var bz = camFar.z + (camNear.z - camFar.z) * zoom;
+      // hover a planet → glide toward it like a ship landing
+      var hp = (hover && hover !== sun) ? hover : null;
+      if (hp) landPos.setFromMatrixPosition(hp.userData.group.matrixWorld);
+      land += ((hp ? 1 : 0) - land) * 0.06;
+      if (land > 0.001) {
+        tmpV.set(bx, by, bz).sub(landPos).normalize();           // planet→camera direction
+        var LD = 24;                                             // landing distance from the planet
+        bx += ((landPos.x + tmpV.x * LD) - bx) * land;
+        by += ((landPos.y + tmpV.y * LD) - by) * land;
+        bz += ((landPos.z + tmpV.z * LD) - bz) * land;
+      }
+      var ltx = hp ? landPos.x * 0.7 : 0, lty = hp ? landPos.y * 0.7 : 0, ltz = hp ? landPos.z * 0.7 : 0;
+      lookT.x += (ltx - lookT.x) * 0.08; lookT.y += (lty - lookT.y) * 0.08; lookT.z += (ltz - lookT.z) * 0.08;
+      camera.position.set(bx, by, bz);
+      camera.lookAt(lookT.x, lookT.y, lookT.z);
       PLANETS.forEach(function (p) {
         p._mesh.rotation.y += p._spin;
         p._grp.position.y = p._baseY + Math.sin(t * 0.5 + p._baseY) * 0.5;
-        var tgt = (hover === p._mesh) ? 1.14 : 1; p._grp.scale.x += (tgt - p._grp.scale.x) * 0.15; p._grp.scale.y = p._grp.scale.z = p._grp.scale.x;
+        var tgt = (hover === p._mesh) ? 1.08 : 1; p._grp.scale.x += (tgt - p._grp.scale.x) * 0.15; p._grp.scale.y = p._grp.scale.z = p._grp.scale.x;
       });
       var sp = 1 + Math.sin(t * 0.8) * 0.04; coreGlow.scale.set(120 * sp, 120 * sp, 1);
     }
