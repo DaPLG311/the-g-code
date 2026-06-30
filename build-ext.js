@@ -104,6 +104,7 @@ window.BUILD_EXT = {
   "referral-systems": { approach:"We create the prompts, process, and incentives that turn happy customers and partners into a deliberate, repeatable source of growth.", whoFor:"Businesses hoping people remember to refer them, and founders sitting on goodwill they've never systematized." },
   "conversion-improvement": { approach:"We find the friction — message, flow, proof, forms — slowing decisions, and remove it so more of the same traffic acts.", whoFor:"Businesses with traffic that doesn't convert, and founders guessing at why visitors don't take the next step." },
   "retention": { approach:"We strengthen the experience, communication, and delivery that keep customers paying, returning, and expanding.", whoFor:"Subscription and service businesses losing customers out the back door, and founders over-focused on acquisition alone." },
+  "digital-marketing": { approach:"We pick the channels that fit your business and budget, run them as one coordinated push instead of scattered posts, and track what actually drives customers — so spend becomes pipeline, not guesswork.", whoFor:"Small businesses invisible online, and founders boosting random posts with no way to tell what is working." },
 
   /* ===== WORLD 5 — TRAIN THE PEOPLE ===== */
   "ai-foundations": { approach:"We teach practical, responsible AI use built around your real workflows — judgment and application, not hype.", whoFor:"Teams curious but unsure where AI fits, and founders who want real capability, not just buzzwords." },
