@@ -247,7 +247,7 @@
 
   // ---- interaction ----
   var ray = new THREE.Raycaster(), pointer = new THREE.Vector2(), hover = null, downXY = null;
-  var engaged = null, pendingOff = 0, DELAY = 2400;   // sticky hover: hold the zoom, then release after a delay
+  var engaged = null, pendingOff = 0, DELAY = 2000;   // sticky hover: hold the zoom, then release after a delay
   function engage(nd) { engaged = nd; pendingOff = 0; document.body.classList.add("gx3-zoom"); labelEls.forEach(function (p) { p._label.classList.toggle("is-hover", p === nd); }); if (nd && nd._lab) runScan(nd); }
   function disengage() { engaged = null; pendingOff = 0; document.body.classList.remove("gx3-zoom"); labelEls.forEach(function (p) { p._label.classList.remove("is-hover"); }); }
   var hitMeshes = PLANETS.map(function (p) { return p._hit; }).concat([sun]);
@@ -256,7 +256,8 @@
   canvas.addEventListener("pointermove", function (e) {
     setPointer(e); var o = pick(); hover = o; canvas.style.cursor = o ? "pointer" : "default";
     var nd = (o && o.userData && o.userData.node && o.userData.node._lab) ? o.userData.node : null;  // planet only
-    if (nd) { if (nd !== engaged) engage(nd); else pendingOff = 0; }     // on a world → engage / cancel release
+    if (o === sun) { if (engaged) disengage(); }                          // hover the sun → zoom out now (click = home)
+    else if (nd) { if (nd !== engaged) engage(nd); else pendingOff = 0; } // on a world → engage / cancel release
     else if (engaged && !pendingOff) pendingOff = performance.now() + DELAY;  // off → start release countdown
   });
   canvas.addEventListener("pointerleave", function () { if (engaged && !pendingOff) pendingOff = performance.now() + DELAY; });
