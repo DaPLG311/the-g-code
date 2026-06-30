@@ -63,8 +63,9 @@
   scene.fog = new THREE.FogExp2(0x05060a, 0.0026);
 
   var camera = new THREE.PerspectiveCamera(50, 1, 0.1, 2000);
-  var camBase = new THREE.Vector3(0, 74, 60);
-  camera.position.copy(camBase);
+  var camNear = new THREE.Vector3(0, 72, 59);   // cursor active → comes closer
+  var camFar = new THREE.Vector3(0, 98, 80);    // resting / idle → further away
+  camera.position.copy(camFar);
   camera.lookAt(0, 0, 0);
 
   var galaxy = new THREE.Group();   // spins: stars, dust, nebula, core glow
@@ -143,8 +144,8 @@
     mesh.rotation.z = rnd(-0.25, 0.25); mesh.userData.node = p; mesh.userData.group = grp;
     grp.add(mesh);
     // atmosphere halo
-    var halo = new THREE.Mesh(new THREE.SphereGeometry(rad * 1.18, 32, 32),
-      new THREE.MeshBasicMaterial({ color: ATM[p.analog], transparent: true, opacity: 0.22, side: THREE.BackSide, blending: THREE.AdditiveBlending, depthWrite: false }));
+    var halo = new THREE.Mesh(new THREE.SphereGeometry(rad * 1.09, 32, 32),
+      new THREE.MeshBasicMaterial({ color: ATM[p.analog], transparent: true, opacity: 0.16, side: THREE.BackSide, blending: THREE.AdditiveBlending, depthWrite: false }));
     grp.add(halo);
     // rings for saturn-analog (Operated Calls hero)
     if (p.analog === "saturn") {
@@ -263,15 +264,20 @@
   }
 
   // ---- mouse parallax + loop ----
-  var mx = 0, my = 0, ex = 0, ey = 0;
-  if (!reduce) window.addEventListener("pointermove", function (e) { mx = (e.clientX / window.innerWidth - 0.5); my = (e.clientY / window.innerHeight - 0.5); }, { passive: true });
+  var mx = 0, my = 0, ex = 0, ey = 0, zoom = 0, lastMoveMs = 0;
+  if (!reduce) window.addEventListener("pointermove", function (e) { mx = (e.clientX / window.innerWidth - 0.5); my = (e.clientY / window.innerHeight - 0.5); lastMoveMs = performance.now(); }, { passive: true });
   var t0 = 0, raf = null;
   function frame(ms) {
     var t = ms * 0.001; var dt = t - t0; t0 = t;
     if (!reduce) {
       galaxy.rotation.y += 0.0006;
       ex += (mx - ex) * 0.04; ey += (my - ey) * 0.04;
-      camera.position.x = camBase.x + ex * 16; camera.position.y = camBase.y - ey * 10; camera.lookAt(0, 0, 0);
+      var idle = (performance.now() - lastMoveMs) > 1300;        // dolly far<->near on cursor activity
+      zoom += ((idle ? 0 : 1) - zoom) * 0.035;
+      camera.position.x = (camFar.x + (camNear.x - camFar.x) * zoom) + ex * 14;
+      camera.position.y = (camFar.y + (camNear.y - camFar.y) * zoom) - ey * 9;
+      camera.position.z = camFar.z + (camNear.z - camFar.z) * zoom;
+      camera.lookAt(0, 0, 0);
       PLANETS.forEach(function (p) {
         p._mesh.rotation.y += p._spin;
         p._grp.position.y = p._baseY + Math.sin(t * 0.5 + p._baseY) * 0.5;
@@ -294,6 +300,6 @@
   });
 
   resize();
-  if (reduce) { planetsGrp.updateMatrixWorld(); renderer.render(scene, camera); updateLabels(); }
+  if (reduce) { camera.position.copy(camNear); camera.lookAt(0, 0, 0); planetsGrp.updateMatrixWorld(); renderer.render(scene, camera); updateLabels(); }
   else { raf = requestAnimationFrame(frame); }
 })();
