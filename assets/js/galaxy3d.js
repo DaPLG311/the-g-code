@@ -181,6 +181,9 @@
         new THREE.MeshBasicMaterial({ color: 0xe8cf9a, transparent: true, opacity: 0.55, side: THREE.DoubleSide, depthWrite: false }));
       rg.rotation.x = Math.PI * 0.5 - 0.42; rg.rotation.y = 0.2; grp.add(rg);
     }
+    // invisible hit sphere — a "zoom window" larger than the planet so hover stays stable (no flicker as it bobs)
+    var hit = new THREE.Mesh(new THREE.SphereGeometry(rad * 2.4, 12, 12), new THREE.MeshBasicMaterial({ colorWrite: false, depthWrite: false }));
+    hit.userData.node = p; hit.userData.group = grp; grp.add(hit); p._hit = hit;
     p._mesh = mesh; p._grp = grp; p._baseY = py; p._rad = rad; p._spin = rnd(0.0015, 0.004) * (idx % 2 ? 1 : -1);
     planetsGrp.add(grp);
     // html scan card (hover-reveal; alien text decodes to english)
@@ -244,15 +247,19 @@
 
   // ---- interaction ----
   var ray = new THREE.Raycaster(), pointer = new THREE.Vector2(), hover = null, downXY = null;
-  var hitMeshes = PLANETS.map(function (p) { return p._mesh; }).concat([sun]);
+  var engaged = null, pendingOff = 0, DELAY = 2200;   // sticky hover: hold the zoom, then release after a delay
+  function engage(nd) { engaged = nd; pendingOff = 0; labelEls.forEach(function (p) { p._label.classList.toggle("is-hover", p === nd); }); if (nd && nd._lab) runScan(nd); }
+  function disengage() { engaged = null; pendingOff = 0; labelEls.forEach(function (p) { p._label.classList.remove("is-hover"); }); }
+  var hitMeshes = PLANETS.map(function (p) { return p._hit; }).concat([sun]);
   function setPointer(e) { var r = canvas.getBoundingClientRect(); pointer.x = ((e.clientX - r.left) / r.width) * 2 - 1; pointer.y = -((e.clientY - r.top) / r.height) * 2 + 1; }
   function pick() { ray.setFromCamera(pointer, camera); var h = ray.intersectObjects(hitMeshes, false); return h.length ? h[0].object : null; }
   canvas.addEventListener("pointermove", function (e) {
-    setPointer(e); var o = pick();
-    if (o !== hover) { hover = o; canvas.style.cursor = o ? "pointer" : "default";
-      labelEls.forEach(function (p) { p._label.classList.toggle("is-hover", o === p._mesh); });
-      if (o && o.userData.node && o.userData.node._lab) runScan(o.userData.node); }
+    setPointer(e); var o = pick(); hover = o; canvas.style.cursor = o ? "pointer" : "default";
+    var nd = (o && o.userData && o.userData.node && o.userData.node._lab) ? o.userData.node : null;  // planet only
+    if (nd) { if (nd !== engaged) engage(nd); else pendingOff = 0; }     // on a world → engage / cancel release
+    else if (engaged && !pendingOff) pendingOff = performance.now() + DELAY;  // off → start release countdown
   });
+  canvas.addEventListener("pointerleave", function () { if (engaged && !pendingOff) pendingOff = performance.now() + DELAY; });
   canvas.addEventListener("pointerdown", function (e) { downXY = [e.clientX, e.clientY]; });
   canvas.addEventListener("pointerup", function (e) {
     if (!downXY || Math.abs(e.clientX - downXY[0]) + Math.abs(e.clientY - downXY[1]) > 8) { downXY = null; return; }
@@ -311,13 +318,14 @@
     var t = ms * 0.001; var dt = t - t0; t0 = t;
     if (!reduce) {
       galaxy.rotation.y += 0.0006;
+      if (pendingOff && performance.now() > pendingOff) disengage();     // sticky-hover release after the delay
       ex += (mx - ex) * 0.04; ey += (my - ey) * 0.04;
       var bx = camBase.x + ex * 14;                              // fixed resting distance + gentle parallax sway
       var by = camBase.y - ey * 9;
       var bz = camBase.z;
-      // hover a planet → wide, gentle reframe onto it (widened snap)
-      var hp = (hover && hover !== sun) ? hover : null;
-      if (hp) landPos.setFromMatrixPosition(hp.userData.group.matrixWorld);
+      // engaged world → wide, gentle reframe onto it (sticky until release delay)
+      var hp = engaged;
+      if (hp) landPos.setFromMatrixPosition(hp._grp.matrixWorld);
       land += ((hp ? 1 : 0) - land) * 0.05;
       if (land > 0.001) {
         tmpV.set(bx, by, bz).sub(landPos).normalize();           // planet→camera direction
@@ -333,7 +341,7 @@
       PLANETS.forEach(function (p) {
         p._mesh.rotation.y += p._spin;
         p._grp.position.y = p._baseY + Math.sin(t * 0.5 + p._baseY) * 0.5;
-        var tgt = (hover === p._mesh) ? 1.08 : 1; p._grp.scale.x += (tgt - p._grp.scale.x) * 0.15; p._grp.scale.y = p._grp.scale.z = p._grp.scale.x;
+        var tgt = (engaged === p) ? 1.08 : 1; p._grp.scale.x += (tgt - p._grp.scale.x) * 0.15; p._grp.scale.y = p._grp.scale.z = p._grp.scale.x;
       });
       var sp = 1 + Math.sin(t * 0.8) * 0.04; coreGlow.scale.set(120 * sp, 120 * sp, 1);
     }
