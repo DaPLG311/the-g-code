@@ -247,13 +247,19 @@
 
   // ---- interaction ----
   var ray = new THREE.Raycaster(), pointer = new THREE.Vector2(), hover = null, downXY = null;
-  var engaged = null, pendingOff = 0, DELAY = 2000;   // sticky hover: hold the zoom, then release after a delay
+  var panX = 0, panZ = 0, dragging = false, dragSX = 0, dragSY = 0, panX0 = 0, panZ0 = 0, PANMAX = 72;  // touch-drag pan
+  var engaged = null, pendingOff = 0, DELAY = 1700;   // sticky hover: hold the zoom, then release after a delay
   function engage(nd) { engaged = nd; pendingOff = 0; document.body.classList.add("gx3-zoom"); labelEls.forEach(function (p) { p._label.classList.toggle("is-hover", p === nd); }); if (nd && nd._lab) runScan(nd); }
   function disengage() { engaged = null; pendingOff = 0; document.body.classList.remove("gx3-zoom"); labelEls.forEach(function (p) { p._label.classList.remove("is-hover"); }); }
   var hitMeshes = PLANETS.map(function (p) { return p._hit; }).concat([sun]);
   function setPointer(e) { var r = canvas.getBoundingClientRect(); pointer.x = ((e.clientX - r.left) / r.width) * 2 - 1; pointer.y = -((e.clientY - r.top) / r.height) * 2 + 1; }
   function pick() { ray.setFromCamera(pointer, camera); var h = ray.intersectObjects(hitMeshes, false); return h.length ? h[0].object : null; }
   canvas.addEventListener("pointermove", function (e) {
+    if (e.pointerType === "touch") {   // touch-drag pans the backdrop (slide toward what you want to see)
+      if (dragging) { panX = Math.max(-PANMAX, Math.min(PANMAX, panX0 + (e.clientX - dragSX) * 0.13));
+        panZ = Math.max(-PANMAX, Math.min(PANMAX, panZ0 + (e.clientY - dragSY) * 0.13)); }
+      return;
+    }
     setPointer(e); var o = pick(); hover = o; canvas.style.cursor = o ? "pointer" : "default";
     var nd = (o && o.userData && o.userData.node && o.userData.node._lab) ? o.userData.node : null;  // planet only
     if (o === sun) { if (engaged) disengage(); }                          // hover the sun → zoom out now (click = home)
@@ -261,8 +267,9 @@
     else if (engaged && !pendingOff) pendingOff = performance.now() + DELAY;  // off → start release countdown
   });
   canvas.addEventListener("pointerleave", function () { if (engaged && !pendingOff) pendingOff = performance.now() + DELAY; });
-  canvas.addEventListener("pointerdown", function (e) { downXY = [e.clientX, e.clientY]; });
-  canvas.addEventListener("pointerup", function (e) {
+  canvas.addEventListener("pointerdown", function (e) { downXY = [e.clientX, e.clientY];
+    if (e.pointerType === "touch") { dragging = true; dragSX = e.clientX; dragSY = e.clientY; panX0 = panX; panZ0 = panZ; } });
+  canvas.addEventListener("pointerup", function (e) { dragging = false;
     if (!downXY || Math.abs(e.clientX - downXY[0]) + Math.abs(e.clientY - downXY[1]) > 8) { downXY = null; return; }
     downXY = null; setPointer(e); var o = pick();
     if (!o) return;
@@ -313,7 +320,7 @@
   // ---- mouse parallax + loop ----
   var mx = 0, my = 0, ex = 0, ey = 0;
   var land = 0, lookT = new THREE.Vector3(0, 0, 0), landPos = new THREE.Vector3(), tmpV = new THREE.Vector3();
-  if (!reduce) window.addEventListener("pointermove", function (e) { mx = (e.clientX / window.innerWidth - 0.5); my = (e.clientY / window.innerHeight - 0.5); }, { passive: true });
+  if (!reduce) window.addEventListener("pointermove", function (e) { if (e.pointerType === "touch") return; mx = (e.clientX / window.innerWidth - 0.5); my = (e.clientY / window.innerHeight - 0.5); }, { passive: true });
   var t0 = 0, raf = null;
   function frame(ms) {
     var t = ms * 0.001; var dt = t - t0; t0 = t;
@@ -337,8 +344,8 @@
       }
       var ltx = hp ? landPos.x * 0.92 : 0, lty = hp ? landPos.y * 0.92 : 0, ltz = hp ? landPos.z * 0.92 : 0;
       lookT.x += (ltx - lookT.x) * 0.08; lookT.y += (lty - lookT.y) * 0.08; lookT.z += (ltz - lookT.z) * 0.08;
-      camera.position.set(bx, by, bz);
-      camera.lookAt(lookT.x, lookT.y, lookT.z);
+      camera.position.set(bx + panX, by, bz + panZ);
+      camera.lookAt(lookT.x + panX, lookT.y, lookT.z + panZ);
       PLANETS.forEach(function (p) {
         p._mesh.rotation.y += p._spin;
         p._grp.position.y = p._baseY + Math.sin(t * 0.5 + p._baseY) * 0.5;
@@ -363,4 +370,5 @@
   resize();
   if (reduce) { camera.position.copy(camBase); camera.lookAt(0, 0, 0); planetsGrp.updateMatrixWorld(); renderer.render(scene, camera); updateLabels(); }
   else { raf = requestAnimationFrame(frame); }
+  setTimeout(function () { document.body.classList.add("gx3-title-hide"); }, 5200);  // auto-fade the title after a few seconds
 })();
