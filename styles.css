@@ -1573,7 +1573,7 @@ body.world .acc-inner .aw-time { font-family: "Oswald", sans-serif; text-transfo
 @media (max-width: 600px) { .artifact-strip { grid-template-columns: 1fr; } }
 
 /* pricing AI cards — price as a clean line under the title (parallel with AIBridge) */
-.cat-price { display:block; font-family:"Oswald",sans-serif; font-size:12.5px; letter-spacing:.05em; color:var(--champagne-2); margin:1px 0 7px; }
+.cat-price { display:block; font-family:"Archivo",sans-serif; font-weight:700; font-size:15px; letter-spacing:0; color:var(--champagne-2); margin:2px 0 8px; }
 
 /* small-business / mom-and-pop discount — the can't-miss offer card */
 .smoke.offer { border-color: rgba(200,168,106,0.55) !important; box-shadow: 0 28px 70px rgba(0,0,0,0.45), 0 0 0 1px rgba(200,168,106,0.30) !important; }
