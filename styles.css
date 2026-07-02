@@ -2104,12 +2104,13 @@ h1, h2, h3 { font-weight: 700; line-height: 1.14; letter-spacing: -0.012em; text
 /* ===================== ACCESSIBILITY ===================== */
 /* Skip link — visible only on keyboard focus */
 .skip-link {
-  position: absolute; left: -9999px; top: 0; z-index: 2000;
+  position: absolute; left: 0; top: 0; transform: translateY(-130%); z-index: 2000;
   background: var(--champagne-2); color: #0B0B0D;
   padding: 10px 18px; font-family: 'Oswald', sans-serif; font-weight: 600;
   letter-spacing: 0.06em; text-decoration: none; border-radius: 0 0 8px 0;
+  transition: transform .15s ease;   /* off-screen via transform → no horizontal overflow (RTL-safe) */
 }
-.skip-link:focus { left: 0; }
+.skip-link:focus { transform: translateY(0); }
 
 /* Global visible focus ring for keyboard users (zero-specificity base) */
 :where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
