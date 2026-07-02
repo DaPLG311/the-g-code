@@ -1,4 +1,10 @@
 {
+  "redirects": [
+    { "source": "/launch.html", "destination": "/how-it-works.html", "permanent": true },
+    { "source": "/services.html", "destination": "/what-we-build.html", "permanent": true },
+    { "source": "/live.html", "destination": "/", "permanent": true },
+    { "source": "/vault.html", "destination": "/", "permanent": true }
+  ],
   "headers": [
     {
       "source": "/(.*)",

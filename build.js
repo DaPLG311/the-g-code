@@ -68,7 +68,7 @@
   var ORG = { "@type":"Organization", "name":"Day One MVP", "url":"https://dayonemvp.com/" };
 
   function renderService(slug){
-    var s = D.services[slug]; if(!s){ return renderWorlds(); }
+    var s = D.services[slug]; if(!s){ location.replace('what-we-build.html'); return; }
     var cat = catBy(s.cat);
     var cta = primaryCTA(cat.slug);
     setMeta(s.title+" — Day One MVP™", s.definition);
@@ -118,6 +118,19 @@
     if(s.whoFor){ html += '<div class="kv"><h3>Who it’s for</h3><p>'+e(s.whoFor)+'</p></div>'; }
     html += '</div></div></section>';
 
+    /* SHIPPED EXAMPLE — optional real, live work */
+    if(s.realWork && s.realWork.url){
+      var rw = s.realWork;
+      html += '<section class="overlay-sec"><div class="wrap"><div class="smoke wide reveal">';
+      html += '<span class="eyebrow">Shipped Example</span>';
+      html += '<div class="method-grid"><div class="method-card">';
+      html += '<h3>'+e(rw.label)+'</h3>';
+      html += '<p>'+e(rw.note)+'</p>';
+      html += '<p style="margin-top:12px;"><a class="hlink" href="'+e(rw.url)+'" target="_blank" rel="noopener">See it live &rarr;</a></p>';
+      html += '</div></div>';
+      html += '</div></div></section>';
+    }
+
     /* RELATED */
     if(rel.length){
       html += '<section class="overlay-sec spotlight"><div class="wrap"><div class="smoke wide reveal">';
@@ -141,7 +154,7 @@
   }
 
   function renderCategory(slug){
-    var cat = catBy(slug); if(!cat){ return renderWorlds(); }
+    var cat = catBy(slug); if(!cat){ location.replace('what-we-build.html'); return; }
     var ctaLabel = cat.ctaLabel || "Book an Operated Call™";
     setMeta(cat.title+" — What We Build — Day One MVP™", cat.explanation || cat.promise);
     var curl = "https://dayonemvp.com/build.html?cat="+slug;

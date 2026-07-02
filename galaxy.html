@@ -6,13 +6,13 @@
 <title>Day One Galaxy — The Flagship World | Day One MVP™</title>
 <meta name="description" content="Day One Galaxy — the flagship world of Day One MVP™. A cinematic spiral galaxy where the Sun is home and eight planets map the company: Start, Build, Install, Grow, Train, Media, Operated Calls™, and The Maestro Method™." />
 <meta name="robots" content="index, follow" />
-<meta name="theme-color" content="#050507" />
+<meta name="theme-color" content="#050507" /><!-- deliberate: deeper black than the sitewide #0B0B0D — matches the 3D galaxy scene backdrop -->
 <link rel="canonical" href="https://dayonemvp.com/galaxy.html" />
 <link rel="icon" type="image/svg+xml" href="favicon.svg" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=Oswald:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="styles.css?v=20260626l" />
+<link rel="stylesheet" href="styles.css?v=20260701a" />
 <meta property="og:title" content="Day One Galaxy — The Flagship World | Day One MVP™" />
 <meta property="og:description" content="A cinematic spiral galaxy where the Sun is home and eight planets map the company, part by part." />
 <meta property="og:type" content="website" />
@@ -46,6 +46,12 @@ body.gx3-title-hide .gx3-head { pointer-events:none; }
   .gx3-rotate-icon { font-size:56px; line-height:1; color:var(--champagne-2,#C8A86A); animation: gx3rot 2.6s ease-in-out infinite; }
   .gx3-rotate-t { font-family:"Archivo",sans-serif; font-weight:800; font-size:23px; color:#F4F1EA; margin:20px 0 8px; }
   .gx3-rotate-s { color:#9aa0a8; font-size:14px; line-height:1.5; max-width:30ch; }
+  #gx3-rotate-skip { margin-top:22px; padding:12px 26px; border-radius:999px; cursor:pointer; background:transparent;
+    border:1px solid rgba(200,168,106,0.5); color:var(--champagne-2,#C8A86A); font-family:"Oswald",sans-serif;
+    text-transform:uppercase; letter-spacing:0.14em; font-size:11px;
+    transition: border-color .22s ease, color .22s ease, box-shadow .22s ease; }
+  #gx3-rotate-skip:hover, #gx3-rotate-skip:focus-visible { border-color:var(--champagne-2,#C8A86A); color:#F4F1EA;
+    box-shadow:0 0 16px -4px rgba(200,168,106,0.6); outline:none; }
   @keyframes gx3rot { 0%,100%{ transform:rotate(0); } 50%{ transform:rotate(88deg); } }
 }
 .gx3-eyebrow { font-family:"Oswald",sans-serif; text-transform:uppercase; letter-spacing:0.34em; font-size:12px;
@@ -145,20 +151,22 @@ body.gx3-nowebgl .gx3-stage { min-height:62vh; }
   <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
   <div class="nav-links" id="navLinks">
     <a href="galaxy.html">Galaxy</a>
+    <a href="operated-calls.html">Operated Calls™</a>
     <a href="what-we-build.html">What We Build</a>
     <a href="how-it-works.html">How It Works</a>
     <a href="pricing.html">Pricing</a>
+    <a href="work.html">Built &amp; Live</a>
     <a href="tech-answers.html">Tech Answers</a>
-    <a href="impact.html">Impact</a>
     <a href="start.html" class="btn btn-primary btn-sm">Book an Operated Call™</a>
   </div>
 </nav>
 
-<div class="gx3-rotate" aria-hidden="true">
+<div class="gx3-rotate">
   <div class="gx3-rotate-inner">
     <div class="gx3-rotate-icon">⟳</div>
     <p class="gx3-rotate-t">Rotate your device</p>
     <p class="gx3-rotate-s">The Day One Galaxy opens in landscape — turn your phone sideways.</p>
+    <button id="gx3-rotate-skip" type="button">Continue in portrait ↓</button>
   </div>
 </div>
 
@@ -223,8 +231,16 @@ body.gx3-nowebgl .gx3-stage { min-height:62vh; }
 <div class="gx3-foot">Built for founders who move on day one. · <a href="index.html">Back to dayonemvp.com →</a></div>
 </main>
 
+<footer class="gx3-legal" style="display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:6px 14px;padding:16px 20px 30px;background:#050507;border-top:1px solid rgba(255,255,255,0.05);color:#5f636b;font-size:12px;">
+  <a href="privacy.html" style="color:#7E828A;text-decoration:none;">Privacy</a><span aria-hidden="true">·</span>
+  <a href="terms.html" style="color:#7E828A;text-decoration:none;">Terms</a><span aria-hidden="true">·</span>
+  <a href="accessibility.html" style="color:#7E828A;text-decoration:none;">Accessibility</a><span aria-hidden="true">·</span>
+  <a href="mailto:jack@dayonemvp.com" style="color:#7E828A;text-decoration:none;">jack@dayonemvp.com</a><span aria-hidden="true">·</span>
+  <span>© 2026 Day One MVP™</span>
+</footer>
+
 <script src="assets/js/vendor/three.min.js?v=r149"></script>
-<script src="assets/js/galaxy3d.js?v=20260630m"></script>
-<script src="script.js?v=20260626f"></script>
+<script src="assets/js/galaxy3d.js?v=20260701a"></script>
+<script src="script.js?v=20260701a"></script>
 </body>
 </html>

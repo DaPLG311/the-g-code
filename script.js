@@ -51,6 +51,27 @@ document.querySelectorAll('.tabs').forEach((group) => {
   });
 });
 
+// Post-submit confirm UI — injected next to the submit button (CSP-safe: built
+// here in script.js, no inline JS in the HTML). Replaces the old blind 900ms
+// redirect to success.html so the visitor confirms the email actually went out.
+function showSendConfirm(form, copied) {
+  var old = form.querySelector('.send-confirm');
+  if (old) old.parentNode.removeChild(old);
+  var box = document.createElement('div');
+  box.className = 'send-confirm';
+  box.setAttribute('role', 'status');
+  box.style.cssText = 'margin-top:14px;padding:14px 18px;border:1px solid rgba(200,168,106,.4);border-radius:10px;background:rgba(200,168,106,.07);color:#E7E8EA;font-size:15px;line-height:1.65;';
+  box.innerHTML =
+    '<p style="margin:0;">Your email app should have opened with your message' +
+    (copied ? ' (also copied to your clipboard)' : '') +
+    '. If nothing opened: email <a href="mailto:jack@dayonemvp.com" style="color:var(--champagne-2);">jack@dayonemvp.com</a> or text <a href="tel:+15189126142" style="color:var(--champagne-2);">(518)&nbsp;912-6142</a>.</p>' +
+    '<p style="margin:10px 0 0;"><a href="success.html" style="color:var(--champagne-2);font-weight:600;">I sent it &rarr;</a></p>';
+  var btn = form.querySelector('button[type=submit]');
+  if (btn && btn.parentNode) btn.parentNode.insertBefore(box, btn.nextSibling);
+  else form.appendChild(box);
+  return box;
+}
+
 // idea-submission form → opens email to Jack (temporary; upgrade to backend later)
 const ideaForm = document.getElementById('ideaForm');
 if (ideaForm) {

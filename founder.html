@@ -15,9 +15,23 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=Oswald:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="styles.css?v=20260626l" />
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"ProfilePage","@id":"https://dayonemvp.com/founder.html#webpage","url":"https://dayonemvp.com/founder.html","name":"John-Anthony “Jack” Rodriguez — Founder & Owner of Day One MVP™","isPartOf":{"@id":"https://dayonemvp.com/#website"},"breadcrumb":{"@id":"https://dayonemvp.com/founder.html#bc"},"mainEntity":{"@id":"https://dayonemvp.com/#jack"}},{"@type":"Person","@id":"https://dayonemvp.com/#jack","name":"John-Anthony “Jack” Rodriguez","alternateName":"Jack Rodriguez","givenName":"John-Anthony","familyName":"Rodriguez","jobTitle":"Founder & Owner","description":"Founder and lead operator of Day One MVP™, a human-first company-building platform.","image":"https://dayonemvp.com/assets/img/jack-portrait.jpg","email":"jack@dayonemvp.com","telephone":"+1-518-912-6142","worksFor":{"@type":"Organization","name":"Day One MVP","url":"https://dayonemvp.com/"},"address":{"@type":"PostalAddress","addressLocality":"San Jose","addressRegion":"CA","postalCode":"95113","addressCountry":"US"}},{"@type":"BreadcrumbList","@id":"https://dayonemvp.com/founder.html#bc","itemListElement":[{"@type":"ListItem","position":1,"name":"Founder"}]}]}</script>
-<meta property="og:image" content="https://dayonemvp.com/assets/img/og-cover.png" /><meta property="og:image:width" content="1200" /><meta property="og:image:height" content="630" /><meta name="twitter:card" content="summary_large_image" /><meta name="twitter:image" content="https://dayonemvp.com/assets/img/og-cover.png" />
+<link rel="stylesheet" href="styles.css?v=20260701a" />
+<style>
+/* founder.html — Selected Work strip (page-scoped) */
+.founder-work{margin:36px 0 30px;}
+.fw-list{list-style:none;margin:14px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:16px;}
+.fw-card{display:block;background:var(--smoke);border:1px solid var(--line);border-radius:10px;overflow:hidden;text-decoration:none;transition:border-color .25s ease,transform .25s ease;}
+.fw-card:hover{border-color:var(--gold);transform:translateY(-2px);}
+.fw-card img{display:block;width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;border-bottom:1px solid var(--line);}
+.fw-name{display:block;padding:14px 16px 2px;font:700 16px/1.3 'Archivo',sans-serif;color:var(--text);}
+.fw-scope{display:block;padding:2px 16px 0;font:400 13.5px/1.55 'Inter',sans-serif;color:var(--muted);}
+.fw-live{display:block;padding:12px 16px 15px;font:600 11.5px/1 'Oswald',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);}
+.fw-all{margin-top:18px;}
+.fw-all a{font:600 13px/1 'Oswald',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:3px;}
+.fw-all a:hover{border-bottom-color:var(--gold);}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"ProfilePage","@id":"https://dayonemvp.com/founder.html#webpage","url":"https://dayonemvp.com/founder.html","name":"John-Anthony “Jack” Rodriguez — Founder & Owner of Day One MVP™","isPartOf":{"@id":"https://dayonemvp.com/#website"},"breadcrumb":{"@id":"https://dayonemvp.com/founder.html#bc"},"mainEntity":{"@id":"https://dayonemvp.com/#jack"}},{"@type":"Person","@id":"https://dayonemvp.com/#jack","name":"John-Anthony “Jack” Rodriguez","alternateName":"Jack Rodriguez","givenName":"John-Anthony","familyName":"Rodriguez","jobTitle":"Founder & Owner","description":"Founder and lead operator of Day One MVP™, a human-first company-building platform.","image":"https://dayonemvp.com/assets/img/jack-portrait.jpg","email":"jack@dayonemvp.com","telephone":"+1-518-912-6142","worksFor":{"@type":"Organization","name":"Day One MVP","url":"https://dayonemvp.com/"},"address":{"@type":"PostalAddress","addressLocality":"Capital Region","addressRegion":"NY","addressCountry":"US"}},{"@type":"BreadcrumbList","@id":"https://dayonemvp.com/founder.html#bc","itemListElement":[{"@type":"ListItem","position":1,"name":"Founder"}]}]}</script>
+<meta property="og:image" content="https://dayonemvp.com/assets/img/jack-portrait.jpg" /><meta property="og:image:width" content="540" /><meta property="og:image:height" content="550" /><meta name="twitter:card" content="summary_large_image" /><meta name="twitter:image" content="https://dayonemvp.com/assets/img/jack-portrait.jpg" />
 </head>
 <body class="world">
 
@@ -26,13 +40,12 @@
   <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
   <div class="nav-links" id="navLinks">
     <a href="galaxy.html">Galaxy</a>
-    
-    
-    <a href="operated-calls.html">Operated Calls™</a><a href="what-we-build.html">What We Build</a>
+    <a href="operated-calls.html">Operated Calls™</a>
+    <a href="what-we-build.html">What We Build</a>
     <a href="how-it-works.html">How It Works</a>
     <a href="pricing.html">Pricing</a>
+    <a href="work.html">Built &amp; Live</a>
     <a href="tech-answers.html">Tech Answers</a>
-    <a href="impact.html">Impact</a>
     <a href="start.html" class="btn btn-primary btn-sm">Book an Operated Call™</a>
   </div>
 </nav>
@@ -43,7 +56,7 @@
       <div class="breadcrumb"><a href="index.html">Day One MVP™</a> / Founder</div>
       <div class="founder-top">
         <figure class="jp-portrait">
-          <span class="verified-badge"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l2.4 1.8 3 .2.9 2.9 2.1 2.1-1.2 2.8.3 3-2.7 1.4L15.6 22 12 20.7 8.4 22l-1.5-2.8L4.2 17.8l.3-3-1.2-2.8L5.4 9.9l.9-2.9 3-.2L12 2z" fill="#C8A86A" opacity=".22"/><path d="M8.5 12.4l2.3 2.3 4.7-4.9" stroke="#C8A86A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Verified Owner</span>
+          <span class="verified-badge">Founder &amp; Owner — the actual human</span>
           <img src="assets/img/jack-portrait.jpg" alt="John-Anthony “Jack” Rodriguez, founder and owner of Day One MVP™" />
         </figure>
         <div class="founder-intro">
@@ -72,7 +85,7 @@
     <div class="smoke wide reveal founder-read">
       <p class="lead">John-Anthony “Jack” Rodriguez is the founder and lead operator behind Day One MVP™, a human-first company-building platform created to help founders, small businesses, nonprofits, teams, and future builders turn unfinished ideas into something real.</p>
       <p>His work lives at the intersection of business strategy, product development, artificial intelligence, automation, sales, education, media, and launch execution.</p>
-      <p>That intersection is earned. Seven years in tech and engineering — spanning audio, graphics, and the digital space — on top of real-world work: clothing design, music videos, hosting and promoting events and venues, and ticketing. He's collaborated with artists including Jadakiss and Uncle Murda and with DJs across upstate New York, and is currently building new client work including Poppa Mark and 518 Wiz Kids.</p>
+      <p>That intersection is earned. Seven years in tech and engineering — spanning audio, graphics, and the digital space — on top of real-world work: clothing design, music videos, hosting and promoting events and venues, and ticketing. He's produced event media and shows with major hip-hop artists — including work with Jadakiss and Uncle Murda — and with DJs across upstate New York. Shipped client work includes Poppa Mark Contracting, Krispy Mart, AZ Home Improvement, Brothers Legacy, and Calvin's Cleaning — all live.</p>
       <ul class="cred-row">
         <li>7 yrs tech &amp; engineering</li>
         <li>Audio · Graphics · Digital</li>
@@ -80,7 +93,43 @@
         <li>Clothing &amp; brand</li>
         <li>Hosting · Promotion · Ticketing</li>
       </ul>
-      <!-- SELECTED WORK: add live portfolio links here as each launches (Poppa Mark, music page, 518 Wiz Kids) -->
+      <!-- SELECTED WORK -->
+      <div class="founder-work">
+        <span class="eyebrow">Selected Work — Live</span>
+        <ul class="fw-list">
+          <li><a class="fw-card" href="https://poppamark.com" target="_blank" rel="noopener">
+            <img src="assets/img/work/poppamark.webp" alt="Poppa Mark Contracting — website screenshot" width="1200" height="750" loading="lazy" decoding="async" />
+            <span class="fw-name">Poppa Mark Contracting</span>
+            <span class="fw-scope">Premium contractor brand site — real job photos, estimate funnel.</span>
+            <span class="fw-live">poppamark.com →</span>
+          </a></li>
+          <li><a class="fw-card" href="https://krispymartdeli.vercel.app" target="_blank" rel="noopener">
+            <img src="assets/img/work/krispymart.webp" alt="Krispy Mart — pickup-ordering app screenshot" width="1200" height="750" loading="lazy" decoding="async" />
+            <span class="fw-name">Krispy Mart</span>
+            <span class="fw-scope">Order-ahead pickup app — multilingual menu, live ordering flow.</span>
+            <span class="fw-live">krispymartdeli.vercel.app →</span>
+          </a></li>
+          <li><a class="fw-card" href="https://azhomeimprovement.vercel.app" target="_blank" rel="noopener">
+            <img src="assets/img/work/azhome.webp" alt="AZ Home Improvement — website screenshot" width="1200" height="750" loading="lazy" decoding="async" />
+            <span class="fw-name">AZ Home Improvement</span>
+            <span class="fw-scope">Editorial-luxury remodeling site — portfolio + estimate funnel.</span>
+            <span class="fw-live">azhomeimprovement.vercel.app →</span>
+          </a></li>
+          <li><a class="fw-card" href="https://brotherslegacy.vercel.app" target="_blank" rel="noopener">
+            <img src="assets/img/work/brotherslegacy.webp" alt="Brothers Legacy — moving-company website screenshot" width="1200" height="750" loading="lazy" decoding="async" />
+            <span class="fw-name">Brothers Legacy</span>
+            <span class="fw-scope">Moving-company site — quote funnel, service areas, reviews.</span>
+            <span class="fw-live">brotherslegacy.vercel.app →</span>
+          </a></li>
+          <li><a class="fw-card" href="https://calvinscleaners.vercel.app" target="_blank" rel="noopener">
+            <img src="assets/img/work/calvins.webp" alt="Calvin's Cleaning Services — website screenshot" width="1200" height="750" loading="lazy" decoding="async" />
+            <span class="fw-name">Calvin's Cleaning Services</span>
+            <span class="fw-scope">Cinematic cleaning brand landing — quote funnel.</span>
+            <span class="fw-live">calvinscleaners.vercel.app →</span>
+          </a></li>
+        </ul>
+        <p class="fw-all"><a href="work.html">See all →</a></p>
+      </div>
       <p>But Jack is not interested in technology for technology's sake.</p>
       <p class="emph">He is interested in what technology allows a person to do next.</p>
       <ul class="cap-list">
@@ -186,17 +235,17 @@
         <p class="foot-desc">You bring the idea. We build Day One. Founder-led by Jack Rodriguez.</p>
       </div>
       <div class="foot-links">
-        <div class="foot-col"><h4>Build</h4><a href="what-we-build.html">What We Build</a><a href="the-day-one-stack.html">The Day One Stack</a><a href="how-we-collapse-time.html">How We Collapse Time</a><a href="how-it-works.html">How It Works</a><a href="pricing.html">Pricing</a></div>
-        <div class="foot-col"><h4>The World</h4><a href="aibridge.html">AIBridge™</a><a href="who-we-help.html">Who We Help</a><a href="the-human-advantage.html">The Human Advantage</a><a href="the-destination.html">The Destination</a><a href="founder.html">Meet Jack</a></div>
-        <div class="foot-col"><h4>Start</h4><a href="start.html">Submit an Idea</a><a href="tech-answers.html">Tech Answers</a><a href="start.html">Partner With Us</a><a href="mailto:jack@dayonemvp.com">Contact</a></div>
-        <div class="foot-col"><h4>Legal</h4><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="privacy.html">Accessibility</a></div>
+        <div class="foot-col"><h4>Build</h4><a href="what-we-build.html">What We Build</a><a href="how-it-works.html">How It Works</a><a href="pricing.html">Pricing</a><a href="work.html">Built &amp; Live</a><a href="marketing-launch.html">Marketing &amp; Launch</a><a href="the-day-one-stack.html">The Day One Stack</a></div>
+        <div class="foot-col"><h4>The World</h4><a href="galaxy.html">Day One Galaxy</a><a href="aibridge.html">AIBridge™</a><a href="who-we-help.html">Who We Help</a><a href="operated-calls.html">Operated Calls™</a><a href="maestro-method.html">The Maestro Method™</a><a href="founder.html">Meet Jack</a></div>
+        <div class="foot-col"><h4>Start</h4><a href="start.html">Book an Operated Call™</a><a href="start.html?path=fit-call">Free Fit Call</a><a href="tech-answers.html">Tech Answers</a><a href="start.html?path=Partner">Partner With Us</a><a href="mailto:jack@dayonemvp.com">jack@dayonemvp.com</a><a href="tel:+15189126142">(518) 912-6142</a></div>
+        <div class="foot-col"><h4>Legal</h4><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="accessibility.html">Accessibility</a></div>
       </div>
     </div>
-    <div class="foot-bottom"><span class="foot-loc">San Jose, CA 95113</span><span>© 2026 Day One MVP™ — You bring the idea. We build Day One. All rights reserved.</span><span>Day One MVP™ · The G Code™ · AIBridge™ · The Hive™ — trademarks of Day One MVP™</span></div>
+    <div class="foot-bottom"><span class="foot-loc">Capital Region, NY</span><span>© 2026 Day One MVP™ — You bring the idea. We build Day One. All rights reserved.</span><span>Day One MVP™ · The G Code™ · AIBridge™ · The Hive™ — trademarks of Day One MVP™</span></div>
   </div>
 </footer>
 
-<script src="script.js?v=20260626f"></script>
+<script src="script.js?v=20260701a"></script>
 <script src="autolink.js?v=20260625t"></script>
 <script src="assets/js/vendor/gsap.min.js?v=20260625ac"></script>
 <script src="assets/js/vendor/ScrollTrigger.min.js?v=20260625ac"></script>

@@ -9,6 +9,14 @@
   var canvas = document.getElementById("gx3-canvas");
   var stage = document.getElementById("gx3-stage");
   var labelLayer = document.getElementById("gx3-labels");
+
+  // mobile-portrait rotate overlay: "Continue in portrait" dismisses it → the eight-worlds cards
+  var rotateSkip = document.getElementById("gx3-rotate-skip");
+  if (rotateSkip) rotateSkip.addEventListener("click", function () {
+    var ov = document.querySelector(".gx3-rotate"); if (ov) ov.style.display = "none";
+    var idx = document.getElementById("gx3-index"); if (idx) idx.scrollIntoView({ behavior: "smooth" });
+  });
+
   if (!canvas || !stage) return;
 
   function hasWebGL() {

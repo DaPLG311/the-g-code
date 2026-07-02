@@ -5,7 +5,7 @@
 window.GLOSSARY = [
   /* ---- Day One System ---- */
   { t: "Day One MVP™", c: "Day One System", d: "The company that turns an idea, business problem, or unfinished concept into a structured company, working product, system, campaign, or launchable first version.", m: "You don't need every answer. You begin with the idea or the problem.", r: ["The G Code™", "MVP"] },
-  { t: "The G Code™", c: "Day One System", d: "The documentary and educational platform showing the real process behind building companies, products, systems, and opportunities.", m: "You can see how Jack thinks, teaches, and directs a build before you ever hire the company.", r: ["Day One MVP™"] },
+  { t: "The G Code™", c: "Day One System", d: "The documentary and educational platform Day One MVP™ is building to show the real process behind building companies, products, systems, and opportunities.", m: "It's where you'll be able to see how Jack thinks, teaches, and directs a build before you ever hire the company.", r: ["Day One MVP™"] },
   { t: "AIBridge™", c: "Day One System", d: "The technology, AI, automation, education, and systems layer behind Day One MVP™.", m: "It connects the human problem to practical technology without shutting you out of the process.", r: ["AI Audit", "AI Agent"] },
   { t: "Atom™", c: "Day One System", d: "The sales and market engine used to understand the customer, shape the offer, sharpen the message, answer objections, and turn attention into customers.", ex: "Atom™ helps determine what the business should sell, who should buy it, and why they should care.", r: ["Offer", "Funnel"] },
 
