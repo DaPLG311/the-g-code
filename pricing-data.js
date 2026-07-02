@@ -1,6 +1,6 @@
 /* Day One MVP™ — dedicated pricing-tier page content (rendered by tier.js on tier.html). */
 window.PRICING = {
-  order: ["idea-session","blueprint","working-alpha","mvp-launch","platform","community-rate"],
+  order: ["community-rate","idea-session","blueprint","working-alpha","mvp-launch","platform"],
   tiers: {
     "idea-session": {
       title:"Idea Session", price:"$250–$1,000",
@@ -11,7 +11,7 @@ window.PRICING = {
       note:{ title:"An honest recommendation", body:"The right answer might be: do more research, build nothing yet, fix one workflow, start with an AI Audit™, create a Blueprint, build a prototype, enter a larger build — or even work with a different specialist." },
       qualification:"A short fit conversation may be offered at no charge. A full strategic consultation is normally paid; qualified projects may receive a complimentary initial consultation at Jack's discretion.",
       cta:{ label:"Book an Idea Session", href:"start.html?path=idea-session" },
-      prev:null, next:"blueprint" },
+      prev:"community-rate", next:"blueprint" },
 
     "blueprint": {
       title:"Blueprint", price:"$3,500",
@@ -48,17 +48,17 @@ window.PRICING = {
       includesTitle:"Full Market-Entry & Growth System",
       includes:["Market segmentation + audience pages","Offer ladder","CRM architecture + sales routing","Media systems","Partner strategy","Staff training","Private pilot, then public launch","Optimization + expansion"],
       cta:{ label:"Book an Operated Call™", href:"start.html?path=platform" },
-      prev:"mvp-launch", next:"community-rate" },
+      prev:"mvp-launch", next:null },
 
     "community-rate": {
-      title:"The Small-Business Path", price:"Your Rate · by interview",
-      promise:"A real starting point for a real small business.",
-      explanation:"Some independent and family-run businesses need meaningful technology but can't responsibly enter through a standard product-development package. The Small-Business Path lets Jack evaluate the actual problem, the smallest useful solution, the budget, stability, urgency, community value, owner participation, and whether a pilot or phased build makes sense.",
-      research:{ title:"Small businesses are the economy, not a niche.", body:"Small businesses make up the large majority of U.S. employers and nearly half of private-sector jobs. Building stronger small companies is real economic development — which is why this path exists." },
+      title:"The Mom-and-Pop Path", price:"Your Rate · by interview",
+      promise:"Main Street goes first here.",
+      explanation:"The corner store, the family restaurant, the two-chair barbershop, the one-van crew — independent and family-run businesses come first at Day One MVP™, not last. You need meaningful technology without a big-company budget, so we don't hand you a package: Jack sits with you, looks at the actual problem, the smallest useful solution, your budget and urgency, and sets a fair community rate — per business, not per job.",
+      research:{ title:"Small businesses are the economy, not a niche.", body:"Small businesses make up the large majority of U.S. employers and nearly half of private-sector jobs. Building stronger small companies is real economic development — which is why this path exists, and why it's listed first." },
       includesTitle:"What it can lead to",
       includes:["A smaller scope","A phased build","A pilot","A relationship rate","A payment structure","A workshop","A limited system installation","Or an honest referral elsewhere"],
-      note:{ title:"Not automatic discount pricing", body:"This is a fit-based conversation, not a coupon. We will not sell a business more technology than it can responsibly use." },
-      cta:{ label:"Book a Fit Call", href:"start.html?path=small-business" },
-      prev:"platform", next:null }
+      note:{ title:"Real discounts, honestly given", body:"We love to help — the community discount is real, and it's set in a conversation, not a coupon code. What we won't do is sell a business more technology than it can responsibly use." },
+      cta:{ label:"Apply for the Mom-and-Pop Rate", href:"start.html?path=small-business" },
+      prev:null, next:"idea-session" }
   }
 };
