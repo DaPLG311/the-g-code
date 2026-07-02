@@ -327,37 +327,42 @@
 
   // ---- mouse parallax + loop ----
   var mx = 0, my = 0, ex = 0, ey = 0;
-  var land = 0, lookT = new THREE.Vector3(0, 0, 0), landPos = new THREE.Vector3(), tmpV = new THREE.Vector3();
+  var land = 0, lookT = new THREE.Vector3(0, 0, 0), landPos = new THREE.Vector3(), landPosS = new THREE.Vector3(), tmpV = new THREE.Vector3();
+  var _fr = 1;                                              // frames-elapsed this tick (1 at 60fps)
+  function k(pf) { return 1 - Math.pow(1 - pf, _fr); }      // frame-rate-independent ease; preserves the 60fps feel
   if (!reduce) window.addEventListener("pointermove", function (e) { if (e.pointerType === "touch") return; mx = (e.clientX / window.innerWidth - 0.5); my = (e.clientY / window.innerHeight - 0.5); }, { passive: true });
   var t0 = 0, raf = null;
   function frame(ms) {
-    var t = ms * 0.001; var dt = t - t0; t0 = t;
+    var t = ms * 0.001; var dt = Math.min(t - t0, 0.05); t0 = t; _fr = dt * 60;   // clamp dt → no spike on first frame / tab return
     if (!reduce) {
-      galaxy.rotation.y += 0.0006;
+      galaxy.rotation.y += 0.0006 * _fr;
       if (pendingOff && performance.now() > pendingOff) disengage();     // sticky-hover release after the delay
-      ex += (mx - ex) * 0.04; ey += (my - ey) * 0.04;
+      ex += (mx - ex) * k(0.04); ey += (my - ey) * k(0.04);
       var bx = camBase.x + ex * 14;                              // fixed resting distance + gentle parallax sway
       var by = camBase.y - ey * 9;
       var bz = camBase.z;
       // engaged world → wide, gentle reframe onto it (sticky until release delay)
       var hp = engaged;
       if (hp) landPos.setFromMatrixPosition(hp._grp.matrixWorld);
-      land += ((hp ? 1 : 0) - land) * 0.05;
+      land += ((hp ? 1 : 0) - land) * k(0.05);
+      // SMOOTH the target: snap to the world on a fresh engage, but GLIDE when switching worlds (kills the lurch)
+      if (land < 0.02) landPosS.copy(landPos);
+      else { landPosS.x += (landPos.x - landPosS.x) * k(0.06); landPosS.y += (landPos.y - landPosS.y) * k(0.06); landPosS.z += (landPos.z - landPosS.z) * k(0.06); }
       if (land > 0.001) {
-        tmpV.set(bx, by, bz).sub(landPos).normalize();           // planet→camera direction
+        tmpV.set(bx, by, bz).sub(landPosS).normalize();          // planet→camera direction
         var LD = 48;                                             // wide snap — gentle reframe, lots of backdrop kept
-        bx += ((landPos.x + tmpV.x * LD) - bx) * land;
-        by += ((landPos.y + tmpV.y * LD) - by) * land;
-        bz += ((landPos.z + tmpV.z * LD) - bz) * land;
+        bx += ((landPosS.x + tmpV.x * LD) - bx) * land;
+        by += ((landPosS.y + tmpV.y * LD) - by) * land;
+        bz += ((landPosS.z + tmpV.z * LD) - bz) * land;
       }
-      var ltx = hp ? landPos.x * 0.92 : 0, lty = hp ? landPos.y * 0.92 : 0, ltz = hp ? landPos.z * 0.92 : 0;
-      lookT.x += (ltx - lookT.x) * 0.08; lookT.y += (lty - lookT.y) * 0.08; lookT.z += (ltz - lookT.z) * 0.08;
+      var ltx = hp ? landPosS.x * 0.92 : 0, lty = hp ? landPosS.y * 0.92 : 0, ltz = hp ? landPosS.z * 0.92 : 0;
+      lookT.x += (ltx - lookT.x) * k(0.08); lookT.y += (lty - lookT.y) * k(0.08); lookT.z += (ltz - lookT.z) * k(0.08);
       camera.position.set(bx + panX, by, bz + panZ);
       camera.lookAt(lookT.x + panX, lookT.y, lookT.z + panZ);
       PLANETS.forEach(function (p) {
-        p._mesh.rotation.y += p._spin;
+        p._mesh.rotation.y += p._spin * _fr;
         p._grp.position.y = p._baseY + Math.sin(t * 0.5 + p._baseY) * 0.5;
-        var tgt = (engaged === p) ? 1.08 : 1; p._grp.scale.x += (tgt - p._grp.scale.x) * 0.15; p._grp.scale.y = p._grp.scale.z = p._grp.scale.x;
+        var tgt = (engaged === p) ? 1.08 : 1; p._grp.scale.x += (tgt - p._grp.scale.x) * k(0.15); p._grp.scale.y = p._grp.scale.z = p._grp.scale.x;
       });
       var sp = 1 + Math.sin(t * 0.8) * 0.04; coreGlow.scale.set(120 * sp, 120 * sp, 1);
     }
