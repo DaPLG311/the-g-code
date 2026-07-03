@@ -116,16 +116,31 @@ document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
   var path = new URLSearchParams(location.search).get('path');
   if (path) {
     var pl = path.toLowerCase();
+    var LABELS = {
+      'idea-session': 'Idea Session', 'blueprint': 'Blueprint & Prototype', 'working-alpha': 'Working Alpha',
+      'mvp-launch': 'MVP Launch', 'platform': 'Platform Launch', 'small-business': 'Mom-and-Pop / Small-Business rate',
+      'partner': 'Partnership', 'fit-call': 'Free Fit Call', 'operated-call': 'Operated Call™',
+      'training': 'Private Training', 'project-review': 'Project Review',
+      'start-the-company': 'Start the Company', 'build-the-product': 'Build the Product',
+      'install-the-systems': 'Install the Systems', 'grow-the-business': 'Grow the Business',
+      'train-the-people': 'Train the People', 'produce-the-media': 'Produce the Media'
+    };
     var sel = document.getElementById('f-describes');
     if (sel) {
       for (var i = 0; i < sel.options.length; i++) {
         if (sel.options[i].value.toLowerCase().indexOf(pl) > -1) { sel.selectedIndex = i; break; }
       }
+      if (pl === 'small-business') { for (var s = 0; s < sel.options.length; s++) { if (/own a business/i.test(sel.options[s].text)) { sel.selectedIndex = s; break; } } }
     }
-    // Map intent paths to the conversation-type selector (Fit Call / Operated Call / Training / Review)
+    // Map every intent path to the conversation-type selector
     var conv = document.getElementById('f-conversation');
     if (conv) {
-      var map = { 'fit-call': 'fit', 'fit': 'fit', 'operated-call': 'operated', 'training': 'training', 'review': 'review', 'project-review': 'review' };
+      var map = {
+        'fit-call': 'fit', 'fit': 'fit', 'small-business': 'fit',
+        'operated-call': 'operated', 'idea-session': 'operated', 'blueprint': 'operated',
+        'working-alpha': 'operated', 'mvp-launch': 'operated', 'platform': 'operated',
+        'training': 'training', 'review': 'review', 'project-review': 'review'
+      };
       var key = map[pl];
       if (key) {
         for (var j = 0; j < conv.options.length; j++) {
@@ -133,6 +148,9 @@ document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
         }
       }
     }
+    // Capture the exact interest into the optional referral field so nothing is lost
+    var ref = document.getElementById('f-referral');
+    if (ref && !ref.value) { ref.value = 'Interested in: ' + (LABELS[pl] || path); }
   }
   f.addEventListener('submit', function (e) {
     e.preventDefault();
