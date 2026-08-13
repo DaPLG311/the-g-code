@@ -380,3 +380,22 @@ a#block50k.is-ready.block50k--hero {
 }
 .ap-steps li:last-child { border-bottom: 0; }
 .ap-steps strong { color: #F4EFE4; }
+
+/* ---------------------------------------------------------------------
+   STATIC FLOOR — the card must render even if JS never runs.
+   The page ships a real copy block inside the anchor; JS clears it and
+   builds the 3D version. Without JS you still get a clean, clickable card.
+   --------------------------------------------------------------------- */
+a#block50k:not(.is-ready) {
+  display: block;
+  width: 100%;
+  max-width: 520px;
+  padding: 22px 26px;
+  border: 1px solid rgba(199, 203, 209, .14);
+  border-radius: 14px;
+  background:
+    radial-gradient(120% 160% at 12% 50%, rgba(200, 168, 106, .10), transparent 55%),
+    linear-gradient(120deg, rgba(20, 21, 25, .78), rgba(11, 11, 13, .58));
+  text-decoration: none;
+}
+a#block50k:not(.is-ready) .b50k-copy { display: grid; row-gap: 5px; padding: 0; }

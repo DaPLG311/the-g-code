@@ -23,6 +23,10 @@
   }
 
   function build(block) {
+    /* the page ships a static copy block so the card renders without JS;
+       clear it before building the enhanced 3D version */
+    while (block.firstChild) { block.removeChild(block.firstChild); }
+
     var stage = el('span', 'b50k-stage');
     stage.setAttribute('aria-hidden', 'true');
     stage.appendChild(el('span', 'b50k-glow'));
