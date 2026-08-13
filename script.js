@@ -1,3 +1,8 @@
+/* Lead routing — every inquiry goes to the whole front line.
+   Comma-separated per RFC 6068; keep this the single source of truth. */
+var LEAD_TO = 'jack@dayonemvp.com,pepper@dayonemvp.com,wiz@dayonemvp.com';
+var LEAD_TO_TEXT = 'jack@dayonemvp.com, pepper@dayonemvp.com, wiz@dayonemvp.com';
+
 // The G Code™ — V3 · interaction layer (kept light)
 
 // nav background on scroll
@@ -64,7 +69,7 @@ function showSendConfirm(form, copied) {
   box.innerHTML =
     '<p style="margin:0;">Your email app should have opened with your message' +
     (copied ? ' (also copied to your clipboard)' : '') +
-    '. If nothing opened: email <a href="mailto:jack@dayonemvp.com" style="color:var(--champagne-2);">jack@dayonemvp.com</a> or text <a href="tel:+15189126142" style="color:var(--champagne-2);">(518)&nbsp;912-6142</a>.</p>' +
+    '. If nothing opened, email us directly: <a href="mailto:jack@dayonemvp.com" style="color:var(--champagne-2);">jack@dayonemvp.com</a>, <a href="mailto:pepper@dayonemvp.com" style="color:var(--champagne-2);">pepper@dayonemvp.com</a>, or <a href="mailto:wiz@dayonemvp.com" style="color:var(--champagne-2);">wiz@dayonemvp.com</a>.</p>' +
     '<p style="margin:10px 0 0;"><a href="success.html" style="color:var(--champagne-2);font-weight:600;">I sent it &rarr;</a></p>';
   var btn = form.querySelector('button[type=submit]');
   if (btn && btn.parentNode) btn.parentNode.insertBefore(box, btn.nextSibling);
@@ -90,8 +95,8 @@ if (ideaForm) {
     const subject = encodeURIComponent('New Day One MVP inquiry — ' + (nm || 'someone'));
     const body = encodeURIComponent(plain);
     // Reliability: never lose a lead even with no mail client — copy to clipboard, then open mail + confirm.
-    try { if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText('To: jack@dayonemvp.com\n\n' + plain); } catch (err) {}
-    window.location.href = 'mailto:jack@dayonemvp.com?subject=' + subject + '&body=' + body;
+    try { if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText('To: ' + LEAD_TO_TEXT + '\n\n' + plain); } catch (err) {}
+    window.location.href = 'mailto:' + LEAD_TO + '?subject=' + subject + '&body=' + body;
     setTimeout(function () { window.location.href = 'success.html'; }, 900);
   });
 }
@@ -166,8 +171,8 @@ document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
     var body = encodeURIComponent(plain);
     // Reliability: copy the full inquiry to the clipboard so a lead is never lost
     // even if the device has no mail client configured. (Then open mail + confirm.)
-    try { if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText('To: jack@dayonemvp.com\n\n' + plain); } catch (err) {}
-    window.location.href = 'mailto:jack@dayonemvp.com?subject=' + subj + '&body=' + body;
+    try { if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText('To: ' + LEAD_TO_TEXT + '\n\n' + plain); } catch (err) {}
+    window.location.href = 'mailto:' + LEAD_TO + '?subject=' + subj + '&body=' + body;
     setTimeout(function () { window.location.href = 'success.html'; }, 900);
   });
 })();
