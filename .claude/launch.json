@@ -2,10 +2,10 @@
   "version": "0.0.1",
   "configurations": [
     {
-      "name": "the-g-code",
-      "runtimeExecutable": "python3",
-      "runtimeArgs": ["-m", "http.server", "5179"],
-      "port": 5179
+      "name": "g-code-static",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["serve", "-l", "4630", "."],
+      "port": 4630
     }
   ]
 }
