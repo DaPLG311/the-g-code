@@ -177,7 +177,7 @@ window.I18N.zh = {
  "ix.147": "准备好现在就建",
  "ix.148": "预约 Operated Call™ →",
  "ix.149": "Operated Calls™ 是以产出真正的清晰、决策或成果为目的的工作会谈——不是泛泛的销售演示。",
- "ix.150": "或发邮件至 <a href=\"mailto:jack@dayonemvp.com\">jack@dayonemvp.com</a> · 电话/短信 <a href=\"tel:+15189126142\">518 912 6142</a>",
+ "ix.150": "或发邮件至 <a href=\"mailto:jack@dayonemvp.com\">jack@dayonemvp.com</a>",
  "pr.1": "<a href=\"index.html\">Day One MVP™</a> / 价格",
  "pr.2": "价格",
  "pr.3": "从最小、最稳妥的<br />一次建造开始。",
@@ -388,5 +388,5 @@ window.I18N.zh = {
  "st.59": "还有什么想让我们知道的？（选填）",
  "st.60": "预约我的 Operated Call™ →",
  "st.61": "点击发送即表示你希望我们就你的想法与你联系。我们不会出售或分享你的信息——详见我们的<a href=\"privacy.html\">隐私政策</a>。",
- "st.62": "更想自己写？发邮件至 <a href=\"mailto:jack@dayonemvp.com\">jack@dayonemvp.com</a> · 电话/短信 <a href=\"tel:+15189126142\">518&nbsp;912&nbsp;6142</a>。每一封我们都会亲自读。"
+ "st.62": "更想自己写？发邮件至 <a href=\"mailto:jack@dayonemvp.com\">jack@dayonemvp.com</a>。每一封我们都会亲自读。"
 };

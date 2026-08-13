@@ -177,7 +177,7 @@ window.I18N.es = {
  "ix.147": "Listo para construir ya",
  "ix.148": "Agenda una Operated Call™ →",
  "ix.149": "Las Operated Calls™ son sesiones de trabajo pensadas para crear claridad, decisiones o producción reales — no presentaciones de ventas genéricas.",
- "ix.150": "O escribe a <a href=\"mailto:jack@dayonemvp.com\">jack@dayonemvp.com</a> · llama/manda texto al <a href=\"tel:+15189126142\">518 912 6142</a>",
+ "ix.150": "O escribe a <a href=\"mailto:jack@dayonemvp.com\">jack@dayonemvp.com</a>",
  "pr.1": "<a href=\"index.html\">Day One MVP™</a> / Precios",
  "pr.2": "Precios",
  "pr.3": "Empieza con la Construcción<br />Más Pequeña y Responsable.",
@@ -388,5 +388,5 @@ window.I18N.es = {
  "st.59": "¿Algo más que debamos saber? (opcional)",
  "st.60": "Agendar Mi Operated Call™ →",
  "st.61": "Al enviar, nos estás pidiendo que te contactemos sobre tu idea. No vendemos ni compartimos tu información — mira nuestra <a href=\"privacy.html\">Política de Privacidad</a>.",
- "st.62": "¿Prefieres escribirlo tú mismo? Escribe a <a href=\"mailto:jack@dayonemvp.com\">jack@dayonemvp.com</a> · llama/manda texto al <a href=\"tel:+15189126142\">518&nbsp;912&nbsp;6142</a>. Leemos cada mensaje personalmente."
+ "st.62": "¿Prefieres escribirlo tú mismo? Escribe a <a href=\"mailto:jack@dayonemvp.com\">jack@dayonemvp.com</a>. Leemos cada mensaje personalmente."
 };

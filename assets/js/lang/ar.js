@@ -177,7 +177,7 @@ window.I18N.ar = {
  "ix.147": "جاهز للبناء الآن",
  "ix.148": "احجز Operated Call™ →",
  "ix.149": "Operated Calls™ جلسات عمل هدفها إيجاد وضوح حقيقي أو قرارات أو إنتاج — لا عروض مبيعات عامة.",
- "ix.150": "أو راسلنا على <a href=\"mailto:jack@dayonemvp.com\">jack@dayonemvp.com</a> · اتصل أو أرسل رسالة نصية على <a href=\"tel:+15189126142\">518 912 6142</a>",
+ "ix.150": "أو راسلنا على <a href=\"mailto:jack@dayonemvp.com\">jack@dayonemvp.com</a>",
  "pr.1": "<a href=\"index.html\">Day One MVP™</a> / الأسعار",
  "pr.2": "الأسعار",
  "pr.3": "ابدأ بأصغر<br />بناء مسؤول.",
@@ -388,5 +388,5 @@ window.I18N.ar = {
  "st.59": "هل من شيء آخر ينبغي أن نعرفه؟ (اختياري)",
  "st.60": "احجز Operated Call™ الخاصة بي →",
  "st.61": "بإرسالك هذا النموذج، فأنت تطلب منا التواصل معك بشأن فكرتك. نحن لا نبيع معلوماتك ولا نشاركها — اطّلع على <a href=\"privacy.html\">سياسة الخصوصية</a>.",
- "st.62": "تفضّل كتابتها بنفسك؟ راسلنا على <a href=\"mailto:jack@dayonemvp.com\">jack@dayonemvp.com</a> · اتصل أو أرسل رسالة نصية على <a href=\"tel:+15189126142\">518&nbsp;912&nbsp;6142</a>. نقرأ كل رسالة شخصيًا."
+ "st.62": "تفضّل كتابتها بنفسك؟ راسلنا على <a href=\"mailto:jack@dayonemvp.com\">jack@dayonemvp.com</a>. نقرأ كل رسالة شخصيًا."
 };
