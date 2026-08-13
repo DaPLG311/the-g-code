@@ -1743,21 +1743,6 @@ a.price-cell:hover .pl { color:#fff; }
   transition:background .2s, border-color .2s; }
 .board-showall:hover { background:rgba(200,168,106,0.14); border-color:var(--champagne-2); }
 
-/* ===== "Speak to a Human" call button — in the header, right side ===== */
-/* mobile: absolute, just left of the hamburger */
-.call-fab { position:absolute; right:60px; top:50%; transform:translateY(-50%); z-index:5; display:block; line-height:0;
-  filter:drop-shadow(0 3px 8px rgba(0,0,0,0.5)); transition:transform .18s ease; }
-.call-fab img { height:21px; width:auto; display:block; }
-.call-fab:hover { transform:translateY(-50%) scale(1.05); }
-/* desktop: flex into the FAR right slot — after the nav links (Call is rightmost) */
-@media (min-width:761px){
-  nav .brand { margin-right:auto; }
-  .nav-links { order:2; }
-  .call-fab { position:static; transform:none; order:3; margin-left:28px; align-self:center; }
-  .call-fab:hover { transform:scale(1.05); }
-  .call-fab img { height:24px; }
-}
-
 /* ===== Dedicated pricing-tier page ===== */
 .tier-price { font-family:"Archivo",sans-serif; font-weight:800; color:var(--champagne-2);
   font-size:clamp(26px,4vw,40px); letter-spacing:.01em; margin:8px 0 22px; }
@@ -1840,7 +1825,7 @@ a.price-cell:hover .pl { color:#fff; }
 .nav-dd:hover .dd-caret, .nav-dd.open .dd-caret { transform:rotate(180deg); }
 .nav-dd-panel a { display:block; padding:9px 12px; border-radius:7px; color:#C7CBD1 !important; font-family:"Oswald",sans-serif; text-transform:uppercase; letter-spacing:.04em; font-size:12.5px; text-decoration:none; white-space:nowrap; border-bottom:0 !important; transition:background .15s, color .15s; }
 .nav-dd-panel a:hover { background:rgba(200,168,106,0.14); color:#fff !important; }
-@media (max-width:760px){
+@media (max-width:900px){
   .nav-dd { display:block; width:100%; }
   .nav-dd-btn { width:100%; justify-content:space-between; padding:14px 0; font-size:15px; border-bottom:1px solid rgba(255,255,255,0.08); }
   .nav-dd-panel { position:static; transform:none !important; min-width:0; background:none; backdrop-filter:none; -webkit-backdrop-filter:none; border:none; box-shadow:none; padding:0; display:none; opacity:1; visibility:visible; }
@@ -2641,3 +2626,29 @@ body.world .overlay-sec .kv > .incl { columns: 1; }
 }
 .addon-band .ab-copy { color: var(--muted); max-width: 62ch; margin-bottom: 20px; font-size: 16.5px; }
 .addon-band::after { content: ""; position: absolute; right: -120px; top: -120px; width: 320px; height: 320px; border-radius: 50%; background: radial-gradient(circle, rgba(200, 168, 106, 0.12), transparent 65%); pointer-events: none; }
+
+/* ===== Consolidated dropdown nav (20260812b) ===== */
+/* fewer, wider tabs — give them room and keep the row on one line */
+.nav-links { gap: 30px; }
+@media (min-width:901px) {
+  nav .brand { margin-right: auto; }
+  .nav-links { order: 2; }
+  .nav-links .btn-primary { margin-left: 6px; }
+}
+/* the dropdown label sits on the same type ramp as the old flat links */
+.nav-dd-btn { font-size: 13px; letter-spacing: .04em; }
+/* keep a hover-safe bridge so the panel doesn't close in the gap under the tab */
+.nav-dd::after { content: ""; position: absolute; left: 0; right: 0; top: 100%; height: 18px; }
+@media (max-width:900px) { .nav-dd::after { display: none; } }
+
+/* mobile menu: accordions can outgrow a short phone — cap it and let it scroll */
+@media (max-width:900px) {
+  .nav-links {
+    max-height: calc(100vh - 110px);
+    max-height: calc(100dvh - 110px);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+  }
+  body.world .nav-links { background: rgba(10,11,15,0.985); }
+}

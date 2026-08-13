@@ -172,36 +172,57 @@ document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
   });
 })();
 
-// "Why Day One" dropdown — injected into the nav (model / proof / who-we-help pages)
+// Nav dropdowns — bind the static .nav-dd tabs (click toggles; CSS handles desktop hover)
+(function () {
+  var dds = document.querySelectorAll('.nav-dd');
+  if (!dds.length) return;
+  function closeAll(except) {
+    for (var i = 0; i < dds.length; i++) {
+      if (dds[i] === except) continue;
+      dds[i].classList.remove('open');
+      var b = dds[i].querySelector('.nav-dd-btn');
+      if (b) b.setAttribute('aria-expanded', 'false');
+    }
+  }
+  for (var i = 0; i < dds.length; i++) {
+    (function (dd) {
+      var btn = dd.querySelector('.nav-dd-btn');
+      if (!btn) return;
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var open = dd.classList.toggle('open');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        if (open) closeAll(dd);
+      });
+    })(dds[i]);
+  }
+  // click outside / Escape closes any open panel
+  document.addEventListener('click', function (e) {
+    if (!e.target.closest || !e.target.closest('.nav-dd')) closeAll(null);
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeAll(null);
+  });
+})();
+
+// Mobile menu height — measure the real offset (langbar + nav) so accordions always fit + scroll
 (function () {
   var links = document.getElementById('navLinks');
-  if (!links || links.querySelector('.nav-dd')) return;
-  var items = [
-    ['the-day-one-stack.html', 'The Day One Stack'],
-    ['how-we-collapse-time.html', 'How We Collapse Time'],
-    ['proof-one-day-build.html', 'The One-Day Build'],
-    ['protocols.html', 'Our Process'],
-    ['research-ai-assisted-execution.html', 'Research'],
-    ['who-we-help.html', 'Who We Help'],
-    ['the-human-advantage.html', 'The Human Advantage'],
-    ['the-destination.html', 'The Destination']
-  ];
-  var dd = document.createElement('div');
-  dd.className = 'nav-dd';
-  var btn = document.createElement('button');
-  btn.type = 'button'; btn.className = 'nav-dd-btn'; btn.setAttribute('aria-expanded', 'false');
-  btn.innerHTML = 'Why Day One <span class="dd-caret" aria-hidden="true">▾</span>';
-  var panel = document.createElement('div');
-  panel.className = 'nav-dd-panel';
-  panel.innerHTML = items.map(function (i) { return '<a href="' + i[0] + '">' + i[1] + '</a>'; }).join('');
-  dd.appendChild(btn); dd.appendChild(panel);
-  btn.addEventListener('click', function (e) {
-    e.preventDefault();
-    var open = dd.classList.toggle('open');
-    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  if (!links) return;
+  function fit() {
+    if (window.innerWidth > 900) { links.style.removeProperty('max-height'); return; }
+    var top = links.getBoundingClientRect().top;
+    links.style.maxHeight = Math.max(240, Math.round(window.innerHeight - top - 12)) + 'px';
+  }
+  fit();
+  window.addEventListener('resize', fit);
+  window.addEventListener('orientationchange', fit);
+  var mt = document.getElementById('menuToggle');
+  if (mt) mt.addEventListener('click', function () { setTimeout(fit, 0); });
+  document.addEventListener('click', function (e) {
+    if (e.target.closest && e.target.closest('.nav-dd-btn')) setTimeout(fit, 0);
   });
-  var cta = links.querySelector('a.btn');
-  if (cta) links.insertBefore(dd, cta); else links.appendChild(dd);
 })();
 
 // Mark the current page in the nav (dot indicator, esp. on the mobile menu)
@@ -223,15 +244,4 @@ document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
       links[i].setAttribute('aria-current', 'page');
     }
   }
-})();
-
-// Floating "Speak to a Human" call button — injected on every page
-(function () {
-  if (document.querySelector('.call-fab')) return;
-  var a = document.createElement('a');
-  a.className = 'call-fab';
-  a.href = 'tel:+15189126142';
-  a.setAttribute('aria-label', 'Call Day One MVP — speak to a human, 518 912 6142');
-  a.innerHTML = '<img src="assets/img/call-button.png" alt="Speak to a human — call 518 912 6142" loading="lazy" decoding="async" width="160" height="29" />';
-  (document.getElementById('nav') || document.body).appendChild(a);
 })();

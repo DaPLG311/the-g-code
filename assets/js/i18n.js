@@ -48,7 +48,7 @@
   function loadDict(code, cb) {
     if (window.I18N && window.I18N[code]) { cb(window.I18N[code]); return; }
     var s = document.createElement("script");
-    s.src = "assets/js/lang/" + code + ".js?v=20260702c";
+    s.src = "assets/js/lang/" + code + ".js?v=20260812b";
     s.onload = function () { cb(window.I18N && window.I18N[code]); };
     s.onerror = function () { cb(null); };
     document.head.appendChild(s);
