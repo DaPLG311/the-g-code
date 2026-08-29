@@ -1,0 +1,212 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "/en",
+      "permanent": false
+    },
+    {
+      "source": "/cuts",
+      "destination": "/en/cuts",
+      "permanent": false
+    },
+    {
+      "source": "/book",
+      "destination": "/en/book",
+      "permanent": false
+    },
+    {
+      "source": "/cortes",
+      "destination": "/es/cortes",
+      "permanent": false
+    },
+    {
+      "source": "/reservar",
+      "destination": "/es/reservar",
+      "permanent": false
+    },
+    {
+      "source": "/nwb-001",
+      "destination": "/en/cuts/low-taper-fade",
+      "permanent": false
+    },
+    {
+      "source": "/nwb-002",
+      "destination": "/en/cuts/mid-fade",
+      "permanent": false
+    },
+    {
+      "source": "/nwb-003",
+      "destination": "/en/cuts/high-fade",
+      "permanent": false
+    },
+    {
+      "source": "/nwb-004",
+      "destination": "/en/cuts/skin-fade",
+      "permanent": false
+    },
+    {
+      "source": "/nwb-005",
+      "destination": "/en/cuts/burst-fade",
+      "permanent": false
+    },
+    {
+      "source": "/nwb-006",
+      "destination": "/en/cuts/classic-taper",
+      "permanent": false
+    },
+    {
+      "source": "/nwb-007",
+      "destination": "/en/cuts/tape-up",
+      "permanent": false
+    },
+    {
+      "source": "/nwb-008",
+      "destination": "/en/cuts/line-up",
+      "permanent": false
+    },
+    {
+      "source": "/nwb-009",
+      "destination": "/en/cuts/buzz-cut",
+      "permanent": false
+    },
+    {
+      "source": "/nwb-010",
+      "destination": "/en/cuts/crew-cut",
+      "permanent": false
+    },
+    {
+      "source": "/nwb-011",
+      "destination": "/en/cuts/scissor-cut",
+      "permanent": false
+    },
+    {
+      "source": "/nwb-012",
+      "destination": "/en/cuts/curly-top-taper",
+      "permanent": false
+    },
+    {
+      "source": "/nwb-013",
+      "destination": "/en/cuts/hair-design",
+      "permanent": false
+    },
+    {
+      "source": "/nwb-014",
+      "destination": "/en/cuts/beard-sculpt",
+      "permanent": false
+    },
+    {
+      "source": "/nwb-015",
+      "destination": "/en/cuts/kids-cut",
+      "permanent": false
+    },
+    {
+      "source": "/es/nwb-001",
+      "destination": "/es/cortes/low-taper-fade",
+      "permanent": false
+    },
+    {
+      "source": "/es/nwb-002",
+      "destination": "/es/cortes/mid-fade",
+      "permanent": false
+    },
+    {
+      "source": "/es/nwb-003",
+      "destination": "/es/cortes/high-fade",
+      "permanent": false
+    },
+    {
+      "source": "/es/nwb-004",
+      "destination": "/es/cortes/skin-fade",
+      "permanent": false
+    },
+    {
+      "source": "/es/nwb-005",
+      "destination": "/es/cortes/burst-fade",
+      "permanent": false
+    },
+    {
+      "source": "/es/nwb-006",
+      "destination": "/es/cortes/classic-taper",
+      "permanent": false
+    },
+    {
+      "source": "/es/nwb-007",
+      "destination": "/es/cortes/tape-up",
+      "permanent": false
+    },
+    {
+      "source": "/es/nwb-008",
+      "destination": "/es/cortes/line-up",
+      "permanent": false
+    },
+    {
+      "source": "/es/nwb-009",
+      "destination": "/es/cortes/buzz-cut",
+      "permanent": false
+    },
+    {
+      "source": "/es/nwb-010",
+      "destination": "/es/cortes/crew-cut",
+      "permanent": false
+    },
+    {
+      "source": "/es/nwb-011",
+      "destination": "/es/cortes/scissor-cut",
+      "permanent": false
+    },
+    {
+      "source": "/es/nwb-012",
+      "destination": "/es/cortes/curly-top-taper",
+      "permanent": false
+    },
+    {
+      "source": "/es/nwb-013",
+      "destination": "/es/cortes/hair-design",
+      "permanent": false
+    },
+    {
+      "source": "/es/nwb-014",
+      "destination": "/es/cortes/beard-sculpt",
+      "permanent": false
+    },
+    {
+      "source": "/es/nwb-015",
+      "destination": "/es/cortes/kids-cut",
+      "permanent": false
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=31536000; includeSubDomains"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=(), interest-cohort=()"
+        },
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; script-src 'self' 'sha256-+pKC7+06ldOqPw8E8Rd1FVm7hHMgtrE/W1zQegp3nW8=' 'sha256-/YffFfxJxNwk9A9ESGAWTWMfdX8tXihju+RyyuegDI4=' 'sha256-2GDX3G9CPBBFyLUbAB1iT+/zh67LWVCNGfMmXTj6I70=' 'sha256-2yRrC/UQ7pFhulDTom52v6VS7vdOVnR9F9gnTV1uFyc=' 'sha256-4HqDjR2aXiLBeuwn3cQAwyxxcXaiLbZs42B+vyKcn00=' 'sha256-4j53xEsxpccpcKuEMPVby5rgfTMhdMyYMG0dPMzUsWY=' 'sha256-7u+VXkvWyYsKOGsXU+18zEhDdD2FY8Cuu2RNsPRzJaE=' 'sha256-ADdpRe+FtP6eLr0cddrV49DQtMzJo6+0P+nggHLDluM=' 'sha256-AUbnUE70Pe3WbbzGleAfPb2HVpf8w6QzjcIVDWVeE6c=' 'sha256-BjL0HE8SnGHBMfOWXiO4eTJL3kDMVuE94WkTBw+jrJc=' 'sha256-BrTkA6f1vyF3HmDLZ45m28s3BQU2qR7df+Sx2MfSlAA=' 'sha256-EknFZbfmshVsWThQ3TM2QRSujE/NgOLOt2rZY7Xmvj0=' 'sha256-JiEgJioNQG+7FN9AO+aNQPvDTJFuoOEVTwH5WFq8GLw=' 'sha256-KSmhfJVTCRwFA0xh5A1/7WvUYEwW0K4KboMeP3fbObg=' 'sha256-KUzRAR/QjrupNZQmoKx1J3aQ+LfMaO7b0qcRBfw6mwY=' 'sha256-S6H2WO/q3y4WBrwzXNk1g7PGuSYmb8tCnTrqIpAYnuw=' 'sha256-TpEtE3bMG0fqljnUTXATEkMRUa4ITUd9HFOkrvwcBoM=' 'sha256-V7gJS27n/o+9SKY6hmWudsFfKweIYNQu4WbyBXSKyDE=' 'sha256-VM9ncfn0WnEofz+bRjM/IVBlTXIEM6KrcXt8iUJD5J0=' 'sha256-VNmX+YJSUQOBXE5gHD/M/GEJPcWE7fvYPL5CNdRt/X4=' 'sha256-X0tjGsRrC2ngfdt6qoxAXHtnLHy/45zGRZucPpO0wtM=' 'sha256-YzsNKAKAckTHVRofDnkmnNwoBhG6zvX7uV+cagmkkbQ=' 'sha256-Z4FswA3AyPHCSP34oJG5HoLerrTQUxXWajcxubB4GmQ=' 'sha256-gImFNTbMjH9yluA5Ju/vHoPgjuGbGfRqF+9tsd87ht8=' 'sha256-ifaJ929ncqmTLr2Sf+Xv/478hfgRu6dbdSNknKk9gTQ=' 'sha256-jpT9ZvstuCeJ3NPc2Q1aVaSRoUbI5xAm324lRZOgq5g=' 'sha256-klNT0savv7KKMEZg8hiodjKUj1ZD8SInf/739aBhqAs=' 'sha256-laDljCpj8Y+fb10vaI6obVb4pqeGLlfFiFjmmf4vlFc=' 'sha256-q74nuFvPJYyerIf/KS4YVpPb1maBJ0CxHn3hCG/AgMY=' 'sha256-rM/AKDdYFl0VNDJjIv40bhjILx4G5QyN+nafrkfAcmU=' 'sha256-ucCxUg2rhRwOA40jALGkq1yeF/QOoZyriqyRmsFhC4Y=' 'sha256-wPzgmrg1Qmv+kExnIVEZAX2Bl97/VIj5W4hEbqJIX9k=' 'sha256-yQBQ6d8Wvl15d0rdcUN4XYwE7bZHnBmtdAABlawVz2U=' 'sha256-zr28EnGup9pX2cHlSVRz0RXw37A14hlCCHMoU4r46e0='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://fonts.gstatic.com https://booksy.com https://*.booksy.com; connect-src 'self'; frame-src https://booksy.com https://*.booksy.com; base-uri 'self'; frame-ancestors 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests"
+        }
+      ]
+    }
+  ]
+}

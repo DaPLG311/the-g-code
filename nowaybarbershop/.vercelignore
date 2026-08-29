@@ -1,0 +1,7 @@
+# Dev-only — never deployed.
+# NOTE: data/ is NOT ignored. api/style-ticket.js requires data/*.js at runtime
+# to re-resolve the SKU, price and add-ons server-side.
+scripts/
+qa-screenshots/
+README.md
+.env.example

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="No Way Barbershop">
+  <rect width="64" height="64" rx="10" fill="#090A0D"/>
+  <!-- energy streaks: orange + ki blue, no borrowed IP -->
+  <path d="M4 50 L22 6" stroke="#1677FF" stroke-width="3" stroke-linecap="round" opacity=".55"/>
+  <path d="M46 58 L62 18" stroke="#1677FF" stroke-width="3" stroke-linecap="round" opacity=".4"/>
+  <!-- N W monogram -->
+  <path d="M13 45 V19 L29 39 V19" fill="none" stroke="#FF7200" stroke-width="6"
+        stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M34 19 L39 45 L44.5 29 L50 45 L55 19" fill="none" stroke="#F7F7F4" stroke-width="5.5"
+        stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
