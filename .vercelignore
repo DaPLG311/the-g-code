@@ -1,3 +1,10 @@
 GERONIMO.md
 README.md
 scripts/
+
+# No Way Barbershop is a separate client site deployed as its own Vercel
+# project (Root Directory: nowaybarbershop) on nowaybarbershop.com.
+# Excluded here so the Day One MVP deployment does not also publish it at
+# dayonemvp.com/nowaybarbershop/ — that would be duplicate content competing
+# with the client's own domain for Troy local search.
+nowaybarbershop/

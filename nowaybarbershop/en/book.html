@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Book your cut — No Way Barbershop</title>
+<meta name="description" content="Send Jose your exact cut, your add-ons and your notes — then pick your time. No Way Barbershop, Troy NY. English and Spanish." />
+<link rel="canonical" href="https://nowaybarbershop.com/en/book" />
+<link rel="alternate" hreflang="en" href="https://nowaybarbershop.com/en/book" />
+<link rel="alternate" hreflang="es" href="https://nowaybarbershop.com/es/reservar" />
+<link rel="alternate" hreflang="x-default" href="https://nowaybarbershop.com/en/book" />
+<meta property="og:site_name" content="No Way Barbershop" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Book your cut — No Way Barbershop" />
+<meta property="og:description" content="Send Jose your exact cut, your add-ons and your notes — then pick your time. No Way Barbershop, Troy NY. English and Spanish." />
+<meta property="og:url" content="https://nowaybarbershop.com/en/book" />
+<meta property="og:image" content="https://nowaybarbershop.com/assets/media/brand/og-default.jpg" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Book your cut — No Way Barbershop" />
+<meta name="twitter:description" content="Send Jose your exact cut, your add-ons and your notes — then pick your time. No Way Barbershop, Troy NY. English and Spanish." />
+<meta name="twitter:image" content="https://nowaybarbershop.com/assets/media/brand/og-default.jpg" />
+<meta name="theme-color" content="#090A0D" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/assets/css/noway.css?v=20260829a" />
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BarberShop","@id":"https://nowaybarbershop.com/#shop","name":"No Way Barbershop","legalName":"No Way Barbershop LLC","url":"https://nowaybarbershop.com/en/","telephone":"518-238-5037","address":{"@type":"PostalAddress","streetAddress":"32 112th Street","addressLocality":"Troy","addressRegion":"NY","postalCode":"12182","addressCountry":"US"},"areaServed":[{"@type":"City","name":"Troy"},{"@type":"AdministrativeArea","name":"Rensselaer County"}],"availableLanguage":[{"@type":"Language","name":"English","alternateName":"en"},{"@type":"Language","name":"Spanish","alternateName":"es"}],"employee":{"@type":"Person","name":"Jose Rivera","jobTitle":"Owner & Barber"},"knowsLanguage":["en","es"],"sameAs":["https://booksy.com/en-us/648695_nowaybarbershop_barber-shop_134588_troy"]}</script>
+</head>
+<body>
+<a class="nw-skip" href="#main">Skip to content</a>
+<div class="nw-langbar" role="group" aria-label="Language">
+<span class="nw-sr">Ver en español</span><span class="on" aria-current="true">EN</span><a href="/es/reservar" hreflang="es" lang="es" data-nw-track="language_selected">ES</a>
+</div>
+<header class="nw-head">
+  <div class="nw-wrap nw-head-in">
+    <a class="nw-brand" href="/en/" aria-label="No Way Barbershop home">
+      <b>NO <em>WAY</em></b><small>Barbershop · Troy NY</small>
+    </a>
+    <button class="nw-burger" id="nwBurger" type="button" aria-expanded="false" aria-controls="nwNav" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="nw-nav" id="nwNav" aria-label="Menu">
+      <a href="/en/cuts">Cuts</a>
+      <a href="/en/gallery">Gallery</a>
+      <a href="/en/jose">Jose</a>
+      <a href="/en/content">Content</a>
+      <a href="/en/contact">Contact</a>
+      <a class="nw-btn nw-btn--primary" href="/en/book">Book</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+<section class="nw-section">
+  <div class="nw-wrap" style="max-width:760px;">
+    <p class="nw-kicker">The No Way Cut System</p>
+    <h1 style="font-size:clamp(32px,9vw,52px);">Book your cut</h1>
+
+    <!-- EMPTY: arrived without picking a cut.
+         Deliberately NOT hidden: this is also the no-JS state. Every other
+         panel starts hidden, so without this the page would render blank for
+         anyone with JS off or still loading. JS hides it once a cut is found. -->
+    <div class="nw-state nw-state--empty" id="nwTicketEmpty">
+      <h3>You haven't picked a cut yet.</h3>
+      <a class="nw-btn nw-btn--primary" href="/en/cuts">Pick your cut first</a>
+    </div>
+
+    <!-- IDLE: the form -->
+    <form id="nwTicketForm" novalidate hidden>
+      <div class="nw-loc-card" style="margin-bottom:26px;">
+        <p class="nw-kicker" style="margin-bottom:14px;">Your cut</p>
+        <div id="nwCutSummary"></div>
+        <a class="nw-btn nw-btn--quiet" style="margin-top:14px;" href="/en/cuts">Change cut</a>
+      </div>
+
+      <fieldset style="border:0;padding:0;margin:0 0 26px;">
+        <legend class="nw-kicker" style="padding:0;">Add-ons</legend>
+        <div class="nw-addons"><label class="nw-addon">
+    <input type="checkbox" data-nw-addon="beard" name="addons" value="beard" />
+    <span class="nw-addon-box" aria-hidden="true"></span>
+    <span class="nw-addon-txt">
+      <span class="nw-addon-name">Beard</span>
+      <span class="nw-addon-meta">$20+ · 30 min</span>
+    </span>
+  </label><label class="nw-addon">
+    <input type="checkbox" data-nw-addon="eyebrows" name="addons" value="eyebrows" />
+    <span class="nw-addon-box" aria-hidden="true"></span>
+    <span class="nw-addon-txt">
+      <span class="nw-addon-name">Eyebrows</span>
+      <span class="nw-addon-meta">$15+ · 20 min</span>
+    </span>
+  </label><label class="nw-addon">
+    <input type="checkbox" data-nw-addon="enhancement" name="addons" value="enhancement" />
+    <span class="nw-addon-box" aria-hidden="true"></span>
+    <span class="nw-addon-txt">
+      <span class="nw-addon-name">Enhancement</span>
+      <span class="nw-addon-meta">$10+ · 30 min</span>
+    </span>
+  </label><label class="nw-addon">
+    <input type="checkbox" data-nw-addon="wash" name="addons" value="wash" />
+    <span class="nw-addon-box" aria-hidden="true"></span>
+    <span class="nw-addon-txt">
+      <span class="nw-addon-name">Wash &amp; Dry</span>
+      <span class="nw-addon-meta">$15+ · 10 min</span>
+    </span>
+  </label></div>
+      </fieldset>
+
+      <p class="nw-kicker">Your info</p>
+
+      <div class="nw-field">
+        <label class="nw-label" for="nwName">Your name <span class="req">*</span></label>
+        <input class="nw-input" id="nwName" name="name" type="text" autocomplete="name"
+               placeholder="First and last" required maxlength="80" />
+        <span class="nw-err" id="nwNameErr" role="alert" hidden></span>
+      </div>
+
+      <div class="nw-field">
+        <label class="nw-label" for="nwPhone">Phone <span class="req">*</span></label>
+        <input class="nw-input" id="nwPhone" name="phone" type="tel" inputmode="tel" autocomplete="tel"
+               placeholder="518-555-0100" required maxlength="25" />
+        <span class="nw-err" id="nwPhoneErr" role="alert" hidden></span>
+      </div>
+
+      <div class="nw-field">
+        <label class="nw-label" for="nwEmail">Email (optional)</label>
+        <input class="nw-input" id="nwEmail" name="email" type="email" autocomplete="email"
+               placeholder="you@example.com" maxlength="120" />
+        <span class="nw-err" id="nwEmailErr" role="alert" hidden></span>
+      </div>
+
+      <div class="nw-field">
+        <label class="nw-label" for="nwNotes">Anything Jose should know?</label>
+        <textarea class="nw-textarea" id="nwNotes" name="notes" maxlength="600"
+                  placeholder="Keep the curls longer on top, going to a wedding Saturday, etc."></textarea>
+        <span class="nw-hint">Optional. Max 600 characters.</span>
+        <span class="nw-err" id="nwNotesErr" role="alert" hidden></span>
+      </div>
+
+      <fieldset style="border:0;padding:0;margin:0 0 26px;">
+        <legend class="nw-label" style="padding:0;">I'd rather talk in</legend>
+        <div class="nw-radio-row">
+          <label class="nw-radio"><input type="radio" name="prefLang" value="en" checked /><span>English</span></label>
+          <label class="nw-radio"><input type="radio" name="prefLang" value="es"  /><span>Español</span></label>
+        </div>
+      </fieldset>
+
+      <!-- honeypot: invisible to people, irresistible to dumb bots -->
+      <div class="nw-hp" aria-hidden="true">
+        <label for="nwWebsite">Website</label>
+        <input id="nwWebsite" name="website" type="text" tabindex="-1" autocomplete="off" />
+      </div>
+      <input type="hidden" id="nwStartedAt" name="startedAt" value="0" />
+
+      <button class="nw-btn nw-btn--primary nw-btn--wide" id="nwSubmit" type="submit">Send my cut to Jose</button>
+    </form>
+
+    <!-- SENDING -->
+    <div class="nw-state" id="nwTicketSending" hidden aria-live="polite">
+      <p style="margin:0;display:flex;align-items:center;gap:12px;">
+        <span class="nw-spinner" style="border-top-color:var(--nw-orange);border-color:rgba(255,114,0,.25);border-top-color:var(--nw-orange);"></span>
+        Sending your ticket…
+      </p>
+    </div>
+
+    <!-- SUCCESS -->
+    <div class="nw-state nw-state--ok" id="nwTicketSuccess" hidden aria-live="polite">
+      <h3>Jose has your cut.</h3>
+      <p class="nw-note" style="margin:0 0 4px;">Your ticket</p>
+      <span class="nw-ticket-code" id="nwTicketCode"></span>
+      <p>Here's your ticket number. Last step: pick your time on Booksy — that's where Jose's real calendar lives.</p>
+      <div class="nw-warn" id="nwNotNotified" hidden>
+        We could not notify the shop automatically. Save your ticket number and call 518-238-5037 to confirm.
+      </div>
+      <div class="nw-warn">Heads up: this is not an appointment yet. You're booked once you pick a time on Booksy.</div>
+      <a class="nw-btn nw-btn--primary nw-btn--wide" id="nwBooksyCta"
+         href="https://booksy.com/en-us/648695_nowaybarbershop_barber-shop_134588_troy" target="_blank" rel="noopener"
+         data-nw-booking>Pick my time on Booksy</a>
+    </div>
+
+    <!-- ERROR -->
+    <div class="nw-state nw-state--err" id="nwTicketError" hidden aria-live="assertive">
+      <h3>That didn't send.</h3>
+      <p>Your cut is saved — nothing's lost. Try again, or just call the shop and tell Jose your cut number.</p>
+      <div class="nw-btn-row">
+        <button class="nw-btn nw-btn--primary" type="button" id="nwRetry">Try again</button>
+        <a class="nw-btn nw-btn--ghost" href="tel:+15182385037" data-nw-track="phone_clicked">Call 518-238-5037</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="nw-section nw-section--alt nw-section--edge">
+  <div class="nw-wrap" style="max-width:900px;">
+    <p class="nw-kicker nw-kicker--blue">Send it</p>
+    <h2>Pick your time</h2>
+    <p class="nw-lead">Booksy runs Jose's calendar, reminders and confirmations. Your cut details are already with him.</p>
+    <div id="nwBookingEmbed"></div>
+    <div id="nwBookingFallback">
+      <a class="nw-btn nw-btn--primary" href="https://booksy.com/en-us/648695_nowaybarbershop_barber-shop_134588_troy" target="_blank" rel="noopener" data-nw-booking>Open Booksy</a>
+      <p class="nw-note" style="margin-top:14px;">Booking trouble? Call the shop at 518-238-5037 and give Jose your cut number.</p>
+    </div>
+  </div>
+</section>
+</main>
+<footer class="nw-foot">
+  <div class="nw-wrap">
+    <div class="nw-foot-grid">
+      <div class="nw-foot-col">
+        <b style="font-family:var(--nw-display);font-size:24px;letter-spacing:.04em;">NO WAY</b>
+        <p class="nw-note" style="margin:8px 0 14px;">Fresh cuts. Good people.</p>
+        <address style="font-style:normal;color:var(--nw-steel);font-size:14px;line-height:1.7;">
+          32 112th Street<br />Troy, NY 12182<br />
+          <a href="tel:+15182385037" data-nw-track="phone_clicked">518-238-5037</a>
+        </address>
+      </div>
+      <div class="nw-foot-col">
+        <h4>Go</h4>
+        <a href="/en/cuts">Cuts</a>
+        <a href="/en/book">Book</a>
+        <a href="/en/gallery">Gallery</a>
+        <a href="/en/jose">Jose</a>
+        <a href="/en/content">Content</a>
+        <a href="/en/contact">Contact</a>
+      </div>
+      <div class="nw-foot-col">
+        <h4>Legal</h4>
+        <a href="/en/policies">Privacy · Terms</a>
+        
+      </div>
+    </div>
+    <div class="nw-foot-bottom">
+      <span>&copy; 2026 No Way Barbershop LLC. All rights reserved.</span>
+      <span>Built by Day One MVP</span>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/js/nw-core.js?v=20260829a"></script>
+<script src="/assets/js/runtime-en.js?v=20260829a"></script>
+<script src="/assets/js/nw-booking.js?v=20260829a"></script>
+<script src="/assets/js/nw-ticket.js?v=20260829a"></script>
+</body>
+</html>
